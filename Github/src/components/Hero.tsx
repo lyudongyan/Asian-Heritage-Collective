@@ -12,7 +12,7 @@ export default function Hero() {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-20 pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-35 pointer-events-none"
       >
         <source src={bgVideo} type="video/mp4" />
       </video>

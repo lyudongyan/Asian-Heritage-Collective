@@ -61,7 +61,7 @@
 
 /* Custom Gradients and Utilities */
 .bg-hero {
-    background: linear-gradient(135deg, #ffd9e1 0%, #ffb4ab 50%, #fdb64b 100%);
+    background: linear-gradient(135deg, #2c0a10 0%, #150005 50%, #301700 100%);
 }
 .bg-about {
     background: linear-gradient(135deg, #fff0ee 0%, #ffdad6 100%);

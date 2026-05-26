@@ -165,7 +165,7 @@ export default function Toolbar() {
         }
     </script>
     <style>
-        .bg-hero { background: linear-gradient(135deg, #ffd9e1 0%, #ffb4ab 50%, #fdb64b 100%); }
+        .bg-hero { background: linear-gradient(135deg, #2c0a10 0%, #150005 50%, #301700 100%); }
         .bg-about { background: linear-gradient(135deg, #fff0ee 0%, #ffdad6 100%); }
         .bg-story { background: linear-gradient(135deg, #ffdad6 0%, #ffb4ab 100%); }
         .bg-impact { background: linear-gradient(135deg, #ffb4ab 0%, #ffd9e1 100%); }
