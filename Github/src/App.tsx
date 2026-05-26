@@ -204,7 +204,7 @@ function ApplyForm() {
     name: "", email: "", age: "", role: "", interest: "", message: "",
   });
 
-  const FORMSPREE_ID = "YOUR_FORMSPREE_ID"; // ← replace with your Formspree form ID
+  const FORMSPREE_ID = "xgoqpveq"; // ← replace with your Formspree form ID
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -321,7 +321,7 @@ function NewsletterBar() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
-  const FORMSPREE_NEWSLETTER_ID = "YOUR_NEWSLETTER_FORMSPREE_ID"; // ← replace
+  const FORMSPREE_NEWSLETTER_ID = "xgoqpveq"; // ← replace
 
   async function handleSubmit(e: React.MouseEvent) {
     e.preventDefault();
@@ -650,11 +650,7 @@ export default function App() {
                   <p className="font-body text-base text-on-surface-variant mt-4 max-w-2xl mx-auto leading-relaxed">
                     Whether you're a student looking to explore your heritage, a parent wanting to get involved, or a community member eager to contribute — we'd love to hear from you.
                   </p>
-                  <p className="font-body text-xs text-on-surface-variant/60 mt-2">
-                    To set up form submissions, create a free account at{" "}
-                    <a href="https://formspree.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">formspree.io</a>{" "}
-                    and replace <code className="bg-primary/10 px-1 rounded text-primary">YOUR_FORMSPREE_ID</code> in App.tsx.
-                  </p>
+
                 </div>
                 <ApplyForm />
               </div>
