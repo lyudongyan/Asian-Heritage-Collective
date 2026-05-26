@@ -33,6 +33,10 @@ import ahcBannerImg from "./assets/images/ahc_banner.webp";
 // @ts-ignore
 import johnPorkImg from "./assets/images/john_pork.webp";
 // @ts-ignore
+import akiraKongkanand1Img from "./assets/images/akira_kongkanand_1.webp";
+// @ts-ignore
+import akiraKongkanand2Img from "./assets/images/akira_kongkanand_2.webp";
+// @ts-ignore
 import acaLogoImg from "./assets/images/aca_logo.webp";
 // @ts-ignore
 import mdcacLogoImg from "./assets/images/mdcac_logo.webp";
@@ -91,6 +95,8 @@ export const IMAGES = {
   meet_the_team: meetTheTeamImg,
   ahc_banner: ahcBannerImg,
   john_pork: johnPorkImg,
+  akira_kongkanand_1: akiraKongkanand1Img,
+  akira_kongkanand_2: akiraKongkanand2Img,
   aca_logo: acaLogoImg,
   mdcac_logo: mdcacLogoImg,
   lyudong_yan_1: lyudongYan1Img,

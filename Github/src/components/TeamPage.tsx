@@ -106,6 +106,16 @@ const MASTER_TEAM: TeamMember[] = [
     secondaryImg: IMAGES.leila_karichiwala_2,
     bio: "Leila Karichiwala crafts beautiful illustrations, promotional flyers, and poster backdrops that give all our public cultural festivals their cohesive, traditional-meets-modern look.",
     contribution: "Illustration drawing, typography selection, banner design, and poster layouts."
+  },
+  {
+    id: 10,
+    name: "Akira Kongkanand",
+    title: "Blog Writer",
+    primaryBg: "from-amber-100 to-amber-200 text-amber-950",
+    primaryImg: IMAGES.akira_kongkanand_1,
+    secondaryImg: IMAGES.akira_kongkanand_2,
+    bio: "Akira Kongkanand serves as the Blog Writer for the Asian Heritage Collective, chronicling the rich histories, personal narratives, and cultural milestones of our vibrant community. With a deep passion for storytelling and heritage education, Akira crafts high-impact essays that bring our archives to life.",
+    contribution: "Researching cultural timelines, conducting community interviews, writing monthly blog articles, and managing historical newsletters."
   }
 ];
 
@@ -136,7 +146,7 @@ export default function TeamPage({ onBack }: TeamPageProps) {
             Meet the Team
           </h2>
           <p className="font-body text-sm md:text-base text-on-surface-variant mt-2 leading-relaxed">
-            Exactly 9 dedicated directors and heads working across midtown Michigan to expand traditional education and community impact.
+            Exactly 10 dedicated directors, heads, and staff members working across midtown Michigan to expand traditional education and community impact.
           </p>
         </div>
 

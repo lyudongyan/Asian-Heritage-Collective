@@ -123,6 +123,7 @@ export default function BlogPage({ onBack }: BlogPageProps) {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
 
   return (
+    <>
     <div className="pt-32 pb-24 min-h-screen bg-[#faf8f6] select-text relative animate-fade-in text-left">
       <div className="container mx-auto px-margin-mobile md:px-margin-desktop max-w-[1280px]">
         {/* Back navigation */}
@@ -192,68 +193,76 @@ export default function BlogPage({ onBack }: BlogPageProps) {
           ))}
         </div>
       </div>
+    </div>
 
-      {/* Dynamic Pop-up Modal */}
-      {selectedPost && (
-        <div className="fixed inset-0 z-[1000] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white border rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative select-text animate-pop-in">
-            {/* Close */}
-            <button
-              onClick={() => setSelectedPost(null)}
-              className="absolute top-4 right-4 text-neutral-500 hover:text-primary transition-colors p-2 z-10 bg-white/80 rounded-full shadow-sm"
-            >
-              <span className="material-symbols-outlined text-2xl">close</span>
-            </button>
+    {/* Dynamic Pop-up Modal */}
+    {selectedPost && (
+      <div
+        className="fixed bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+        style={{ position: "fixed", inset: 0, zIndex: 9999 }}
+        onClick={() => setSelectedPost(null)}
+      >
+        <div
+          className="bg-white border rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative select-text animate-pop-in"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Close */}
+          <button
+            onClick={() => setSelectedPost(null)}
+            className="absolute top-4 right-4 text-neutral-500 hover:text-primary transition-colors p-2 z-10 bg-white/80 rounded-full shadow-sm animate-fade-in"
+          >
+            <span className="material-symbols-outlined text-2xl">close</span>
+          </button>
 
-            {/* Banner picture */}
-            <div className="h-64 w-full overflow-hidden relative">
-              <img
-                alt={selectedPost.title}
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer" loading="lazy"
-                src={selectedPost.img}
-              />
-              <span className="absolute bottom-4 left-4 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-lg">
-                {selectedPost.tag}
-              </span>
+          {/* Banner picture */}
+          <div className="h-64 w-full overflow-hidden relative">
+            <img
+              alt={selectedPost.title}
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer" loading="lazy"
+              src={selectedPost.img}
+            />
+            <span className="absolute bottom-4 left-4 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-lg">
+              {selectedPost.tag}
+            </span>
+          </div>
+
+          {/* Article content */}
+          <div className="p-6 md:p-8 space-y-6">
+            <div className="space-y-2">
+              <div className="flex gap-2 items-center text-xs text-on-surface-variant/70 font-semibold font-mono">
+                <span>{selectedPost.date}</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-neutral-300" />
+                <span>By {selectedPost.author}</span>
+              </div>
+              <h3 className="font-headline text-2xl md:text-3xl text-primary font-bold leading-snug">
+                {selectedPost.title}
+              </h3>
             </div>
 
-            {/* Article content */}
-            <div className="p-6 md:p-8 space-y-6">
-              <div className="space-y-2">
-                <div className="flex gap-2 items-center text-xs text-on-surface-variant/70 font-semibold font-mono">
-                  <span>{selectedPost.date}</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-neutral-300" />
-                  <span>By {selectedPost.author}</span>
-                </div>
-                <h3 className="font-headline text-2xl md:text-3xl text-primary font-bold leading-snug">
-                  {selectedPost.title}
-                </h3>
-              </div>
+            <div className="p-4 border-l-4 border-primary/20 bg-primary/5 rounded-r-xl italic font-body text-sm text-on-surface-variant/90 leading-relaxed">
+              "{selectedPost.excerpt}"
+            </div>
 
-              <div className="p-4 border-l-4 border-primary/20 bg-primary/5 rounded-r-xl italic font-body text-sm text-on-surface-variant/90 leading-relaxed">
-                "{selectedPost.excerpt}"
-              </div>
+            <div className="font-body text-sm md:text-base text-on-surface-variant/95 leading-relaxed whitespace-pre-line space-y-4">
+              {selectedPost.content}
+            </div>
 
-              <div className="font-body text-sm md:text-base text-on-surface-variant/95 leading-relaxed whitespace-pre-line space-y-4">
-                {selectedPost.content}
-              </div>
-
-              <div className="border-t border-neutral-100 pt-6 flex justify-between items-center text-xs">
-                <span className="font-semibold text-on-surface-variant/70 font-mono">
-                  Category: {selectedPost.tag}
-                </span>
-                <button
-                  onClick={() => setSelectedPost(null)}
-                  className="bg-primary text-on-primary px-5 py-2 rounded-full font-body font-bold text-xs uppercase tracking-wider hover:bg-primary-container active:scale-95 transition-all"
-                >
-                  Close Article
-                </button>
-              </div>
+            <div className="border-t border-neutral-100 pt-6 flex justify-between items-center text-xs">
+              <span className="font-semibold text-on-surface-variant/70 font-mono">
+                Category: {selectedPost.tag}
+              </span>
+              <button
+                onClick={() => setSelectedPost(null)}
+                className="bg-primary text-on-primary px-5 py-2 rounded-full font-body font-bold text-xs uppercase tracking-wider hover:bg-primary-container active:scale-95 transition-all"
+              >
+                Close Article
+              </button>
             </div>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+    )}
+    </>
   );
 }

@@ -201,7 +201,7 @@ function ApplyForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    name: "", email: "", age: "", role: "", interest: "", message: "",
+    name: "", email: "", age: "", role: "", interest: "", message: "", school: "", phone: "",
   });
 
   const FORMSPREE_ID = "xgoqpveq"; // ← replace with your Formspree form ID
@@ -268,6 +268,14 @@ function ApplyForm() {
             <option>Community Member</option>
             <option>Partner / Sponsor</option>
           </select>
+        </div>
+        <div>
+          <label className="font-body text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-1.5 block">School</label>
+          <input name="school" value={form.school} onChange={handleChange} placeholder="Your school or university" className={inputClass} />
+        </div>
+        <div>
+          <label className="font-body text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-1.5 block">Cell Phone</label>
+          <input name="phone" value={form.phone} onChange={handleChange} placeholder="e.g. (123) 456-7890" className={inputClass} />
         </div>
       </div>
       <div className="mb-4">
@@ -599,7 +607,7 @@ export default function App() {
                   { id: "home", label: "Main Homepage", desc: "Landing & highlights", icon: "home" },
                   { id: "about", label: "Detailed About", desc: "Philosophy & story", icon: "info" },
                   { id: "events", label: "Past Timeline", desc: "Performance gallery", icon: "photo_library" },
-                  { id: "team", label: "Meet 24 Officers", desc: "Individual biographies", icon: "groups" },
+                  { id: "team", label: "Meet the Team", desc: "Individual biographies", icon: "groups" },
                   { id: "blog", label: "Living Heritage", desc: "10 historical essays", icon: "menu_book" },
                   { id: "games", label: "Games Room", desc: "4 interactive play zones", icon: "videogame_asset" },
                 ].map((pg) => (
