@@ -7,10 +7,10 @@ export default function Partnership() {
       {/* Liquid glass image background wrapper */}
       <div className="absolute inset-0 z-0">
         <img
-          alt="Asian Heritage Collective banner"
+          alt="Community engagement"
           className="w-full h-full object-cover object-center opacity-30 mix-blend-multiply filter contrast-125"
           referrerPolicy="no-referrer" loading="lazy"
-          src={IMAGES.ahc_banner}
+          src={IMAGES.community_engagement}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/60 mix-blend-multiply"></div>
       </div>
