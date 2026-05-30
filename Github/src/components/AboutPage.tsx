@@ -42,10 +42,10 @@ export default function AboutPage({ onBack }: AboutPageProps) {
                 1. Cultivating Cultural Identity
               </h3>
               <p className="font-body text-base text-on-surface-variant leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                We believe that understanding one's roots is key to building a strong sense of self. Through immersive language tutoring, historical storytelling workshops, and rich cultural archives, the Asian Heritage Collective empowers young people to confidently embrace their ancestry.
               </p>
               <p className="font-body text-base text-on-surface-variant leading-relaxed">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Aliquam ut porttitor leo a diam sollicitudin tempor. Sed elementum tempus egestas sed sed risus. Gravida in fermentum et sollicitudin ac orci phasellus egestas. Accumsan tortor posuere ac ut consequat semper viverra.
+                By creating active and welcoming spaces for discovering heritage, we nurture individual confidence, foster cultural pride, and promote a deep, lasting appreciation for the diverse heritages represented in our community.
               </p>
             </div>
             <div className="overflow-hidden rounded-3xl shadow-xl border-4 border-white/50 transform hover:scale-[1.02] transition-transform duration-500">
@@ -65,10 +65,10 @@ export default function AboutPage({ onBack }: AboutPageProps) {
                 2. Grassroots Advocacy & Service
               </h3>
               <p className="font-body text-base text-on-surface-variant leading-relaxed">
-                Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc pulvinar sapien et ligula ullamcorper malesuada proin. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque. Feugiat in ante metus dictum at tempor commodo ullamcorper a. Integer vitae justo eget magna fermentum.
+                True heritage is kept alive through active stewardship and selfless service. Our dedicated volunteers lead neighborhood service programs, intergenerational cooking initiatives, and youth leadership workshops across midtown communities.
               </p>
               <p className="font-body text-base text-on-surface-variant leading-relaxed">
-                Ultrices neque ornare aenean euismod elementum nisi quis. Condimentum lacinia quis vel eros elementum leo. Commodo nulla facilisi nullam vehicula ipsum a arcu cursus vitae. Purus gravida quis blandit turpis cursus in hac. Viverra suspendisse potenti nullam ac tortor vitae purus. In tellus integer feugiat scelerisque varius morbi enim.
+                By partnering with senior centers, hosting educational community forums, and organizing local campaigns, we build a supportive network that bridges generational divides and lifts up families of all backgrounds.
               </p>
             </div>
             <div className="lg:order-1 overflow-hidden rounded-3xl shadow-xl border-4 border-white/50 transform hover:scale-[1.02] transition-transform duration-500">
@@ -88,10 +88,10 @@ export default function AboutPage({ onBack }: AboutPageProps) {
                 3. The Intersection of Art & Modernity
               </h3>
               <p className="font-body text-base text-on-surface-variant leading-relaxed">
-                Eros in cursus turpis massa tincidunt dui ut. In nibh mauris cursus mattis molestie a iaculis at erat. Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus. Tellus molestie nunc non blandit massa enim. Dignissim suspendisse in est ante in nibh mauris. Quisque id diam vel quam elementum pulvinar etiam non.
+                Culture is not a museum piece; it is a living, breathing canvas. We celebrate traditional arts—from classical instrumental music to calligraphy and traditional crafts—while creatively adapting them to match modern tastes.
               </p>
               <p className="font-body text-base text-on-surface-variant leading-relaxed">
-                Sit amet dictum sit amet justo donec enim diam vulputate. Vitae ultrices leo integer malesuada. Dignissim sodales ut eu sem integer vitae justo eget magna. Enim ut tellus elementum sagittis vitae et leo duis. Id eu nisl nunc mi ipsum faucibus vitae aliquet. Purus non enim praesent elementum facilisis. Leo duis ut diam quam nulla.
+                Through interactive digital play zones, fusion music performances, and creative designs, we invite audiences of all backgrounds to experience the timeless beauty of Asian heritage in exciting and fresh ways.
               </p>
             </div>
             <div className="overflow-hidden rounded-3xl shadow-xl border-4 border-white/50 transform hover:scale-[1.02] transition-transform duration-500">

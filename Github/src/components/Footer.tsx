@@ -1,6 +1,24 @@
 import React from "react";
 
-export default function Footer() {
+interface FooterProps {
+  onLinkClick?: (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => void;
+  onNavigate?: (page: "home" | "about" | "events" | "team" | "blog" | "games", extra?: any) => void;
+}
+
+export default function Footer({ onLinkClick, onNavigate }: FooterProps = {}) {
+  const handleAnchor = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+    if (onLinkClick) {
+      onLinkClick(e, hash);
+    }
+  };
+
+  const handlePage = (e: React.MouseEvent, page: "home" | "about" | "events" | "team" | "blog" | "games") => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate(page);
+    }
+  };
+
   return (
     <footer className="footer bg-primary text-on-primary py-16 px-margin-mobile md:px-margin-desktop border-t border-white/10 select-text">
       <div className="container mx-auto max-w-[1280px]">
@@ -68,29 +86,29 @@ export default function Footer() {
               <div className="grid grid-cols-2 gap-4">
                 <ul className="font-body text-sm space-y-2 text-on-primary/90">
                   <li>
-                    <a className="hover:text-secondary-fixed transition-colors" href="#about">
+                    <a className="hover:text-secondary-fixed transition-colors cursor-pointer" href="#about" onClick={(e) => handleAnchor(e, "#about")}>
                       About
                     </a>
                   </li>
                   <li>
-                    <a className="hover:text-secondary-fixed transition-colors" href="#programs">
+                    <a className="hover:text-secondary-fixed transition-colors cursor-pointer" href="#programs" onClick={(e) => handleAnchor(e, "#programs")}>
                       Portfolio
                     </a>
                   </li>
                   <li>
-                    <a className="hover:text-secondary-fixed transition-colors" href="#hub">
+                    <a className="hover:text-secondary-fixed transition-colors cursor-pointer" href="#" onClick={(e) => handlePage(e, "team")}>
                       Team
                     </a>
                   </li>
                 </ul>
                 <ul className="font-body text-sm space-y-2 text-on-primary/90">
                   <li>
-                    <a className="hover:text-secondary-fixed transition-colors" href="#apply">
+                    <a className="hover:text-secondary-fixed transition-colors cursor-pointer" href="#apply" onClick={(e) => handleAnchor(e, "#apply")}>
                       Contact
                     </a>
                   </li>
                   <li>
-                    <a className="hover:text-secondary-fixed transition-colors" href="#programs">
+                    <a className="hover:text-secondary-fixed transition-colors cursor-pointer" href="#programs" onClick={(e) => handleAnchor(e, "#programs")}>
                       Programs
                     </a>
                   </li>

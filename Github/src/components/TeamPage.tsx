@@ -209,21 +209,13 @@ export default function TeamPage({ onBack }: TeamPageProps) {
             </button>
 
             {/* Content layout */}
-            <div className="flex flex-col md:flex-row gap-6 items-start mt-4">
-              <div className="w-full md:w-1/3 shrink-0 flex flex-row md:flex-col gap-3">
-                <div className="flex-1 md:w-full h-32 md:h-36 overflow-hidden rounded-2xl border-2 border-primary/20 transform hover:scale-[1.01] transition-transform">
+            <div className="flex flex-col md:flex-row gap-6 items-center md:items-start mt-4">
+              <div className="w-full md:w-1/3 shrink-0">
+                <div className="w-40 h-40 md:w-full md:h-48 overflow-hidden rounded-2xl border-2 border-primary/20 transform hover:scale-[1.01] transition-transform mx-auto">
                   <img
                     alt={`${selectedMember.name} profile`}
                     className="w-full h-full object-cover object-top"
                     src={selectedMember.primaryImg}
-                  />
-                </div>
-                <div className="flex-1 md:w-full h-32 md:h-28 overflow-hidden rounded-2xl border-2 border-primary/20 transform hover:scale-[1.01] transition-transform">
-                  <img
-                    alt={selectedMember.name}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer" loading="lazy"
-                    src={selectedMember.secondaryImg}
                   />
                 </div>
               </div>

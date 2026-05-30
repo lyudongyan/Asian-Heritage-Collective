@@ -391,9 +391,22 @@ export default function App() {
   const [mouseActive, setMouseActive] = useState(false);
   const [menuHovered, setMenuHovered] = useState(false);
   const [pageVisible, setPageVisible] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const isLockActiveSection = useRef(false);
   const sectionLockTimeoutRef = useRef<any>(null);
+
+  useEffect(() => {
+    function handleScroll() {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const progress = (window.scrollY / totalHeight) * 100;
+        setScrollProgress(progress);
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Favicon
   useEffect(() => {
@@ -498,6 +511,18 @@ export default function App() {
       <div className="mouse-spotlight" />
       <div className="mouse-follower-circle" />
 
+      {/* Left Scroll Progress Indicator */}
+      <div className="fixed left-0 top-0 bottom-0 w-1 bg-primary/5 z-[200] pointer-events-none">
+        <div
+          className="w-full bg-gradient-to-b from-primary via-secondary to-tertiary rounded-r transition-all duration-75 ease-out shadow-[0_0_10px_rgba(87,0,4,0.6)]"
+          style={{ height: `${scrollProgress}%` }}
+        />
+        <div
+          className="absolute left-0 w-2 h-2 -ml-0.5 rounded-full bg-secondary shadow-[0_0_12px_#825500] transition-all duration-75 ease-out"
+          style={{ top: `calc(${scrollProgress}% - 4px)` }}
+        />
+      </div>
+
       {/* Click ripples */}
       <div className="fixed inset-0 pointer-events-none z-[9999]">
         {ripples.map((rip) => (
@@ -514,20 +539,25 @@ export default function App() {
 
           <div className="hidden md:flex items-center gap-6">
             {[
-              { href: "#about", label: "About", id: "about" },
-              { href: "#story", label: "Our Story", id: "story" },
-              { href: "#programs", label: "Programs", id: "programs" },
-              { href: "#impact", label: "Impact", id: "impact" },
-              { href: "#hub", label: "Hub", id: "hub" },
-            ].map(({ href, label, id }) => (
-              <a key={id} className={`font-body text-xs uppercase tracking-widest transition-all duration-300 active:scale-95 py-0.5 ${activeSection === id ? "text-primary font-bold border-b-2 border-primary" : "text-on-surface-variant font-medium hover:text-primary"}`} href={href} onClick={(e) => handleLinkClick(e, href)}>
+              { id: "home", label: "Home" },
+              { id: "about", label: "About" },
+              { id: "events", label: "Timeline" },
+              { id: "team", label: "Team" },
+              { id: "blog", label: "Blog" },
+              { id: "games", label: "Games" },
+            ].map(({ id, label }) => (
+              <button
+                key={id}
+                className={`font-body text-xs uppercase tracking-widest transition-all duration-300 active:scale-95 py-0.5 cursor-pointer bg-transparent border-none outline-none ${currentPage === id ? "text-primary font-bold border-b-2 border-primary" : "text-on-surface-variant font-medium hover:text-primary"}`}
+                onClick={() => handleNavigate(id as any)}
+              >
                 {label}
-              </a>
+              </button>
             ))}
           </div>
 
           <div className="hidden md:flex shrink-0">
-            <a className={`px-5 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider transition-all shadow-sm hover:shadow-lg hover:scale-[1.03] active:scale-95 whitespace-nowrap ${activeSection === "apply" ? "bg-secondary text-white ring-2 ring-secondary/30 scale-[1.02]" : "bg-primary text-on-primary hover:bg-primary-container"}`} href="#apply" onClick={(e) => handleLinkClick(e, "#apply")}>
+            <a className={`px-5 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider transition-all shadow-sm hover:shadow-lg hover:scale-[1.03] active:scale-95 whitespace-nowrap ${currentPage === "home" && activeSection === "apply" ? "bg-secondary text-white ring-2 ring-secondary/30 scale-[1.02]" : "bg-primary text-on-primary hover:bg-primary-container"}`} href="#apply" onClick={(e) => handleLinkClick(e, "#apply")}>
               Join Us
             </a>
           </div>
@@ -554,20 +584,20 @@ export default function App() {
 
           <div className="flex flex-col items-center gap-2 w-full px-8 max-w-sm">
             {[
-              { href: "#about", label: "About" },
-              { href: "#story", label: "Our Story" },
-              { href: "#programs", label: "Programs" },
-              { href: "#impact", label: "Impact" },
-              { href: "#hub", label: "Hub" },
-            ].map(({ href, label }) => (
-              <a
-                key={href}
-                className="w-full text-center py-4 px-6 rounded-2xl font-headline text-xl text-on-surface-variant hover:text-primary hover:bg-primary/5 transition-all active:scale-95 border border-transparent hover:border-primary/10"
-                href={href}
-                onClick={(e) => { setMobileMenuOpen(false); handleLinkClick(e, href); }}
+              { id: "home", label: "Home" },
+              { id: "about", label: "Detailed About" },
+              { id: "events", label: "Past Timeline" },
+              { id: "team", label: "Meet the Team" },
+              { id: "blog", label: "Living Heritage" },
+              { id: "games", label: "Games Room" },
+            ].map(({ id, label }) => (
+              <button
+                key={id}
+                className={`w-full text-center py-4 px-6 rounded-2xl font-headline text-xl cursor-pointer transition-all active:scale-95 border border-transparent ${currentPage === id ? "text-primary font-bold bg-primary/5 border-primary/10" : "text-on-surface-variant hover:text-primary hover:bg-primary/5"}`}
+                onClick={() => { setMobileMenuOpen(false); handleNavigate(id as any); }}
               >
                 {label}
-              </a>
+              </button>
             ))}
           </div>
 
@@ -588,9 +618,9 @@ export default function App() {
         <div className={`pointer-events-auto h-full rounded-r-3xl transition-all duration-350 shadow-2xl border-r border-y border-white/40 backdrop-blur-3xl flex relative overflow-hidden ${menuHovered ? `w-72 ${sidebarBg}` : `w-16 ${sidebarBgCollapsed}`}`}>
           {!menuHovered && (
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none py-4">
-              <span className="material-symbols-outlined text-primary mb-3 text-2xl select-none">dashboard</span>
+              <span className="material-symbols-outlined text-primary mb-3 text-2xl select-none">toc</span>
               <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary font-bold whitespace-nowrap rotate-180" style={{ writingMode: "vertical-lr" }}>
-                ★ Explore Pages
+                ★ Landing Sections
               </div>
             </div>
           )}
@@ -598,30 +628,31 @@ export default function App() {
           <div className={`w-full p-5 flex flex-col justify-between transition-all duration-350 select-none ${menuHovered ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}>
             <div className="space-y-4">
               <div className="border-b border-primary/10 pb-3">
-                <span className="text-[10px] font-bold text-primary font-mono uppercase tracking-widest block">Cultural Portal</span>
-                <span className="text-xs text-on-surface-variant font-medium font-body">Jump across archives</span>
+                <span className="text-[10px] font-bold text-primary font-mono uppercase tracking-widest block">Homepage Sections</span>
+                <span className="text-xs text-on-surface-variant font-medium font-body">Quick-jump anchors</span>
               </div>
 
               <div className="space-y-1.5 flex-1">
                 {[
-                  { id: "home", label: "Main Homepage", desc: "Landing & highlights", icon: "home" },
-                  { id: "about", label: "Detailed About", desc: "Philosophy & story", icon: "info" },
-                  { id: "events", label: "Past Timeline", desc: "Performance gallery", icon: "photo_library" },
-                  { id: "team", label: "Meet the Team", desc: "Individual biographies", icon: "groups" },
-                  { id: "blog", label: "Living Heritage", desc: "10 historical essays", icon: "menu_book" },
-                  { id: "games", label: "Games Room", desc: "4 interactive play zones", icon: "videogame_asset" },
+                  { hash: "#about", label: "About", desc: "Overview & Mission", icon: "info" },
+                  { hash: "#story", label: "Our Story", desc: "Historical timelines", icon: "history_edu" },
+                  { hash: "#programs", label: "Programs", desc: "Arts, music & teaching", icon: "celebration" },
+                  { hash: "#impact", label: "Impact", desc: "Nonprofit transparency", icon: "analytics" },
+                  { hash: "#hub", label: "Hub", desc: "Resource portals", icon: "hub" },
+                  { hash: "#apply", label: "Join Us", desc: "Volunteer applications", icon: "volunteer_activism" },
                 ].map((pg) => (
-                  <button
-                    key={pg.id}
-                    onClick={() => { handleNavigate(pg.id as any); setMenuHovered(false); }}
-                    className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center gap-3 group active:scale-95 cursor-pointer ${currentPage === pg.id ? "bg-primary text-on-primary shadow-md" : "hover:bg-primary/5 text-on-surface hover:text-primary"}`}
+                  <a
+                    key={pg.hash}
+                    href={pg.hash}
+                    onClick={(e) => { handleLinkClick(e, pg.hash); setMenuHovered(false); }}
+                    className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center gap-3 group active:scale-95 cursor-pointer decoration-none ${activeSection === pg.hash.replace("#", "") && currentPage === "home" ? "bg-primary text-on-primary shadow-md animate-pop-in" : "hover:bg-primary/5 text-on-surface hover:text-primary"}`}
                   >
                     <span className="material-symbols-outlined text-lg shrink-0 select-none">{pg.icon}</span>
                     <div className="leading-tight">
                       <span className="text-xs font-bold block">{pg.label}</span>
-                      <span className={`text-[9px] block font-medium ${currentPage === pg.id ? "text-white/70" : "text-on-surface-variant/70"}`}>{pg.desc}</span>
+                      <span className={`text-[9px] block font-medium ${activeSection === pg.hash.replace("#", "") && currentPage === "home" ? "text-white/70" : "text-on-surface-variant/70"}`}>{pg.desc}</span>
                     </div>
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -677,7 +708,7 @@ export default function App() {
         </Suspense>
       </div>
 
-      <Footer />
+      <Footer onLinkClick={handleLinkClick} onNavigate={handleNavigate} />
       <Toolbar />
     </div>
   );
