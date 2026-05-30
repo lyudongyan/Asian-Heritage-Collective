@@ -416,7 +416,7 @@ export default function App() {
       document.head.appendChild(l);
       return l;
     })();
-    link.href = "/src/assets/images/logo.webp";
+    link.href = "/logo.webp";
     link.type = "image/webp";
   }, []);
 
