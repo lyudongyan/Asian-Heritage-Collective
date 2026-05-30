@@ -31,51 +31,29 @@ import meetTheTeamImg from "./assets/images/meet_the_team.webp";
 // @ts-ignore
 import ahcBannerImg from "./assets/images/ahc_banner.webp";
 // @ts-ignore
-import johnPorkImg from "./assets/images/john_pork.webp";
-// @ts-ignore
-import akiraKongkanand1Img from "./assets/images/akira_kongkanand_1.webp";
-// @ts-ignore
-import akiraKongkanand2Img from "./assets/images/akira_kongkanand_2.webp";
-// @ts-ignore
 import acaLogoImg from "./assets/images/aca_logo.webp";
 // @ts-ignore
 import mdcacLogoImg from "./assets/images/mdcac_logo.webp";
 // @ts-ignore
-import lyudongYan1Img from "./assets/images/lyudong_yan_1.webp";
+import lyudongYanImg from "./assets/images/lyudong_yan.webp";
 // @ts-ignore
-import lyudongYan2Img from "./assets/images/lyudong_yan_2.webp";
+import zeyadKarachiwalaImg from "./assets/images/zeyad_karachiwala.webp";
 // @ts-ignore
-import zeyadKarichiwala1Img from "./assets/images/zeyad_karichiwala_1.webp";
+import jerryMaoImg from "./assets/images/jerry_mao.webp";
 // @ts-ignore
-import zeyadKarichiwala2Img from "./assets/images/zeyad_karichiwala_2.webp";
+import joanneLienImg from "./assets/images/joanne_lien.webp";
 // @ts-ignore
-import jerryMao1Img from "./assets/images/jerry_mao_1.webp";
+import sunnyIshiharaImg from "./assets/images/sunny_ishihara.webp";
 // @ts-ignore
-import jerryMao2Img from "./assets/images/jerry_mao_2.webp";
+import peterWangImg from "./assets/images/peter_wang.webp";
 // @ts-ignore
-import joanneLien1Img from "./assets/images/joanne_lien_1.webp";
+import kelvinShuImg from "./assets/images/kelvin_shu.webp";
 // @ts-ignore
-import joanneLien2Img from "./assets/images/joanne_lien_2.webp";
+import auburnHillsEventImg from "./assets/images/auburn_hills_event.webp";
 // @ts-ignore
-import sunnyIshihara1Img from "./assets/images/sunny_ishihara_1.webp";
-// @ts-ignore
-import sunnyIshihara2Img from "./assets/images/sunny_ishihara_2.webp";
-// @ts-ignore
-import peterWang1Img from "./assets/images/peter_wang_1.webp";
-// @ts-ignore
-import peterWang2Img from "./assets/images/peter_wang_2.webp";
-// @ts-ignore
-import yewonLee1Img from "./assets/images/yewon_lee_1.webp";
-// @ts-ignore
-import yewonLee2Img from "./assets/images/yewon_lee_2.webp";
-// @ts-ignore
-import rainaLi1Img from "./assets/images/raina_li_1.webp";
-// @ts-ignore
-import rainaLi2Img from "./assets/images/raina_li_2.webp";
-// @ts-ignore
-import leilaKarichiwala1Img from "./assets/images/leila_karichiwala_1.webp";
-// @ts-ignore
-import leilaKarichiwala2Img from "./assets/images/leila_karichiwala_2.webp";
+import auburnHillsPresentersImg from "./assets/images/auburn_hills_presenters.webp";
+
+const defaultProfileIcon = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%238a2387"/><stop offset="50%" stop-color="%23e94057"/><stop offset="100%" stop-color="%23f27121"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(%23g)"/><path d="M50 50c8.28 0 15-6.72 15-15s-6.72-15-15-15-15 6.72-15 15 6.72 15 15 15zm0 8c-11.05 0-30 5.52-30 16.5V78h60v-3.5c0-10.98-18.95-16.5-30-16.5z" fill="white"/></svg>`;
 
 export const IMAGES = {
   logo: logoImg,
@@ -94,29 +72,32 @@ export const IMAGES = {
   large_crowd_performance: largeCrowdPerformanceImg,
   meet_the_team: meetTheTeamImg,
   ahc_banner: ahcBannerImg,
-  john_pork: johnPorkImg,
-  akira_kongkanand_1: akiraKongkanand1Img,
-  akira_kongkanand_2: akiraKongkanand2Img,
+  john_pork: defaultProfileIcon,
+  akira_kongkanand_1: defaultProfileIcon,
+  akira_kongkanand_2: defaultProfileIcon,
   aca_logo: acaLogoImg,
   mdcac_logo: mdcacLogoImg,
-  lyudong_yan_1: lyudongYan1Img,
-  lyudong_yan_2: lyudongYan2Img,
-  zeyad_karichiwala_1: zeyadKarichiwala1Img,
-  zeyad_karichiwala_2: zeyadKarichiwala2Img,
-  jerry_mao_1: jerryMao1Img,
-  jerry_mao_2: jerryMao2Img,
-  joanne_lien_1: joanneLien1Img,
-  joanne_lien_2: joanneLien2Img,
-  sunny_ishihara_1: sunnyIshihara1Img,
-  sunny_ishihara_2: sunnyIshihara2Img,
-  peter_wang_1: peterWang1Img,
-  peter_wang_2: peterWang2Img,
-  yewon_lee_1: yewonLee1Img,
-  yewon_lee_2: yewonLee2Img,
-  raina_li_1: rainaLi1Img,
-  raina_li_2: rainaLi2Img,
-  leila_karichiwala_1: leilaKarichiwala1Img,
-  leila_karichiwala_2: leilaKarichiwala2Img,
+  lyudong_yan_1: lyudongYanImg,
+  lyudong_yan_2: lyudongYanImg,
+  zeyad_karichiwala_1: zeyadKarachiwalaImg,
+  zeyad_karichiwala_2: zeyadKarachiwalaImg,
+  jerry_mao_1: jerryMaoImg,
+  jerry_mao_2: jerryMaoImg,
+  joanne_lien_1: joanneLienImg,
+  joanne_lien_2: joanneLienImg,
+  sunny_ishihara_1: sunnyIshiharaImg,
+  sunny_ishihara_2: sunnyIshiharaImg,
+  peter_wang_1: peterWangImg,
+  peter_wang_2: peterWangImg,
+  yewon_lee_1: defaultProfileIcon,
+  yewon_lee_2: defaultProfileIcon,
+  raina_li_1: defaultProfileIcon,
+  raina_li_2: defaultProfileIcon,
+  leila_karichiwala_1: defaultProfileIcon,
+  leila_karichiwala_2: defaultProfileIcon,
+  kelvin_shu: kelvinShuImg,
+  auburn_hills_event: auburnHillsEventImg,
+  auburn_hills_presenters: auburnHillsPresentersImg,
 };
 
 export interface ProgramItem {

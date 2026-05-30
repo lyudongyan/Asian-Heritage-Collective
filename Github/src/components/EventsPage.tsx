@@ -46,6 +46,14 @@ const PAST_EVENTS_LIST: EventItem[] = [
     location: "Metropolitan Civic Arena",
     desc: "Our resident performers held a magnificent stage showcase celebrating the Dragon Boat and Duanwu traditions, highlighting instrument duets, folk stories, and rich, historical attire.",
     img: IMAGES.cultural_performance
+  },
+  {
+    id: "evt-5",
+    title: "Auburn Hills Public Library Cultural Integration Event",
+    date: "May 20, 2026",
+    location: "Auburn Hills Public Library",
+    desc: "A beautiful community event bringing traditional music workshops, interactive calligraphy, and heritage story presentations to the local public library. Our student presenters connected with eager children and families in midtown Michigan.",
+    img: IMAGES.auburn_hills_event
   }
 ];
 
@@ -57,7 +65,9 @@ const GALLERY_IMAGES = [
   { url: IMAGES.team_performance, title: "Chamber Ensembles", desc: "Members presenting folk music with cello, string arrangements, and flute solos." },
   { url: IMAGES.elderly_viewing, title: "Generational Interlocking", desc: "Elders guiding student brushes, reinforcing family linkages and heritage preservation." },
   { url: IMAGES.crowd_watching, title: "Audiences in Awe", desc: "Dozens of regional viewers admiring the live show in community spaces." },
-  { url: IMAGES.community_engagement, title: "Kitchen Preparations", desc: "Students working together hand-crafting meals and recording ancestral stories." }
+  { url: IMAGES.community_engagement, title: "Kitchen Preparations", desc: "Students working together hand-crafting meals and recording ancestral stories." },
+  { url: IMAGES.auburn_hills_event, title: "Auburn Hills Library Workshop", desc: "Our young volunteers and performers sharing traditional music and heritage crafts with children and families." },
+  { url: IMAGES.auburn_hills_presenters, title: "Auburn Hills AHC Presenters", desc: "Our talented presenters speaking about community, heritage literacy, and building a stronger cultural future." }
 ];
 
 export default function EventsPage({ onBack }: EventsPageProps) {

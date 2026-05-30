@@ -116,6 +116,16 @@ const MASTER_TEAM: TeamMember[] = [
     secondaryImg: IMAGES.akira_kongkanand_2,
     bio: "Akira Kongkanand serves as the Blog Writer for the Asian Heritage Collective, chronicling the rich histories, personal narratives, and cultural milestones of our vibrant community. With a deep passion for storytelling and heritage education, Akira crafts high-impact essays that bring our archives to life.",
     contribution: "Researching cultural timelines, conducting community interviews, writing monthly blog articles, and managing historical newsletters."
+  },
+  {
+    id: 11,
+    name: "Kelvin Shu",
+    title: "Music Arranger & Composer",
+    primaryBg: "from-blue-100 to-blue-200 text-blue-950",
+    primaryImg: IMAGES.kelvin_shu,
+    secondaryImg: IMAGES.kelvin_shu,
+    bio: "Kelvin Shu serves as the Music Arranger and Composer for the Asian Heritage Collective. Working alongside our music department, he transcribes traditional microtonal music scores and designs contemporary fusion arrangements for student orchestra rehearsals.",
+    contribution: "Arranging classical and folk melodies, preparing microtonal rehearsal scores, composition synchronization, and student musical training."
   }
 ];
 
@@ -146,7 +156,7 @@ export default function TeamPage({ onBack }: TeamPageProps) {
             Meet the Team
           </h2>
           <p className="font-body text-sm md:text-base text-on-surface-variant mt-2 leading-relaxed">
-            Exactly 10 dedicated directors, heads, and staff members working across midtown Michigan to expand traditional education and community impact.
+            Exactly 11 dedicated directors, heads, and staff members working across midtown Michigan to expand traditional education and community impact.
           </p>
         </div>
 

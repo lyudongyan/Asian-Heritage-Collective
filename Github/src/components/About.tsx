@@ -66,13 +66,13 @@ export default function About({ onNavigate }: AboutProps) {
             </div>
             <div
               className="overflow-hidden rounded-2xl shadow-lg border-2 border-white/40 mt-8 group cursor-zoom-in aspect-square"
-              onClick={() => setLightboxSrc(IMAGES.community_engagement)}
+              onClick={() => setLightboxSrc(IMAGES.auburn_hills_event)}
             >
               <img
-                alt="Community engagement"
+                alt="Auburn Hills Public Library Event"
                 className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 referrerPolicy="no-referrer" loading="lazy"
-                src={IMAGES.community_engagement}
+                src={IMAGES.auburn_hills_event}
               />
             </div>
             <div
