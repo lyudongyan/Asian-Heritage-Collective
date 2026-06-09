@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IMAGES } from "../data";
 
 interface BlogPageProps {
@@ -136,6 +136,13 @@ Rather than treating food as a utility, Asian consumers increasingly view dining
 export default function BlogPage({ onBack }: BlogPageProps) {
   const [selectedPostId, setSelectedPostId] = useState<number | null>(null);
 
+  // Smooth scroll to top of page when blog post detail is opened or changed
+  useEffect(() => {
+    if (selectedPostId !== null) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [selectedPostId]);
+
   // If a post is selected, render the detail page
   if (selectedPostId !== null) {
     const postIndex = FIVE_BLOGS.findIndex((p) => p.id === selectedPostId);
@@ -143,8 +150,8 @@ export default function BlogPage({ onBack }: BlogPageProps) {
 
     if (post) {
       return (
-        <div className="pt-32 pb-24 min-h-screen bg-[#faf8f6] select-text relative animate-fade-in text-left">
-          <div className="container mx-auto px-margin-mobile md:px-margin-desktop max-w-3xl">
+        <div className="pt-32 pb-24 min-h-screen bg-[#faf8f6] select-text relative text-left">
+          <div className="container mx-auto px-margin-mobile md:px-margin-desktop max-w-3xl animate-fade-in">
             {/* Back button */}
             <button
               onClick={() => setSelectedPostId(null)}
@@ -155,9 +162,9 @@ export default function BlogPage({ onBack }: BlogPageProps) {
             </button>
 
             {/* Article container */}
-            <article className="bg-white border border-neutral-100 rounded-3xl p-6 md:p-10 shadow-sm space-y-8">
+            <article key={post.id} className="bg-white border border-neutral-100 rounded-3xl p-6 md:p-10 shadow-sm space-y-8">
               {/* Meta */}
-              <div className="space-y-4">
+              <div className="space-y-4 animate-slide-up-fade">
                 <div className="flex flex-wrap gap-2 items-center text-xs text-on-surface-variant/70 font-semibold font-mono">
                   <span>{post.date}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-neutral-300" />
@@ -173,7 +180,7 @@ export default function BlogPage({ onBack }: BlogPageProps) {
               </div>
 
               {/* Cover Image */}
-              <div className="w-full h-64 md:h-[450px] overflow-hidden rounded-2xl border border-neutral-100 shadow-inner">
+              <div className="w-full h-64 md:h-[450px] overflow-hidden rounded-2xl border border-neutral-100 shadow-inner animate-slide-up-fade delay-100">
                 <img
                   alt={post.title}
                   className="w-full h-full object-cover"
@@ -182,17 +189,17 @@ export default function BlogPage({ onBack }: BlogPageProps) {
               </div>
 
               {/* Excerpt */}
-              <div className="p-5 border-l-4 border-primary/20 bg-primary/5 rounded-r-2xl italic font-body text-base text-on-surface-variant/90 leading-relaxed">
+              <div className="p-5 border-l-4 border-primary/20 bg-primary/5 rounded-r-2xl italic font-body text-base text-on-surface-variant/90 leading-relaxed animate-slide-up-fade delay-200">
                 "{post.excerpt}"
               </div>
 
               {/* Content */}
-              <div className="font-body text-base md:text-lg text-on-surface-variant/95 leading-relaxed whitespace-pre-line space-y-6">
+              <div className="font-body text-base md:text-lg text-on-surface-variant/95 leading-relaxed whitespace-pre-line space-y-6 animate-slide-up-fade delay-300">
                 {post.content}
               </div>
 
               {/* Navigation buttons */}
-              <div className="border-t border-neutral-100 pt-8 mt-12 flex items-center justify-between gap-4">
+              <div className="border-t border-neutral-100 pt-8 mt-12 flex items-center justify-between gap-4 animate-slide-up-fade delay-400">
                 {postIndex > 0 ? (
                   <button
                     onClick={() => setSelectedPostId(FIVE_BLOGS[postIndex - 1].id)}
@@ -226,8 +233,8 @@ export default function BlogPage({ onBack }: BlogPageProps) {
 
   // List grid view
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-[#faf8f6] select-text relative animate-fade-in text-left">
-      <div className="container mx-auto px-margin-mobile md:px-margin-desktop max-w-[1280px]">
+    <div className="pt-32 pb-24 min-h-screen bg-[#faf8f6] select-text relative text-left">
+      <div className="container mx-auto px-margin-mobile md:px-margin-desktop max-w-[1280px] animate-fade-in">
         {/* Back navigation */}
         <button
           onClick={onBack}

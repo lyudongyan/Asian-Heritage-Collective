@@ -163,11 +163,11 @@ export default function TeamPage({ onBack }: TeamPageProps) {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-surface select-text relative animate-fade-in">
+    <div className="pt-32 pb-24 min-h-screen bg-surface select-text relative">
       {/* Background aesthetics */}
       <div className="absolute top-0 inset-x-0 h-96 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
 
-      <div className="container mx-auto px-margin-mobile md:px-margin-desktop max-w-[1280px]">
+      <div className="container mx-auto px-margin-mobile md:px-margin-desktop max-w-[1280px] animate-fade-in">
         {/* Back navigation */}
         <button
           onClick={onBack}

@@ -42,22 +42,14 @@ export default function WhatWeDo({ onNavigate }: WhatWeDoProps) {
 
         <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
           <div className="lg:w-1/2 w-full scroll-reveal-left">
-            <div className="relative w-full h-[380px] sm:h-[520px]">
+            <div className="w-full h-[320px] sm:h-[450px] overflow-hidden rounded-3xl shadow-xl border border-white/20 hover:scale-[1.01] transition-transform duration-500">
               <img
                 alt="Team Performance"
-                className="absolute top-0 left-0 w-full h-[240px] sm:h-[340px] rounded-3xl shadow-xl object-cover z-10 border border-white/20 hover:scale-[1.01] transition-transform duration-500"
+                className="w-full h-full object-cover cursor-zoom-in"
                 referrerPolicy="no-referrer"
                 src={IMAGES.team_performance}
+                onClick={() => setLightboxSrc(IMAGES.team_performance)}
               />
-              <div className="absolute bottom-0 right-0 w-2/3 h-36 sm:h-52 bg-white/90 p-2.5 rounded-3xl shadow-2xl z-20 border border-white/40 overflow-hidden transform hover:scale-[1.02] transition-transform duration-500">
-                <img
-                  alt="Cello player"
-                  className="w-full h-full rounded-2xl object-cover cursor-zoom-in hover:scale-[1.02] transition-transform duration-500"
-                  referrerPolicy="no-referrer"
-                  src={IMAGES.cello_player}
-                  onClick={() => setLightboxSrc(IMAGES.cello_player)}
-                />
-              </div>
             </div>
           </div>
 

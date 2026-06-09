@@ -220,6 +220,5 @@ export interface HubItem {
 export const HUB_ITEMS: HubItem[] = [
   { title: "Blog", desc: "Essays, stories, and reflections written by our members and contributors.", buttonText: "Read Blog", href: "#", delay: "0ms", type: "blog" },
   { title: "Past Events", desc: "A look back at performances, workshops, and community programs we've hosted.", buttonText: "View Details", href: "#", delay: "100ms", type: "events" },
-  { title: "Our Team", desc: "Meet the people who run AHC and keep everything moving.", buttonText: "Learn More", href: "#", delay: "200ms", type: "team" },
-  { title: "Ready to Join?", desc: "We're always looking for motivated students to get involved.", buttonText: "Apply Now", href: "#apply", isPrimary: true, delay: "300ms", type: "apply" },
+  { title: "Ready to Join?", desc: "We're always looking for motivated students to get involved.", buttonText: "Apply Now", href: "#apply", isPrimary: true, delay: "200ms", type: "apply" },
 ];

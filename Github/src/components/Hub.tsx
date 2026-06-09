@@ -244,7 +244,7 @@ export default function Hub({ onNavigate }: HubProps) {
       <section className="bg-hub py-24 relative animate-fade-in" id="hub">
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop max-w-[1280px]">
           <h2 className="font-headline text-3xl md:text-4xl text-primary mb-12 text-center font-bold scroll-reveal">
-            Engagement Hub
+            Get Involved
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

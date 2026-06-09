@@ -541,7 +541,7 @@ export default function App() {
             {[
               { id: "home", label: "Home" },
               { id: "about", label: "About" },
-              { id: "events", label: "Timeline" },
+              { id: "events", label: "Events" },
               { id: "team", label: "Team" },
               { id: "blog", label: "Blog" },
               { id: "games", label: "Games" },
@@ -586,7 +586,7 @@ export default function App() {
             {[
               { id: "home", label: "Home" },
               { id: "about", label: "Detailed About" },
-              { id: "events", label: "Past Timeline" },
+              { id: "events", label: "Past Events" },
               { id: "team", label: "Meet the Team" },
               { id: "blog", label: "Living Heritage" },
               { id: "games", label: "Games Room" },
@@ -638,7 +638,7 @@ export default function App() {
                   { hash: "#story", label: "Our Story", desc: "Historical timelines", icon: "history_edu" },
                   { hash: "#programs", label: "Programs", desc: "Arts, music & teaching", icon: "celebration" },
                   { hash: "#impact", label: "Impact", desc: "Nonprofit transparency", icon: "analytics" },
-                  { hash: "#hub", label: "Hub", desc: "Resource portals", icon: "hub" },
+                  { hash: "#hub", label: "Get Involved", desc: "Resource portals", icon: "hub" },
                   { hash: "#apply", label: "Join Us", desc: "Volunteer applications", icon: "volunteer_activism" },
                 ].map((pg) => (
                   <a
