@@ -14,109 +14,102 @@ interface BlogPost {
   content: string;
   img: string;
   tag: string;
+  comingSoon?: boolean;
 }
 
 const TEN_BLOGS: BlogPost[] = [
   {
     id: 1,
-    title: "Reviving Language through Active Storytelling",
+    title: "I Quit Chinese School. Then I Got a 5 on the AP Exam.",
     date: "May 12, 2026",
-    author: "Dr. Lyman Yan-Garrison IV",
-    excerpt: "How traditional memorization failed our children, and how storytelling and performance brought Chinese back to life.",
-    content: "For years, Chinese school was seen as a weekend chore of memorizing stroke orders and characters. Mr. Yan noticed a sharp, alarming drop in student engagement. By transitioning classes towards modern role-play, short performances of Chinese myths, and active storybook writing, we saw an immediate 40% jump in vocabulary retention and children actually asking to join! Understanding heritage shouldn't be a test of rote memory, but an exploration of living narrative.\n\nWe focus on conversational bridges, making sure vocabulary words are instantly put into action inside theater skits, rather than stored silently on lined paper.",
-    img: IMAGES.cultural_performance,
-    tag: "Language"
+    author: "Lyudong Yan",
+    tag: "Reflection",
+    excerpt: "I spent years dreading Chinese school. Then something changed, and I ended up teaching it.",
+    content: `I quit Chinese school at the end of middle school. Not because I didn't care about being Chinese — I just couldn't see the point of showing up every Saturday to copy characters I didn't understand into a notebook I'd never look at again. It felt like homework for a subject nobody had convinced me mattered yet. So I stopped going.
+
+Then high school happened, and something shifted. I started thinking more seriously about where my family was from, what I actually knew about it, and what I'd let go of by checking out. I decided to try studying Mandarin again, but this time on my own terms. No classroom, no weekly drills, just me working through the language because I actually wanted to.
+
+I ended up self-studying for the AP Chinese Language exam. When the scores came back, I had a 5. That score meant more to me than almost anything else I'd done academically — not because of the number, but because of what it represented. I had walked away from the language and found my way back to it.
+
+Shortly after, I applied to become a Teacher's Assistant for an AP Chinese class. I got accepted. The thing I had once dreaded going to on Saturday mornings was now something I was voluntarily showing up to teach.
+
+I'm not telling this story to suggest that quitting and coming back is the right path. For a lot of people it isn't. But I think about it a lot when I think about why AHC exists. The traditional model of cultural education wasn't working for me, and it isn't working for a lot of kids. We started AHC because we think there's a better way. I'm still figuring out what that looks like. But it starts with making cultural education something students want to come back to.`,
+    img: IMAGES.founding_story_left,
+    comingSoon: false
   },
   {
     id: 2,
-    title: "Preserving the Craft of Calligraphy in a Digital Era",
+    title: "Why I Go Back to Chongqing Every Year",
     date: "April 18, 2026",
-    author: "Master Chen-Wei Ronald Tsao",
-    excerpt: "In a world of fast-moving keyboards, the calligraphy brush offers a slow, therapeutic connection to history.",
-    content: "At our recent spring workshop, over forty youth held a traditional ink brush for the first time. The slow, intentional breathing and muscle control required to paint standard characters sparked a deep curiosity. Many participants noted it felt like a screenless meditation. This craft connects modern fingers directly with historical minds.\n\nWriting characters is a study of visual balance and ink saturation. In our latest curriculum, we teach how the brush stroke mirrors physical posture and emotional tranquility.",
-    img: IMAGES.founding_story_left,
-    tag: "Traditional Art"
+    author: "Jerry Mao",
+    tag: "Personal",
+    excerpt: "It's always 40 degrees outside and the air conditioning is never quite enough. I go back every year anyway.",
+    content: `Chongqing is hot. Not warm — the kind of heat that sits on you. It's frequently 40 degrees Celsius in the summer, and the air conditioning is never quite enough. You step outside and within a minute you're already wondering how anyone lives like this.
+
+And yet, every year, my parents take me back. No exceptions.
+
+When I was younger I didn't question it. It was just a thing we did — a month in China, visiting family, eating food I didn't get back home, then back to Michigan. As I got older and summers started filling up with other things, I started to understand that this trip was non-negotiable in a way most things weren't. My parents didn't ask whether I wanted to go. We were going.
+
+I think I understand why now.
+
+When I land in Chongqing, I see my grandparents. My younger cousin picks up the er'hu and plays something in the living room while dinner is being made. There's a particular kind of noise to those evenings — dishes, conversation, a television on somewhere — that I don't hear anywhere else. It doesn't feel like visiting. It feels like returning.
+
+The closest I can get to describing it: it's like going on vacation, except the destination is the one place where you feel the most like yourself. Even if it's 40 degrees and there's no relief in sight.
+
+I'm not always in a rush to get there. The flights are long, the heat is real, and a month is a long time. But somewhere around day three, when the jet lag has worn off and I've settled back into the rhythm of that apartment, I stop thinking about what I'm missing back home. This is also home.
+
+That's what my parents understood that took me longer to get. You can build a life somewhere new without letting go of where you came from. The trip back every year isn't a concession to the past. It's how you make sure the past stays part of you.`,
+    img: IMAGES.crowd_watching,
+    comingSoon: false
   },
   {
     id: 3,
-    title: "Culinary Heritage: Dumplings, Culture, and Classrooms",
+    title: "Why Do Asians Drink Hot Water?",
     date: "March 5, 2026",
-    author: "Juliana Kaelani Cho-Chaudhry",
-    excerpt: "Inside our food history session: learning cultural migration patterns through family recipes.",
-    content: "Recipes are active living maps of migration. At our latest community service event, youth pairs interviewed local senior citizens of Asian descent, documenting family recipes and baking traditional stuffed dumplings. The outcome was a beautifully compiled community cookbook distributed across regional schools, bridging generations over a kitchen table.\n\nFood forms the social bedrock of memory. When a child folds a dumpling pleat beside a grandmother, they absorb not just a cooking instruction, but chapters of immigrant perseverance other textbooks ignore.",
-    img: IMAGES.community_engagement,
-    tag: "Culinary Art"
-  },
-  {
-    id: 4,
-    title: "The Intergenerational Bridge: Learning from Our Elders",
-    date: "January 28, 2026",
-    author: "Dr. Mei-Lin Cynthia Sterling-Zhao",
-    excerpt: "Exploring our oral history project tracking the stories of Detroit's earliest Asian elders.",
-    content: "Our oral history program pairs teenage students with senior residents to record, transcribe, and translate historical diaries and memory recollections. The mutual empathy built during these three-hour dialogue series is breathtaking.\n\nOlder participants feel recognized, while our youth gain perspective on community struggle and political adaptation, finding their own anchor points in a complex modern landscape.",
+    author: "AHC Editorial Team",
+    tag: "Culture",
+    excerpt: "Your grandparents swore by it. There might be more to it than habit.",
+    content: `The following is based on a conversation between two AHC members about something most of us have probably noticed at home.
+
+---
+
+"Why does my grandma always drink hot water? Even in summer?"
+
+"Mine does the same thing. I asked her once and she looked at me like it was a strange question."
+
+"It kind of is, from her perspective."
+
+The preference for hot water runs deep in Chinese culture and goes back further than most people expect. Traditional Chinese medicine has long held that cold water disrupts the body's internal balance — that it contracts the stomach and interferes with digestion, particularly after eating. Hot water is seen as warming and stabilizing, something that keeps the body functioning as it should.
+
+"So it's a health thing?"
+
+Partly. But it's also generational habit reinforced over centuries. In many parts of China, boiling water was a practical necessity before modern water treatment. Drinking it hot, or letting boiled water cool before drinking, was simply safer. The habit outlasted the original reason.
+
+"That actually makes sense. We still do it even though we have clean water now."
+
+"Yeah. My grandparents don't think about why. It's just what you do."
+
+There's also a social dimension. Offering someone hot water or tea when they arrive at your home is a gesture of care — an acknowledgment that someone has arrived and you want them to be comfortable. Cold water doesn't carry the same weight in that context.
+
+"So it's hospitality."
+
+In a way. Though your grandparents would probably just say it's good for you.
+
+Western medicine doesn't have a strong consensus on the specific health claims, but there is some evidence that warm liquids aid digestion and circulation in mild ways. The scientific case isn't really the point though.
+
+"The point is that it's a habit with a history."
+
+Right. And like a lot of things our grandparents do, it makes more sense once you know where it comes from.`,
     img: IMAGES.elderly_viewing,
-    tag: "Civic History"
+    comingSoon: false
   },
-  {
-    id: 5,
-    title: "Folk Instrumental Fusion: Classic Strings Meet Guzheng Melodies",
-    date: "November 14, 2025",
-    author: "Xin-Yi Elizabeth Li-Montgomery",
-    excerpt: "How our chamber orchestra blends classic cellos with Guzhengs to create modern masterpieces.",
-    content: "Why limit traditional music to museum cases? By arranging folk scores that pair classical cellos, violins, and woodwinds, we create rich acoustics that resonate with both classic Western listeners and Eastern string enthusiasts.\n\nOur latest public performance proved that musical heritage is not a static rulebook, but a flowing river that grows wilder and more beautiful when tributary streams merge.",
-    img: IMAGES.cello_player,
-    tag: "Music"
-  },
-  {
-    id: 6,
-    title: "Eastern Market: Creating a Shared Hub for Heritage",
-    date: "September 8, 2025",
-    author: "Marcus Sun-Shin Takahashi",
-    excerpt: "Highlighting our collaborative venue where families and performing artists assemble.",
-    content: "Eastern Market has always been the heart of Detroit commerce. By setting our 'Kitchen Commons' performative stage in its center, we introduce thousands of weekend morning shoppers to live folk workshops, Guzheng sweeps, and ink drawings.\n\nFood, commerce, and culture are naturally linked. Our public hub establishes active visibility for Asian-American initiatives in places with shared, inclusive communal histories.",
-    img: IMAGES.eastern_market,
-    tag: "Community Space"
-  },
-  {
-    id: 7,
-    title: "Bridging the Midwest: The Role of Women-Led Cultural Alliances",
-    date: "July 24, 2025",
-    author: "Raymond Jae-Woo Park-Kovacs",
-    excerpt: "Honoring our partnership with the ACA Michigan Chinese Women Association and their history.",
-    content: "Behind many permanent public institutions are decades of quiet organizer effort led by women. Our latest exhibit documents the foundational classes and charitable galas orchestrated by Michigan groups over thirty years.\n\nTheir commitment built the initial infrastructure for language tutoring, immigrant civic guidance, and artistic showcase networks that we enjoy and expand today.",
-    img: IMAGES.michigan_women,
-    tag: "Advocacy"
-  },
-  {
-    id: 8,
-    title: "Sourcing Scribes: Constructing Curated Art Display Boards",
-    date: "June 2, 2025",
-    author: "Victoria Keiko Ishii-Rosenberg",
-    excerpt: "A behind-the-scenes look at how we design graphic exhibits that command focus.",
-    content: "Good exhibition design bridges visual art and accessibility. We walk through how we build wooden frames, custom backlights, and red silk draperies to transform community centers into sacred educational halls.\n\nBy matching traditional calligraphies with clean modern typography, we display history with the respect it commands.",
-    img: IMAGES.oakland_church,
-    tag: "Design"
-  },
-  {
-    id: 9,
-    title: "Audience Perspectives: Why Live Performance Moves Us",
-    date: "April 15, 2025",
-    author: "Jonathan Seung-Il Takahashi-Vance",
-    excerpt: "What survey responses teach us about the profound emotional impact of live folk instruments.",
-    content: "When analyzing visitor reviews, a consistent trend emerges: parents and children alike report feeling 'deep comfort' and 'belonging' when hearing Guzheng chords in public plazas.\n\nThis psychological response shows that music bypasses cognitive boundaries, evoking shared comfort and familial memory sheets even in listeners without prior exposure to the scale.",
-    img: IMAGES.crowd_watching,
-    tag: "Research"
-  },
-  {
-    id: 10,
-    title: "Ensuring Financial Transparency in Minor NPO Sectors",
-    date: "February 28, 2025",
-    author: "Devendra Rajiv Nair-Cheung",
-    excerpt: "How we achieve the Candid Silver Mark through complete open-ledger accounting systems.",
-    content: "Trust is the primary currency of a non-profit association. We outline why we maintain open Ledgers detailing every public grant and corporate sponsorship.\n\nBy detailing exactly how funds are funneled directly into materials for child pens, ink stone blocks, instrument tuning, and senior kitchens, we guarantee our supporters that their investment yields direct civic return.",
-    img: IMAGES.team_performance,
-    tag: "Transparency"
-  }
+  { id: 4, title: "Why Asians Are Perceived as Racist — And Why It's More Complicated Than That", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.cultural_performance, comingSoon: true },
+  { id: 5, title: "Why Asians Spend More on Food as They Get Richer", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.community_engagement, comingSoon: true },
+  { id: 6, title: "Coming Soon", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.crowd_watching, comingSoon: true },
+  { id: 7, title: "Coming Soon", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.team_performance, comingSoon: true },
+  { id: 8, title: "Coming Soon", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.cello_player, comingSoon: true },
+  { id: 9, title: "Coming Soon", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.eastern_market, comingSoon: true },
+  { id: 10, title: "Coming Soon", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.founding_story_left, comingSoon: true },
 ];
 
 export default function BlogPage({ onBack }: BlogPageProps) {
@@ -150,47 +143,66 @@ export default function BlogPage({ onBack }: BlogPageProps) {
 
         {/* Blog layout grid - exactly 10 cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {TEN_BLOGS.map((post) => (
-            <div
-              key={post.id}
-              onClick={() => setSelectedPost(post)}
-              className="bg-white rounded-3xl overflow-hidden border border-neutral-100 hover:border-primary/25 shadow-sm hover:shadow-xl cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="h-48 w-full overflow-hidden relative border-b border-neutral-50">
-                  <img
-                    alt={post.title}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer" loading="lazy"
-                    src={post.img}
-                  />
-                  <span className="absolute top-4 left-4 bg-primary text-on-primary text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md font-mono">
-                    {post.tag}
-                  </span>
-                </div>
-
-                <div className="p-6 space-y-3">
-                  <div className="flex gap-2 items-center text-[11px] text-on-surface-variant/70 font-semibold font-mono">
-                    <span>{post.date}</span>
-                    <span className="w-1 h-1 rounded-full bg-neutral-300" />
-                    <span>{post.author}</span>
+          {TEN_BLOGS.map((post) => {
+            const isComing = !!post.comingSoon;
+            return (
+              <div
+                key={post.id}
+                onClick={() => !isComing && setSelectedPost(post)}
+                className={`bg-white rounded-3xl overflow-hidden border border-neutral-100 shadow-sm flex flex-col justify-between transition-all duration-300 ${
+                  isComing
+                    ? "opacity-60 pointer-events-none"
+                    : "hover:border-primary/25 hover:shadow-xl cursor-pointer transform hover:-translate-y-1.5"
+                }`}
+              >
+                <div>
+                  <div className="h-48 w-full overflow-hidden relative border-b border-neutral-50">
+                    <img
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer" loading="lazy"
+                      src={post.img}
+                    />
+                    {isComing ? (
+                      <span className="absolute top-4 left-4 bg-neutral-200 text-neutral-700 text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md font-mono">
+                        Coming Soon
+                      </span>
+                    ) : (
+                      <span className="absolute top-4 left-4 bg-primary text-on-primary text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md font-mono">
+                        {post.tag}
+                      </span>
+                    )}
                   </div>
-                  <h3 className="font-headline text-lg font-bold text-primary group-hover:text-primary-container leading-snug line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="font-body text-xs text-on-surface-variant/85 leading-relaxed line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                </div>
-              </div>
 
-              <div className="p-6 pt-0">
-                <span className="text-xs text-primary font-bold font-body group-hover:underline inline-block uppercase tracking-wider">
-                  Read Full Article →
-                </span>
+                  <div className="p-6 space-y-3">
+                    {!isComing && (
+                      <div className="flex gap-2 items-center text-[11px] text-on-surface-variant/70 font-semibold font-mono">
+                        <span>{post.date}</span>
+                        <span className="w-1 h-1 rounded-full bg-neutral-300" />
+                        <span>{post.author}</span>
+                      </div>
+                    )}
+                    <h3 className="font-headline text-lg font-bold text-primary group-hover:text-primary-container leading-snug line-clamp-2">
+                      {post.title}
+                    </h3>
+                    {!isComing && (
+                      <p className="font-body text-xs text-on-surface-variant/85 leading-relaxed line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {!isComing && (
+                  <div className="p-6 pt-0">
+                    <span className="text-xs text-primary font-bold font-body group-hover:underline inline-block uppercase tracking-wider">
+                      Read Full Article →
+                    </span>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

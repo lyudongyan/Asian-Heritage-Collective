@@ -61,10 +61,10 @@ export default function Story() {
             <div className="lg:w-1/2 liquid-glass-strong rounded-3xl p-8 md:p-12 shadow-md hover:shadow-lg transition-shadow duration-300 scroll-reveal-right">
               <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold mb-6">Our Founding Story</h2>
               <p className="font-body text-base md:text-lg text-on-surface-variant mb-6 leading-relaxed">
-                Mr. Yan noticed a decline in enrollment and cultural connection at a local Chinese school. He realized that traditional rote learning methods were disengaging youth from their roots. He started the Asian Heritage Collective to make culture learning meaningful, relevant, and inspiring for the next generation.
+                AHC started in October 2023, when Lyudong Yan founded a small music ensemble with a straightforward goal: give Asian youth in Michigan a real reason to engage with their heritage. He had watched students lose interest in traditional cultural education because it felt disconnected from anything meaningful. Language schools felt like chores. Cultural programming felt obligatory. He wanted to build something different.
               </p>
               <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed">
-                What began as a small group of dedicated students and parents has blossomed into a movement. By shifting the focus from memorization to active participation, AHC has transformed how young people experience their heritage, turning obligation into passion.
+                What began as a music group grew quickly. As more students joined and more community organizations reached out, AHC expanded into arts, tutoring, and volunteer programming. Today the organization runs events across Michigan, has reached thousands of people directly, and continues to grow — still built around the same idea that cultural education works best when it's something people actually want to show up for.
               </p>
             </div>
             <div className="lg:w-1/2 relative min-h-[500px] w-full scroll-reveal-left">

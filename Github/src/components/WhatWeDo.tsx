@@ -112,9 +112,9 @@ export default function WhatWeDo({ onNavigate }: WhatWeDoProps) {
         {/* Dynamic deep links banner */}
         {onNavigate && (
           <div className="liquid-glass-strong rounded-3xl p-8 text-center max-w-4xl mx-auto border border-primary/10">
-            <h3 className="font-headline text-xl md:text-2xl text-primary font-bold mb-3">Explore Our Active Communities</h3>
+            <h3 className="font-headline text-xl md:text-2xl text-primary font-bold mb-3">Explore What We Do</h3>
             <p className="font-body text-sm text-on-surface-variant mb-6 max-w-xl mx-auto">
-              Our initiatives reach deep into regional history. Select a portal below to experience minigames, timeline histories, or meet our active board members.
+              Browse past events, meet the team behind AHC, or try our interactive cultural games.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -129,14 +129,14 @@ export default function WhatWeDo({ onNavigate }: WhatWeDoProps) {
                 className="bg-white hover:bg-neutral-50 text-primary px-6 py-3 rounded-full font-body font-bold text-xs uppercase tracking-widest border border-primary/25 transition-all shadow-sm active:scale-95 flex items-center justify-center gap-1.5"
               >
                 <span className="material-symbols-outlined text-sm select-none">calendar_today</span>
-                Past Events Archive
+                Past Events
               </button>
               <button
                 onClick={() => onNavigate("team")}
                 className="bg-white hover:bg-neutral-50 text-secondary px-6 py-3 rounded-full font-body font-bold text-xs uppercase tracking-widest border border-secondary/25 transition-all shadow-sm active:scale-95 flex items-center justify-center gap-1.5"
               >
                 <span className="material-symbols-outlined text-sm select-none">groups</span>
-                Meet the 24 Directors
+                Meet the Team
               </button>
             </div>
           </div>

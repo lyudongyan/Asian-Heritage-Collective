@@ -23,7 +23,7 @@ export default function Partnership() {
               Partnerships &amp; Sponsorships
             </h2>
             <p className="font-body text-sm md:text-base text-white/95 mt-2 max-w-xl mx-auto drop-shadow-sm">
-              Cooperating with regional organizations to cultivate rich heritage learning models.
+              Working with local organizations to bring cultural programming to more people across Michigan.
             </p>
           </div>
           <div className="flex justify-center">

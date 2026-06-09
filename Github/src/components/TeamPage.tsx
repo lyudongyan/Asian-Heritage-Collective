@@ -24,18 +24,18 @@ const MASTER_TEAM: TeamMember[] = [
     primaryBg: "from-red-100 to-red-200 text-red-950",
     primaryImg: IMAGES.lyudong_yan_1,
     secondaryImg: IMAGES.lyudong_yan_2,
-    bio: "Lyudong Yan brings visionary leadership to the Asian Heritage Collective, steering strategic development and fostering community relationships across Michigan. Passionate about linking heritage literacy with modern youth development, Lyudong works to expand free cultural workshops.",
-    contribution: "Executive oversight, strategic fundraising, board advocacy, and community partnership management."
+    bio: "Lyudong founded AHC in 2023 and has led the organization since its first event. His interests span art, writing, biology, and Chinese language, and he has played piano since childhood. He built AHC out of a genuine frustration with how cultural education was being delivered to young people and a belief that it could be done better. He handles strategic direction, fundraising, and community partnerships.",
+    contribution: "Strategic direction, fundraising, board advocacy, and community partnership management."
   },
   {
     id: 2,
-    name: "Zeyad Karichiwala",
+    name: "Zeyad Karachiwala",
     title: "Director of Operations",
     primaryBg: "from-sky-100 to-sky-200 text-sky-950",
     primaryImg: IMAGES.zeyad_karichiwala_1,
     secondaryImg: IMAGES.zeyad_karichiwala_2,
-    bio: "Zeyad Karichiwala oversees daily logistics, operational systems, and legal compliance, ensuring that all our workshops, performances, and public events run seamlessly and safely across our various sites.",
-    contribution: "Daily operations, compliance auditing, logistical planning, and volunteer coordination."
+    bio: "Zeyad is of Indian and Egyptian descent and brings a detail-oriented approach to everything he handles at AHC. Outside the organization he cooks and plays trumpet. As Director of Operations, he manages the logistics, compliance, and coordination that keep events running smoothly.",
+    contribution: "Daily operations, compliance, logistical planning, and volunteer coordination."
   },
   {
     id: 3,
@@ -44,8 +44,8 @@ const MASTER_TEAM: TeamMember[] = [
     primaryBg: "from-emerald-100 to-emerald-200 text-emerald-950",
     primaryImg: IMAGES.jerry_mao_1,
     secondaryImg: IMAGES.jerry_mao_2,
-    bio: "Jerry Mao directs the traditional music programs, bridging classical ensembles with contemporary fusion and designing interactive microtonal classes that introduce young string players to traditional Asian instruments.",
-    contribution: "Musical score curation, student rehearsal schedules, performance coaching, and orchestral synchronization."
+    bio: "Jerry swims, codes, and has studied Chinese seriously alongside his other interests. He plays violin and directs AHC's music program, overseeing rehearsals, score selection, and performance coordination. He has performed at major AHC events including the Eastern Market showcase.",
+    contribution: "Musical score curation, student rehearsals, performance coaching, and orchestral coordination."
   },
   {
     id: 4,
@@ -54,8 +54,8 @@ const MASTER_TEAM: TeamMember[] = [
     primaryBg: "from-pink-100 to-pink-200 text-pink-950",
     primaryImg: IMAGES.joanne_lien_1,
     secondaryImg: IMAGES.joanne_lien_2,
-    bio: "Joanne Lien manages the volunteer recruitment and training pipelines, matching enthusiastic student applicants and community mentors with local senior hubs, schools, and cultural workshops.",
-    contribution: "Volunteer alignment, training workshops, screening systems, and service hour certification."
+    bio: "Joanne is Taiwanese and has been involved in volunteer work for most of her life, including with the Red Cross. She plays flute and has a genuine instinct for organizing people. At AHC she runs the volunteer pipeline: recruiting, training, and matching members with service opportunities.",
+    contribution: "Volunteer recruitment, training, screening, and service hour certification."
   },
   {
     id: 5,
@@ -64,8 +64,8 @@ const MASTER_TEAM: TeamMember[] = [
     primaryBg: "from-amber-100 to-amber-200 text-amber-950",
     primaryImg: IMAGES.sunny_ishihara_1,
     secondaryImg: IMAGES.sunny_ishihara_2,
-    bio: "Sunny Ishihara coordinates the physical visual arts portfolio, planning traditional brush-painting, calligraphy sessions, and seasonal cultural craft workshops that spark creative pride in our students.",
-    contribution: "Curating workshops, exhibition stage design, traditional scroll calibrations, and art supplies sourcing."
+    bio: "Sunny is Japanese, studies Japanese language, and is an award-winning pianist. She brings both technical discipline and creative range to AHC's arts programming, coordinating workshops, seasonal craft activities, and exhibition design across events.",
+    contribution: "Workshop coordination, exhibition design, traditional craft programming, and art supplies sourcing."
   },
   {
     id: 6,
@@ -74,8 +74,8 @@ const MASTER_TEAM: TeamMember[] = [
     primaryBg: "from-indigo-100 to-indigo-200 text-indigo-950",
     primaryImg: IMAGES.peter_wang_1,
     secondaryImg: IMAGES.peter_wang_2,
-    bio: "Peter Wang leads our strategic marketing initiatives, building awareness for our public showcases, designing promotional materials, and growing our local subscriber audience across midtown Detroit.",
-    contribution: "Campaign coordination, public relations scheduling, press release copy, and outreach tracking."
+    bio: "Peter is Chinese, plays clarinet, and has been active in volunteer work alongside his studies. He plays tennis and leads AHC's marketing and outreach, managing promotional materials, press communications, and audience development across Michigan.",
+    contribution: "Campaign coordination, public relations, press copy, and outreach tracking."
   },
   {
     id: 7,
@@ -84,8 +84,8 @@ const MASTER_TEAM: TeamMember[] = [
     primaryBg: "from-violet-100 to-violet-200 text-violet-950",
     primaryImg: IMAGES.yewon_lee_1,
     secondaryImg: IMAGES.yewon_lee_2,
-    bio: "Yewon Lee produces short-form video campaigns and captures weekly reels to spotlight our performance students, community cooks, and traditional workshop showcases on social platforms.",
-    contribution: "TikTok & Instagram reels creation, content calendar scheduling, and public comments interaction."
+    bio: "Yewon is Korean with a strong background in visual art, which directly shapes how she approaches AHC's social presence. She handles short-form video content, reels, and the week-to-week content calendar that keeps AHC visible online.",
+    contribution: "TikTok and Instagram content, video production, and content calendar management."
   },
   {
     id: 8,
@@ -94,18 +94,18 @@ const MASTER_TEAM: TeamMember[] = [
     primaryBg: "from-rose-100 to-rose-200 text-rose-950",
     primaryImg: IMAGES.raina_li_1,
     secondaryImg: IMAGES.raina_li_2,
-    bio: "Raina Li develops our graphic guidelines, promotional digital flyers, and monthly newsletters, maintaining high visual consistency across both print and web platforms.",
-    contribution: "Newsletter editorial, branding assets creation, digital layout mockups, and newsroom copy."
+    bio: "Raina is Chinese with a focus in digital art and design. At AHC she maintains visual consistency across print and digital materials — newsletters, digital flyers, and branding assets.",
+    contribution: "Newsletter editorial, branding assets, digital layout, and newsroom copy."
   },
   {
     id: 9,
-    name: "Leila Karichiwala",
+    name: "Leila Karachiwala",
     title: "Visual Design",
     primaryBg: "from-teal-100 to-teal-200 text-teal-950",
     primaryImg: IMAGES.leila_karichiwala_1,
     secondaryImg: IMAGES.leila_karichiwala_2,
-    bio: "Leila Karichiwala crafts beautiful illustrations, promotional flyers, and poster backdrops that give all our public cultural festivals their cohesive, traditional-meets-modern look.",
-    contribution: "Illustration drawing, typography selection, banner design, and poster layouts."
+    bio: "Leila is of Indian and Egyptian descent and is involved in her school's Asian Student Association, giving her a close-to-the-ground sense of what resonates with the students AHC is trying to reach. She designs the posters, banners, and illustrated materials that give AHC's events their visual identity.",
+    contribution: "Illustration, typography, banner design, and poster layouts."
   },
   {
     id: 10,
@@ -114,8 +114,8 @@ const MASTER_TEAM: TeamMember[] = [
     primaryBg: "from-amber-100 to-amber-200 text-amber-950",
     primaryImg: IMAGES.akira_kongkanand_1,
     secondaryImg: IMAGES.akira_kongkanand_2,
-    bio: "Akira Kongkanand serves as the Blog Writer for the Asian Heritage Collective, chronicling the rich histories, personal narratives, and cultural milestones of our vibrant community. With a deep passion for storytelling and heritage education, Akira crafts high-impact essays that bring our archives to life.",
-    contribution: "Researching cultural timelines, conducting community interviews, writing monthly blog articles, and managing historical newsletters."
+    bio: "Akira is Japanese and brings a math and engineering mindset to writing — which tends to produce clear, precise prose. He covers cultural history, community stories, and organizational milestones for AHC's blog and manages historical documentation for the org.",
+    contribution: "Blog writing, cultural research, community interviews, and historical documentation."
   },
   {
     id: 11,
@@ -124,8 +124,28 @@ const MASTER_TEAM: TeamMember[] = [
     primaryBg: "from-blue-100 to-blue-200 text-blue-950",
     primaryImg: IMAGES.kelvin_shu,
     secondaryImg: IMAGES.kelvin_shu,
-    bio: "Kelvin Shu serves as the Music Arranger and Composer for the Asian Heritage Collective. Working alongside our music department, he transcribes traditional microtonal music scores and designs contemporary fusion arrangements for student orchestra rehearsals.",
-    contribution: "Arranging classical and folk melodies, preparing microtonal rehearsal scores, composition synchronization, and student musical training."
+    bio: "Kelvin's focus is traditional Chinese classical music, and he competes in Science Olympiad alongside his studies in Chinese language. At AHC he arranges folk and classical scores for student ensembles, handles microtonal transcription, and prepares rehearsal materials for the music department.",
+    contribution: "Score arrangement, microtonal transcription, composition, and rehearsal preparation."
+  },
+  {
+    id: 12,
+    name: "Josh",
+    title: "Member",
+    primaryBg: "from-green-100 to-green-200 text-green-950",
+    primaryImg: IMAGES.josh_1,
+    secondaryImg: IMAGES.josh_2,
+    bio: "Josh is Chinese, studies computer science, and plays soccer. His title and full name will be updated shortly.",
+    contribution: "Role TBD."
+  },
+  {
+    id: 13,
+    name: "Anthony Zhang",
+    title: "Member",
+    primaryBg: "from-orange-100 to-orange-200 text-orange-950",
+    primaryImg: IMAGES.anthony_zhang_1,
+    secondaryImg: IMAGES.anthony_zhang_2,
+    bio: "Anthony swims, plays violin, and has a strong interest in Chinese language and culture. He comes from a background in robotics and engineering. His title will be updated shortly.",
+    contribution: "Role TBD."
   }
 ];
 
@@ -156,7 +176,7 @@ export default function TeamPage({ onBack }: TeamPageProps) {
             Meet the Team
           </h2>
           <p className="font-body text-sm md:text-base text-on-surface-variant mt-2 leading-relaxed">
-            Exactly 11 dedicated directors, heads, and staff members working across midtown Michigan to expand traditional education and community impact.
+            Meet the people who run AHC and keep everything moving.
           </p>
         </div>
 

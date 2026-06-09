@@ -37,10 +37,10 @@ export default function About({ onNavigate }: AboutProps) {
           <div className="liquid-glass-strong rounded-3xl p-8 md:p-16 transform transition-all hover:shadow-xl duration-300 scroll-reveal-left">
             <h2 className="font-headline text-3xl md:text-4xl text-primary mb-6 font-bold leading-tight">Who We Are</h2>
             <p className="font-body text-base md:text-lg text-on-surface-variant mb-6 leading-relaxed">
-              We are a collective of passionate individuals dedicated to preserving and celebrating Asian heritage. Through education, community engagement, and cultural appreciation, we aim to bridge generational gaps and foster a deep sense of belonging among youth.
+              Asian Heritage Collective is a Michigan nonprofit that runs cultural programs for Asian youth — music, art, language tutoring, and community service. We started in 2023 because a lot of students were checking out of heritage education entirely, and we thought there was a better way to do it.
             </p>
             <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed mb-6">
-              Our vision is to see every young person of Asian descent proud of their roots and equipped to share their culture with the world. We believe that by understanding our past, we can build a stronger, more inclusive future.
+              Most of what we do is hands-on. Students perform traditional music in front of real audiences, learn calligraphy and traditional crafts, and tutor younger kids in Chinese. The goal is to make cultural engagement something students actually want to do, not something they're obligated to sit through.
             </p>
             {onNavigate && (
               <button

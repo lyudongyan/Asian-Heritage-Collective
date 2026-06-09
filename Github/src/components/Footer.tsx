@@ -26,7 +26,7 @@ export default function Footer({ onLinkClick, onNavigate }: FooterProps = {}) {
           <div className="space-y-6">
             <span className="font-headline text-3xl font-bold block text-white">Asian Heritage Collective</span>
             <p className="font-body text-sm text-on-primary/80 leading-relaxed">
-              Copyright 2024-2026 Asian Heritage Collective. All works fall under United States and international copyright laws, with writing processes documented. For queries on helpline or originality, please submit a query to our email.
+              Heritage inspires the aspiring.
             </p>
           </div>
           <div className="space-y-6">

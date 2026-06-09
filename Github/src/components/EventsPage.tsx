@@ -17,43 +17,67 @@ interface EventItem {
 const PAST_EVENTS_LIST: EventItem[] = [
   {
     id: "evt-1",
-    title: "Chamber Music Showcase & Cultural Concert",
-    date: "February 12, 2026",
-    location: "Kitchen Commons, Eastern Market",
-    desc: "A classical and traditional fusion performance. Local youth artists collaborated across cello, violin, and traditional flutes to bring ancient melodies to a vibrant, multi-ethnic audience.",
-    img: IMAGES.cello_player
+    title: "Oakland Chinese Church Annual Open House",
+    date: "August 2025",
+    location: "Oakland Chinese Church, Michigan",
+    desc: "AHC brought sticker-making, badminton, and a cultural intro presentation to OCC's annual open house, welcoming 35 attendees. Brady Morishita of OCC noted the event went excellently and thanked AHC for hosting. An early demonstration of what AHC's community programming could look like at its best.",
+    img: IMAGES.oakland_church
   },
   {
     id: "evt-2",
-    title: "Culinary Heritage: Civic Cooking Seminar",
-    date: "April 5, 2026",
-    location: "Detroit Community Kitchen",
-    desc: "Youth volunteers gathered under Mr. Yan's coordination to prepare traditional stuffed dumplings and healthy veggie meals, recording senior citizens' migration recipes for a public community cookbook.",
-    img: IMAGES.community_engagement
+    title: "Michigan Chinese Women's Association Annual Banquet",
+    date: "September 2025",
+    location: "Michigan",
+    desc: "AHC ran a sticker-making activity for 10 children and performed traditional music for 400 banquet guests. Pieces performed included the Butterfly Lovers Violin Concerto and Colorful Clouds Chasing the Moon. One of AHC's first large-audience performances.",
+    img: IMAGES.michigan_women
   },
   {
     id: "evt-3",
-    title: "Spring Calligraphy Expo & Wisdom Tracer",
-    date: "May 2, 2026",
-    location: "Oakland Heritage Hall",
-    desc: "An immersive, hands-on ink calligraphy workshop where participants explored the aesthetics of traditional character brushes, practicing master stokes and learning the deep meaning behind five core proverbs.",
-    img: IMAGES.founding_story_left
+    title: "Detroit Eastern Market Performance",
+    date: "April 2026",
+    location: "Detroit Eastern Market",
+    desc: "AHC performed traditional Chinese music for a crowd of 2,500. Alongside the performance, we ran a free public calligraphy activity with 60 participants and sold Chinese fans, raising $100 for the Association of Chinese Americans. One of our largest public appearances to date.",
+    img: IMAGES.eastern_market
   },
   {
     id: "evt-4",
-    title: "Michigan Folk Performance & Festival",
-    date: "June 22, 2025",
-    location: "Metropolitan Civic Arena",
-    desc: "Our resident performers held a magnificent stage showcase celebrating the Dragon Boat and Duanwu traditions, highlighting instrument duets, folk stories, and rich, historical attire.",
-    img: IMAGES.cultural_performance
+    title: "Auburn Hills Public Library — API Heritage Month",
+    date: "May 2026",
+    location: "Auburn Hills Public Library, Michigan",
+    desc: "For Asian Pacific Islander Heritage Month, AHC hosted an origami workshop with 20 participants alongside a presentation on Asian heritage history. The event reached an audience largely new to AHC's work.",
+    img: IMAGES.auburn_hills_event
   },
   {
     id: "evt-5",
-    title: "Auburn Hills Public Library Cultural Integration Event",
-    date: "May 20, 2026",
-    location: "Auburn Hills Public Library",
-    desc: "A beautiful community event bringing traditional music workshops, interactive calligraphy, and heritage story presentations to the local public library. Our student presenters connected with eager children and families in midtown Michigan.",
-    img: IMAGES.auburn_hills_event
+    title: "Grace Centers of Hope — Volunteer Meal Service",
+    date: "March 2026",
+    location: "Grace Centers of Hope, Michigan",
+    desc: "Six AHC members prepared 300 meals for homeless individuals and veterans served by Grace Centers of Hope. A straightforward service event, and one of the ones we're most proud of.",
+    img: IMAGES.community_engagement
+  },
+  {
+    id: "evt-6",
+    title: "Baldwin Public Library — API Heritage Month",
+    date: "February - May 2026",
+    location: "Baldwin Public Library, Michigan",
+    desc: "AHC assembled 30 craft kits and set up a cultural display at Baldwin Public Library for API Heritage Month. Visitors could take kits home, extending the reach of the activity well beyond the day itself.",
+    img: IMAGES.community_engagement
+  },
+  {
+    id: "evt-7",
+    title: "Annual Music Banquet — San Marino Club",
+    date: "January 2026",
+    location: "San Marino Club, Michigan",
+    desc: "AHC performed for a 90-person audience at the Annual Music Banquet. The performance was well received, and our performers were formally recognized with honors for their contribution to the evening.",
+    img: IMAGES.team_performance
+  },
+  {
+    id: "evt-8",
+    title: "International Academy International Food Night",
+    date: "April 2026",
+    location: "International Academy, Michigan",
+    desc: "AHC members contributed three dishes and performed live music for an audience of 450. One of our highest-attendance events and a strong showcase of what AHC brings to multicultural community programming.",
+    img: IMAGES.cultural_performance
   }
 ];
 

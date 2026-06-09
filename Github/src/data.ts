@@ -98,6 +98,10 @@ export const IMAGES = {
   kelvin_shu: kelvinShuImg,
   auburn_hills_event: auburnHillsEventImg,
   auburn_hills_presenters: auburnHillsPresentersImg,
+  josh_1: defaultProfileIcon,
+  josh_2: defaultProfileIcon,
+  anthony_zhang_1: defaultProfileIcon,
+  anthony_zhang_2: defaultProfileIcon,
 };
 
 export interface ProgramItem {
@@ -110,22 +114,22 @@ export const PROGRAMS: ProgramItem[] = [
   {
     icon: "school",
     title: "Education",
-    desc: "Language tutoring (e.g., HSK Level 5 preparation) and curriculum development."
+    desc: "Chinese language tutoring from elementary level through HSK Level 4, plus AP Chinese prep. Every tutor has scored a 5 out of 5 on the exam they teach."
   },
   {
     icon: "palette",
     title: "Arts",
-    desc: "Cultural art workshops including calligraphy, painting, and traditional crafts."
+    desc: "Workshops in calligraphy, painting, origami, and traditional crafts. Most are open to the public and free to attend."
   },
   {
     icon: "music_note",
     title: "Performance",
-    desc: "Traditional music performances, dance troupes, and public showcases."
+    desc: "Traditional and classical Chinese music performed at public events and community banquets, for audiences ranging from small gatherings to crowds of 2,500."
   },
   {
     icon: "volunteer_activism",
     title: "Community",
-    desc: "Community service, civic engagement, and structured volunteer opportunities."
+    desc: "From preparing meals at Grace Centers of Hope to running cultural activity booths at public libraries, our members do real volunteer work in their communities."
   }
 ];
 
@@ -148,11 +152,11 @@ export interface PartnerItem {
 
 export const PARTNERS: PartnerItem[] = [
   { name: "Eastern Market", img: IMAGES.eastern_market },
-  { name: "Michigan Chinese Women Association", img: IMAGES.michigan_women },
-  { name: "American Chinese School", img: IMAGES.candid_bronze },
+  { name: "Michigan Chinese Women's Association", img: IMAGES.michigan_women },
   { name: "Oakland Chinese Church", img: IMAGES.oakland_church },
   { name: "Association of Chinese Americans", img: IMAGES.aca_logo },
   { name: "Metro Detroit Chinese Alliance Church", img: IMAGES.mdcac_logo },
+  { name: "Auburn Hills Public Library", img: IMAGES.auburn_hills_event },
 ];
 
 export interface HubItem {
@@ -166,53 +170,10 @@ export interface HubItem {
 }
 
 export const HUB_ITEMS: HubItem[] = [
-  {
-    title: "Newsletter",
-    desc: "Stay updated with our latest news and events.",
-    buttonText: "Subscribe",
-    href: "#",
-    delay: "0ms",
-    type: "newsletter"
-  },
-  {
-    title: "Blog",
-    desc: "Read stories from our community and insights on heritage.",
-    buttonText: "Read Blog",
-    href: "#",
-    delay: "100ms",
-    type: "blog"
-  },
-  {
-    title: "Past Events",
-    desc: "Explore galleries of our previous performances and workshops.",
-    buttonText: "View Gallery",
-    href: "#",
-    delay: "200ms",
-    type: "events"
-  },
-  {
-    title: "Our Team",
-    desc: "Meet the passionate individuals behind AHC.",
-    buttonText: "Learn More",
-    href: "#",
-    delay: "0ms",
-    type: "team"
-  },
-  {
-    title: "Awards & Collabs",
-    desc: "Discover our partnerships and recognitions.",
-    buttonText: "View Awards",
-    href: "#",
-    delay: "100ms",
-    type: "collabs"
-  },
-  {
-    title: "Ready to Join?",
-    desc: "Become part of a movement to inspire the aspiring.",
-    buttonText: "Apply Now",
-    href: "#apply",
-    isPrimary: true,
-    delay: "200ms",
-    type: "apply"
-  }
+  { title: "Newsletter", desc: "Get updates on upcoming events, new programs, and what AHC has been up to.", buttonText: "Subscribe", href: "#", delay: "0ms", type: "newsletter" },
+  { title: "Blog", desc: "Essays, stories, and reflections written by our members and contributors.", buttonText: "Read Blog", href: "#", delay: "100ms", type: "blog" },
+  { title: "Past Events", desc: "A look back at performances, workshops, and community programs we've hosted.", buttonText: "View Gallery", href: "#", delay: "200ms", type: "events" },
+  { title: "Our Team", desc: "Meet the people who run AHC and keep everything moving.", buttonText: "Learn More", href: "#", delay: "0ms", type: "team" },
+  { title: "Awards & Collabs", desc: "Our partnerships, recognitions, and the organizations we work alongside.", buttonText: "View Awards", href: "#", delay: "100ms", type: "collabs" },
+  { title: "Ready to Join?", desc: "We're always looking for motivated students to get involved.", buttonText: "Apply Now", href: "#apply", isPrimary: true, delay: "200ms", type: "apply" },
 ];
