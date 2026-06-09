@@ -52,6 +52,38 @@ import kelvinShuImg from "./assets/images/kelvin_shu.webp";
 import auburnHillsEventImg from "./assets/images/auburn_hills_event.webp";
 // @ts-ignore
 import auburnHillsPresentersImg from "./assets/images/auburn_hills_presenters.webp";
+// @ts-ignore
+import anthonyZhangImg from "./assets/images/anthony_zhang.webp";
+// @ts-ignore
+import ericZengImg from "./assets/images/eric_zeng.webp";
+// @ts-ignore
+import chongqingBlogImg from "./assets/images/chongqing_blog.png";
+// @ts-ignore
+import chineseSchoolBlogImg from "./assets/images/chinese_school_blog.jpg";
+// @ts-ignore
+import chineseHotWaterImg from "./assets/images/chinese_hot_water.jpg";
+// @ts-ignore
+import homogenousRaceImg from "./assets/images/homogenous_race.jpeg";
+// @ts-ignore
+import chineseDiningExpensesImg from "./assets/images/chinese_dining_expenses.webp";
+// @ts-ignore
+import ahplFullTableViewImg from "./assets/images/ahpl_full_table_view.jpg";
+// @ts-ignore
+import baldwinPlEventImg from "./assets/images/baldwin_pl_event.jpeg";
+// @ts-ignore
+import sanMarinoPerformanceImg from "./assets/images/san_marino_performance.jpg";
+// @ts-ignore
+import internationalFoodNightImg from "./assets/images/international_food_night.png";
+// @ts-ignore
+import mcwaBanquetImg from "./assets/images/mcwa_banquet.webp";
+// @ts-ignore
+import mcwaBanquetCrowdViewImg from "./assets/images/mcwa_banquet_crowd_view.jpeg";
+// @ts-ignore
+import easternMarketPerformanceImg from "./assets/images/eastern_market_performance.webp";
+// @ts-ignore
+import openHouseEventImg from "./assets/images/open_house_event.webp";
+// @ts-ignore
+import easternMarketEventImg from "./assets/images/eastern_market_event.webp";
 
 const defaultProfileIcon = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%238a2387"/><stop offset="50%" stop-color="%23e94057"/><stop offset="100%" stop-color="%23f27121"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(%23g)"/><path d="M50 50c8.28 0 15-6.72 15-15s-6.72-15-15-15-15 6.72-15 15 6.72 15 15 15zm0 8c-11.05 0-30 5.52-30 16.5V78h60v-3.5c0-10.98-18.95-16.5-30-16.5z" fill="white"/></svg>`;
 
@@ -100,8 +132,24 @@ export const IMAGES = {
   auburn_hills_presenters: auburnHillsPresentersImg,
   josh_1: defaultProfileIcon,
   josh_2: defaultProfileIcon,
-  anthony_zhang_1: defaultProfileIcon,
-  anthony_zhang_2: defaultProfileIcon,
+  anthony_zhang_1: anthonyZhangImg,
+  anthony_zhang_2: anthonyZhangImg,
+  eric_zeng_1: ericZengImg,
+  eric_zeng_2: ericZengImg,
+  chongqing_blog: chongqingBlogImg,
+  chinese_school_blog: chineseSchoolBlogImg,
+  chinese_hot_water: chineseHotWaterImg,
+  homogenous_race: homogenousRaceImg,
+  chinese_dining_expenses: chineseDiningExpensesImg,
+  ahpl_full_table_view: ahplFullTableViewImg,
+  baldwin_pl_event: baldwinPlEventImg,
+  san_marino_performance: sanMarinoPerformanceImg,
+  international_food_night: internationalFoodNightImg,
+  mcwa_banquet: mcwaBanquetImg,
+  mcwa_banquet_crowd_view: mcwaBanquetCrowdViewImg,
+  eastern_market_performance: easternMarketPerformanceImg,
+  open_house_event: openHouseEventImg,
+  eastern_market_event: easternMarketEventImg,
 };
 
 export interface ProgramItem {
@@ -170,10 +218,8 @@ export interface HubItem {
 }
 
 export const HUB_ITEMS: HubItem[] = [
-  { title: "Newsletter", desc: "Get updates on upcoming events, new programs, and what AHC has been up to.", buttonText: "Subscribe", href: "#", delay: "0ms", type: "newsletter" },
-  { title: "Blog", desc: "Essays, stories, and reflections written by our members and contributors.", buttonText: "Read Blog", href: "#", delay: "100ms", type: "blog" },
-  { title: "Past Events", desc: "A look back at performances, workshops, and community programs we've hosted.", buttonText: "View Gallery", href: "#", delay: "200ms", type: "events" },
-  { title: "Our Team", desc: "Meet the people who run AHC and keep everything moving.", buttonText: "Learn More", href: "#", delay: "0ms", type: "team" },
-  { title: "Awards & Collabs", desc: "Our partnerships, recognitions, and the organizations we work alongside.", buttonText: "View Awards", href: "#", delay: "100ms", type: "collabs" },
-  { title: "Ready to Join?", desc: "We're always looking for motivated students to get involved.", buttonText: "Apply Now", href: "#apply", isPrimary: true, delay: "200ms", type: "apply" },
+  { title: "Blog", desc: "Essays, stories, and reflections written by our members and contributors.", buttonText: "Read Blog", href: "#", delay: "0ms", type: "blog" },
+  { title: "Past Events", desc: "A look back at performances, workshops, and community programs we've hosted.", buttonText: "View Details", href: "#", delay: "100ms", type: "events" },
+  { title: "Our Team", desc: "Meet the people who run AHC and keep everything moving.", buttonText: "Learn More", href: "#", delay: "200ms", type: "team" },
+  { title: "Ready to Join?", desc: "We're always looking for motivated students to get involved.", buttonText: "Apply Now", href: "#apply", isPrimary: true, delay: "300ms", type: "apply" },
 ];

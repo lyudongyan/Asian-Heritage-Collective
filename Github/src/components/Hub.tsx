@@ -556,33 +556,7 @@ export default function Hub({ onNavigate }: HubProps) {
               <span className="material-symbols-outlined text-3xl">close</span>
             </button>
 
-            {/* Newsletter Modal */}
-            {activeModal === "newsletter" && (
-              <div className="text-center py-6 animate-fade-in">
-                <span className="material-symbols-outlined text-5xl text-primary mb-4 block">mail</span>
-                <h3 className="font-headline text-2xl text-primary font-bold mb-3">AHC Community Newsletter</h3>
-                <p className="font-body text-on-surface-variant mb-6 text-sm md:text-base">
-                  Get monthly news about free cultural arts workshops, tutoring schedules, upcoming musical events, and impact highlights.
-                </p>
-                <form onSubmit={handleSubscribe} className="space-y-4 max-w-md mx-auto">
-                  <input
-                    type="email"
-                    required
-                    value={newsletterEmail}
-                    onChange={(e) => setNewsletterEmail(e.target.value)}
-                    placeholder="Enter your email address"
-                    className="w-full rounded-full border border-outline/30 bg-white px-5 py-3 text-sm focus:border-primary outline-none font-body"
-                  />
-                  <button
-                    type="submit"
-                    disabled={formSubmitted}
-                    className="w-full bg-primary text-on-primary py-3 rounded-full font-body text-xs font-bold uppercase tracking-wider hover:bg-primary-container transition-all disabled:bg-primary/50"
-                  >
-                    {formSubmitted ? "Subscribing..." : "Subscribe Now"}
-                  </button>
-                </form>
-              </div>
-            )}
+
 
             {/* Blog Modal */}
             {activeModal === "blog" && (
@@ -715,27 +689,7 @@ export default function Hub({ onNavigate }: HubProps) {
               </div>
             )}
 
-            {/* Awards Modal */}
-            {activeModal === "collabs" && (
-              <div className="text-center py-6 animate-fade-in">
-                <span className="material-symbols-outlined text-5xl text-primary mb-3 block">emoji_events</span>
-                <h3 className="font-headline text-2xl text-primary font-bold mb-5">Awards &amp; Community Recognition</h3>
-                <div className="space-y-3 text-left max-w-lg mx-auto">
-                  <div className="flex items-start gap-3 border p-3 bg-white/40 rounded-xl">
-                    <strong className="text-primary font-headline text-xs uppercase tracking-wider">2025 Civic Impact Award</strong>
-                    <span className="text-xs text-on-surface-variant font-medium">(Nominee) Detroit Regional Council</span>
-                  </div>
-                  <div className="flex items-start gap-3 border p-3 bg-white/40 rounded-xl">
-                    <strong className="text-primary font-headline text-xs uppercase tracking-wider">501(c)(3) Nonprofit</strong>
-                    <span className="text-xs text-on-surface-variant font-medium">IRS authorized active status in good standing</span>
-                  </div>
-                  <div className="flex items-start gap-3 border p-3 bg-white/40 rounded-xl">
-                    <strong className="text-primary font-headline text-xs uppercase tracking-wider text-amber-900 border-b border-dashed border-amber-900">Candid Silver Mark</strong>
-                    <span className="text-xs text-on-surface-variant font-medium">Highest transparency verification in founding phases</span>
-                  </div>
-                </div>
-              </div>
-            )}
+
           </div>
         </div>
       )}

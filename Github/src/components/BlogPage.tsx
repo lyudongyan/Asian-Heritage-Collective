@@ -14,10 +14,9 @@ interface BlogPost {
   content: string;
   img: string;
   tag: string;
-  comingSoon?: boolean;
 }
 
-const TEN_BLOGS: BlogPost[] = [
+const FIVE_BLOGS: BlogPost[] = [
   {
     id: 1,
     title: "I Quit Chinese School. Then I Got a 5 on the AP Exam.",
@@ -34,8 +33,7 @@ I ended up self-studying for the AP Chinese Language exam. When the scores came 
 Shortly after, I applied to become a Teacher's Assistant for an AP Chinese class. I got accepted. The thing I had once dreaded going to on Saturday mornings was now something I was voluntarily showing up to teach.
 
 I'm not telling this story to suggest that quitting and coming back is the right path. For a lot of people it isn't. But I think about it a lot when I think about why AHC exists. The traditional model of cultural education wasn't working for me, and it isn't working for a lot of kids. We started AHC because we think there's a better way. I'm still figuring out what that looks like. But it starts with making cultural education something students want to come back to.`,
-    img: IMAGES.founding_story_left,
-    comingSoon: false
+    img: IMAGES.chinese_school_blog
   },
   {
     id: 2,
@@ -59,8 +57,7 @@ The closest I can get to describing it: it's like going on vacation, except the 
 I'm not always in a rush to get there. The flights are long, the heat is real, and a month is a long time. But somewhere around day three, when the jet lag has worn off and I've settled back into the rhythm of that apartment, I stop thinking about what I'm missing back home. This is also home.
 
 That's what my parents understood that took me longer to get. You can build a life somewhere new without letting go of where you came from. The trip back every year isn't a concession to the past. It's how you make sure the past stays part of you.`,
-    img: IMAGES.crowd_watching,
-    comingSoon: false
+    img: IMAGES.chongqing_blog
   },
   {
     id: 3,
@@ -69,54 +66,166 @@ That's what my parents understood that took me longer to get. You can build a li
     author: "AHC Editorial Team",
     tag: "Culture",
     excerpt: "Your grandparents swore by it. There might be more to it than habit.",
-    content: `The following is based on a conversation between two AHC members about something most of us have probably noticed at home.
+    content: `Why does my grandma always drink hot water? Even in summer?
 
----
+Mine does the same thing. I asked her once and she looked at me like it was a strange question.
 
-"Why does my grandma always drink hot water? Even in summer?"
-
-"Mine does the same thing. I asked her once and she looked at me like it was a strange question."
-
-"It kind of is, from her perspective."
+It kind of is, from her perspective.
 
 The preference for hot water runs deep in Chinese culture and goes back further than most people expect. Traditional Chinese medicine has long held that cold water disrupts the body's internal balance — that it contracts the stomach and interferes with digestion, particularly after eating. Hot water is seen as warming and stabilizing, something that keeps the body functioning as it should.
 
-"So it's a health thing?"
+So it's a health thing?
 
 Partly. But it's also generational habit reinforced over centuries. In many parts of China, boiling water was a practical necessity before modern water treatment. Drinking it hot, or letting boiled water cool before drinking, was simply safer. The habit outlasted the original reason.
 
-"That actually makes sense. We still do it even though we have clean water now."
+That actually makes sense. We still do it even though we have clean water now.
 
-"Yeah. My grandparents don't think about why. It's just what you do."
+Yeah. My grandparents don't think about why. It's just what you do.
 
 There's also a social dimension. Offering someone hot water or tea when they arrive at your home is a gesture of care — an acknowledgment that someone has arrived and you want them to be comfortable. Cold water doesn't carry the same weight in that context.
 
-"So it's hospitality."
+So it's hospitality.
 
 In a way. Though your grandparents would probably just say it's good for you.
 
 Western medicine doesn't have a strong consensus on the specific health claims, but there is some evidence that warm liquids aid digestion and circulation in mild ways. The scientific case isn't really the point though.
 
-"The point is that it's a habit with a history."
+The point is that it's a habit with a history.
 
 Right. And like a lot of things our grandparents do, it makes more sense once you know where it comes from.`,
-    img: IMAGES.elderly_viewing,
-    comingSoon: false
+    img: IMAGES.chinese_hot_water
   },
-  { id: 4, title: "Why Asians Are Perceived as Racist — And Why It's More Complicated Than That", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.cultural_performance, comingSoon: true },
-  { id: 5, title: "Why Asians Spend More on Food as They Get Richer", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.community_engagement, comingSoon: true },
-  { id: 6, title: "Coming Soon", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.crowd_watching, comingSoon: true },
-  { id: 7, title: "Coming Soon", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.team_performance, comingSoon: true },
-  { id: 8, title: "Coming Soon", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.cello_player, comingSoon: true },
-  { id: 9, title: "Coming Soon", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.eastern_market, comingSoon: true },
-  { id: 10, title: "Coming Soon", date: "", author: "", tag: "", excerpt: "", content: "", img: IMAGES.founding_story_left, comingSoon: true },
+  {
+    id: 4,
+    title: "Why Asians Are Perceived as Racist — And Why It's More Complicated Than That",
+    date: "February 20, 2026",
+    author: "AHC Editorial Team",
+    tag: "Society",
+    excerpt: "Many observers view homogeneous Asian countries as having issues with racism, but the historical and cultural context of ethnic uniformity is much more complex.",
+    content: `When visitors travel to homogeneous Asian nations, they often notice social dynamics that seem exclusionary or discriminatory. It is common to hear stories of landlords refusing to rent to foreigners, or people staring in public. To Western observers, these actions are quickly classified under the framework of racism. However, understanding these behaviors requires examining a very different historical and cultural context.
+
+First, many East Asian nations historically practiced strict policies of national isolation—such as the Sakoku period in Japan or China's imperial restrictions. For centuries, these societies developed in relative isolation, creating a strong sense of ethnic and cultural uniformity. Unlike Western multicultural societies, identity in these regions became deeply tied to a singular ancestry, language, and social code.
+
+Second, the lack of exposure to diversity plays a major role. In countries where 98% or more of the population shares the same ethnic background, interactions with foreigners are rare. What is often perceived as malice or systemic racism is frequently a combination of extreme curiosity, social awkwardness, and a fear of not being able to communicate due to language barriers.
+
+Furthermore, social conformity is highly valued in collectivist cultures. Any individual who stands out—whether a foreigner or a native who deviates from the norm—faces social pressure. 
+
+While discrimination and xenophobia certainly exist and should be addressed, framing them solely through the lens of Western racial theory oversimplifies the issue. It is not about historical systems of racial supremacy, but rather about a deep-seated insularity and the challenge of adapting traditional homogeneous societies to an increasingly globalized world.`,
+    img: IMAGES.homogenous_race
+  },
+  {
+    id: 5,
+    title: "Why Asians Spend More on Food as They Get Richer",
+    date: "January 15, 2026",
+    author: "AHC Editorial Team",
+    tag: "Economics",
+    excerpt: "In many Western countries, food spending stabilizes as wealth increases. In Asia, dining expenses skyrocket. Let's look at the cultural obsession with dining.",
+    content: `In classical economics, Engel's Law states that as household income rises, the percentage of income spent on food declines. While this holds true for basic sustenance, modern consumer behavior in Asian countries presents a fascinating deviation: as households enter the middle and upper classes, their absolute spending on dining and premium food experiences grows exponentially.
+
+To understand this, one must look at the unique cultural significance of food in Asian societies. In the West, wealth displays often take the form of luxury vehicles, fashion, or real estate. In Asia, while those indicators exist, food is a primary medium for social capital and prestige.
+
+Hosting a dinner is not merely a social gathering; it is an active demonstration of respect, relationship building, and hospitality. Offering guests rare ingredients, high-grade seafood, or dining at an exclusive establishment signals the host's esteem for their guests and their own social standing.
+
+Additionally, food plays a central role in family cohesion and heritage preservation. Multi-generational gatherings almost always revolve around elaborate meals, where the quality of the food represents the care and prosperity of the family unit.
+
+Rather than treating food as a utility, Asian consumers increasingly view dining as an investment in health, social bonds, and cultural identity. As a result, premium markets, organic ingredients, and high-end gastronomy continue to thrive, defying traditional economic models of saturation.`,
+    img: IMAGES.chinese_dining_expenses
+  }
 ];
 
 export default function BlogPage({ onBack }: BlogPageProps) {
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [selectedPostId, setSelectedPostId] = useState<number | null>(null);
 
+  // If a post is selected, render the detail page
+  if (selectedPostId !== null) {
+    const postIndex = FIVE_BLOGS.findIndex((p) => p.id === selectedPostId);
+    const post = FIVE_BLOGS[postIndex];
+
+    if (post) {
+      return (
+        <div className="pt-32 pb-24 min-h-screen bg-[#faf8f6] select-text relative animate-fade-in text-left">
+          <div className="container mx-auto px-margin-mobile md:px-margin-desktop max-w-3xl">
+            {/* Back button */}
+            <button
+              onClick={() => setSelectedPostId(null)}
+              className="mb-8 font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
+            >
+              <span className="material-symbols-outlined text-[16px]">arrow_back</span>
+              Back to Blogs
+            </button>
+
+            {/* Article container */}
+            <article className="bg-white border border-neutral-100 rounded-3xl p-6 md:p-10 shadow-sm space-y-8">
+              {/* Meta */}
+              <div className="space-y-4">
+                <div className="flex flex-wrap gap-2 items-center text-xs text-on-surface-variant/70 font-semibold font-mono">
+                  <span>{post.date}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-neutral-300" />
+                  <span>By {post.author}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-neutral-300" />
+                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest font-mono">
+                    {post.tag}
+                  </span>
+                </div>
+                <h1 className="font-headline text-3xl md:text-5xl text-primary font-bold leading-tight">
+                  {post.title}
+                </h1>
+              </div>
+
+              {/* Cover Image */}
+              <div className="w-full h-64 md:h-[450px] overflow-hidden rounded-2xl border border-neutral-100 shadow-inner">
+                <img
+                  alt={post.title}
+                  className="w-full h-full object-cover"
+                  src={post.img}
+                />
+              </div>
+
+              {/* Excerpt */}
+              <div className="p-5 border-l-4 border-primary/20 bg-primary/5 rounded-r-2xl italic font-body text-base text-on-surface-variant/90 leading-relaxed">
+                "{post.excerpt}"
+              </div>
+
+              {/* Content */}
+              <div className="font-body text-base md:text-lg text-on-surface-variant/95 leading-relaxed whitespace-pre-line space-y-6">
+                {post.content}
+              </div>
+
+              {/* Navigation buttons */}
+              <div className="border-t border-neutral-100 pt-8 mt-12 flex items-center justify-between gap-4">
+                {postIndex > 0 ? (
+                  <button
+                    onClick={() => setSelectedPostId(FIVE_BLOGS[postIndex - 1].id)}
+                    className="font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
+                  >
+                    <span className="material-symbols-outlined text-[16px]">arrow_back</span>
+                    Previous Post
+                  </button>
+                ) : (
+                  <div />
+                )}
+
+                {postIndex < FIVE_BLOGS.length - 1 ? (
+                  <button
+                    onClick={() => setSelectedPostId(FIVE_BLOGS[postIndex + 1].id)}
+                    className="font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
+                  >
+                    Next Post
+                    <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </button>
+                ) : (
+                  <div />
+                )}
+              </div>
+            </article>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  // List grid view
   return (
-    <>
     <div className="pt-32 pb-24 min-h-screen bg-[#faf8f6] select-text relative animate-fade-in text-left">
       <div className="container mx-auto px-margin-mobile md:px-margin-desktop max-w-[1280px]">
         {/* Back navigation */}
@@ -141,140 +250,50 @@ export default function BlogPage({ onBack }: BlogPageProps) {
           </p>
         </div>
 
-        {/* Blog layout grid - exactly 10 cards */}
+        {/* Blog layout grid - exactly 5 cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {TEN_BLOGS.map((post) => {
-            const isComing = !!post.comingSoon;
-            return (
-              <div
-                key={post.id}
-                onClick={() => !isComing && setSelectedPost(post)}
-                className={`bg-white rounded-3xl overflow-hidden border border-neutral-100 shadow-sm flex flex-col justify-between transition-all duration-300 ${
-                  isComing
-                    ? "opacity-60 pointer-events-none"
-                    : "hover:border-primary/25 hover:shadow-xl cursor-pointer transform hover:-translate-y-1.5"
-                }`}
-              >
-                <div>
-                  <div className="h-48 w-full overflow-hidden relative border-b border-neutral-50">
-                    <img
-                      alt={post.title}
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer" loading="lazy"
-                      src={post.img}
-                    />
-                    {isComing ? (
-                      <span className="absolute top-4 left-4 bg-neutral-200 text-neutral-700 text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md font-mono">
-                        Coming Soon
-                      </span>
-                    ) : (
-                      <span className="absolute top-4 left-4 bg-primary text-on-primary text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md font-mono">
-                        {post.tag}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="p-6 space-y-3">
-                    {!isComing && (
-                      <div className="flex gap-2 items-center text-[11px] text-on-surface-variant/70 font-semibold font-mono">
-                        <span>{post.date}</span>
-                        <span className="w-1 h-1 rounded-full bg-neutral-300" />
-                        <span>{post.author}</span>
-                      </div>
-                    )}
-                    <h3 className="font-headline text-lg font-bold text-primary group-hover:text-primary-container leading-snug line-clamp-2">
-                      {post.title}
-                    </h3>
-                    {!isComing && (
-                      <p className="font-body text-xs text-on-surface-variant/85 leading-relaxed line-clamp-3">
-                        {post.excerpt}
-                      </p>
-                    )}
-                  </div>
+          {FIVE_BLOGS.map((post) => (
+            <div
+              key={post.id}
+              onClick={() => setSelectedPostId(post.id)}
+              className="bg-white rounded-3xl overflow-hidden border border-neutral-100 shadow-sm flex flex-col justify-between transition-all duration-300 hover:border-primary/25 hover:shadow-xl cursor-pointer transform hover:-translate-y-1.5"
+            >
+              <div>
+                <div className="h-48 w-full overflow-hidden relative border-b border-neutral-50">
+                  <img
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                    src={post.img}
+                  />
+                  <span className="absolute top-4 left-4 bg-primary text-on-primary text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md font-mono">
+                    {post.tag}
+                  </span>
                 </div>
 
-                {!isComing && (
-                  <div className="p-6 pt-0">
-                    <span className="text-xs text-primary font-bold font-body group-hover:underline inline-block uppercase tracking-wider">
-                      Read Full Article →
-                    </span>
+                <div className="p-6 space-y-3">
+                  <div className="flex gap-2 items-center text-[11px] text-on-surface-variant/70 font-semibold font-mono">
+                    <span>{post.date}</span>
+                    <span className="w-1 h-1 rounded-full bg-neutral-300" />
+                    <span>{post.author}</span>
                   </div>
-                )}
+                  <h3 className="font-headline text-lg font-bold text-primary leading-snug line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="font-body text-xs text-on-surface-variant/85 leading-relaxed line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                </div>
               </div>
-            );
-          })}
+
+              <div className="p-6 pt-0">
+                <span className="text-xs text-primary font-bold font-body inline-block uppercase tracking-wider">
+                  Read Full Article →
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
-
-    {/* Dynamic Pop-up Modal */}
-    {selectedPost && (
-      <div
-        className="fixed bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
-        style={{ position: "fixed", inset: 0, zIndex: 9999 }}
-        onClick={() => setSelectedPost(null)}
-      >
-        <div
-          className="bg-white border rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative select-text animate-pop-in"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {/* Close */}
-          <button
-            onClick={() => setSelectedPost(null)}
-            className="absolute top-4 right-4 text-neutral-500 hover:text-primary transition-colors p-2 z-10 bg-white/80 rounded-full shadow-sm animate-fade-in"
-          >
-            <span className="material-symbols-outlined text-2xl">close</span>
-          </button>
-
-          {/* Banner picture */}
-          <div className="h-64 w-full overflow-hidden relative">
-            <img
-              alt={selectedPost.title}
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer" loading="lazy"
-              src={selectedPost.img}
-            />
-            <span className="absolute bottom-4 left-4 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-lg">
-              {selectedPost.tag}
-            </span>
-          </div>
-
-          {/* Article content */}
-          <div className="p-6 md:p-8 space-y-6">
-            <div className="space-y-2">
-              <div className="flex gap-2 items-center text-xs text-on-surface-variant/70 font-semibold font-mono">
-                <span>{selectedPost.date}</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-neutral-300" />
-                <span>By {selectedPost.author}</span>
-              </div>
-              <h3 className="font-headline text-2xl md:text-3xl text-primary font-bold leading-snug">
-                {selectedPost.title}
-              </h3>
-            </div>
-
-            <div className="p-4 border-l-4 border-primary/20 bg-primary/5 rounded-r-xl italic font-body text-sm text-on-surface-variant/90 leading-relaxed">
-              "{selectedPost.excerpt}"
-            </div>
-
-            <div className="font-body text-sm md:text-base text-on-surface-variant/95 leading-relaxed whitespace-pre-line space-y-4">
-              {selectedPost.content}
-            </div>
-
-            <div className="border-t border-neutral-100 pt-6 flex justify-between items-center text-xs">
-              <span className="font-semibold text-on-surface-variant/70 font-mono">
-                Category: {selectedPost.tag}
-              </span>
-              <button
-                onClick={() => setSelectedPost(null)}
-                className="bg-primary text-on-primary px-5 py-2 rounded-full font-body font-bold text-xs uppercase tracking-wider hover:bg-primary-container active:scale-95 transition-all"
-              >
-                Close Article
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    )}
-    </>
   );
 }

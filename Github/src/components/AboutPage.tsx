@@ -28,7 +28,7 @@ const MISSION_CLAUSES = [
   }
 ];
 
-function MissionBreakdown() {
+export default function AboutPage({ onBack }: AboutPageProps) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -57,11 +57,11 @@ function MissionBreakdown() {
           setActiveIdx(activeIdx === idx ? null : idx);
         }}
       >
-        <span className={`text-primary border-b border-primary/40 px-0.5 rounded transition-all duration-300 font-bold ${isActive ? "bg-primary/10" : "hover:bg-primary/5"}`}>
+        <span className={`text-primary border-b-2 border-dashed border-primary/45 px-0.5 rounded transition-all duration-300 font-bold ${isActive ? "bg-primary/10 border-primary" : "hover:bg-primary/5 hover:border-primary/70"}`}>
           {text}
         </span>
         {isActive && (
-          <span className="absolute z-50 left-1/2 -translate-x-1/2 top-full mt-2 w-72 md:w-80 p-4 rounded-xl liquid-glass text-left font-body text-xs md:text-sm text-on-surface-variant shadow-lg border border-primary/10 transition-all duration-300 pointer-events-auto leading-relaxed select-text font-normal italic">
+          <span className="absolute z-50 left-1/2 -translate-x-1/2 top-full mt-2 w-72 md:w-80 p-4 rounded-xl bg-white border border-outline/25 text-left font-body text-xs md:text-sm text-on-surface shadow-xl pointer-events-auto leading-relaxed select-text font-normal not-italic">
             {item.tooltip}
           </span>
         )}
@@ -69,29 +69,6 @@ function MissionBreakdown() {
     );
   };
 
-  return (
-    <div ref={containerRef} className="mt-8 mb-12 max-w-3xl mx-auto text-center p-6 bg-white/40 rounded-2xl border border-primary/5 shadow-inner">
-      <span className="text-primary/60 font-body text-[10px] font-mono uppercase tracking-widest block mb-4">
-        Interactive Mission Breakdown (Hover or tap a clause below)
-      </span>
-      <h3 className="font-headline text-lg md:text-2xl text-on-surface-variant leading-relaxed font-medium">
-        "
-        {renderSpan(0, "Foster youth cultural development")}
-        {" by "}
-        {renderSpan(1, "empowering young people")}
-        {" to "}
-        {renderSpan(2, "learn about their heritage")}
-        {", "}
-        {renderSpan(3, "strengthen their identity")}
-        {", and "}
-        {renderSpan(4, "serve their communities")}
-        ."
-      </h3>
-    </div>
-  );
-}
-
-export default function AboutPage({ onBack }: AboutPageProps) {
   return (
     <div className="pt-32 pb-24 min-h-screen bg-about animate-fade-in relative select-text">
       {/* Decorative ambient elements */}
@@ -109,24 +86,34 @@ export default function AboutPage({ onBack }: AboutPageProps) {
         </button>
 
         {/* Editorial Quote Header */}
-        <div className="text-center max-w-4xl mx-auto mb-20">
+        <div ref={containerRef} className="text-center max-w-4xl mx-auto mb-20">
           <span className="text-primary font-body text-xs font-bold uppercase tracking-widest block mb-4">
             Our Mission
           </span>
-          <h2 className="font-headline text-3xl md:text-5xl text-primary font-bold italic leading-tight mb-8">
-            "Foster youth cultural development by empowering young people to learn about their heritage, strengthen their identity, and serve their communities."
+          <h2 className="font-headline text-2xl sm:text-3xl md:text-5xl text-primary font-bold italic leading-relaxed mb-4">
+            "
+            {renderSpan(0, "Foster youth cultural development")}
+            {" by "}
+            {renderSpan(1, "empowering young people")}
+            {" to "}
+            {renderSpan(2, "learn about their heritage")}
+            {", "}
+            {renderSpan(3, "strengthen their identity")}
+            {", and "}
+            {renderSpan(4, "serve their communities")}
+            ."
           </h2>
+          <p className="font-body text-xs text-on-surface-variant/60 tracking-wider mb-8 uppercase font-semibold">
+            hover above underlined phrases to learn more
+          </p>
           <div className="w-16 h-[2px] bg-primary/30 mx-auto" />
-          
-          {/* Mission Statement Breakdown Visual Component */}
-          <MissionBreakdown />
         </div>
 
-        {/* Staggered Lorem Ipsum Blocks with Unique Images */}
+        {/* Staggered Blocks with Unique Images */}
         <div className="space-y-24">
           {/* Block 1: Left Text, Right Image */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-slide-in">
+            <div className="space-y-6">
               <h3 className="font-headline text-2xl md:text-3xl text-primary font-bold">
                 Cultivating Cultural Identity
               </h3>
@@ -141,14 +128,14 @@ export default function AboutPage({ onBack }: AboutPageProps) {
               <img
                 alt="Cultivating Identity"
                 className="w-full h-[400px] object-cover"
-                referrerPolicy="no-referrer" loading="lazy"
+                loading="lazy"
                 src={IMAGES.founding_story_left}
               />
             </div>
           </div>
 
           {/* Block 2: Right Text, Left Image */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="lg:order-2 space-y-6">
               <h3 className="font-headline text-2xl md:text-3xl text-primary font-bold">
                 Community at the Core
@@ -164,7 +151,7 @@ export default function AboutPage({ onBack }: AboutPageProps) {
               <img
                 alt="Advocacy and Service"
                 className="w-full h-[400px] object-cover"
-                referrerPolicy="no-referrer" loading="lazy"
+                loading="lazy"
                 src={IMAGES.community_engagement}
               />
             </div>
@@ -187,7 +174,7 @@ export default function AboutPage({ onBack }: AboutPageProps) {
               <img
                 alt="Intersection of Art"
                 className="w-full h-[400px] object-cover"
-                referrerPolicy="no-referrer" loading="lazy"
+                loading="lazy"
                 src={IMAGES.cultural_performance}
               />
             </div>

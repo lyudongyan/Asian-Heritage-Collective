@@ -146,6 +146,16 @@ const MASTER_TEAM: TeamMember[] = [
     secondaryImg: IMAGES.anthony_zhang_2,
     bio: "Anthony swims, plays violin, and has a strong interest in Chinese language and culture. He comes from a background in robotics and engineering. His title will be updated shortly.",
     contribution: "Role TBD."
+  },
+  {
+    id: 14,
+    name: "Eric Zeng",
+    title: "Member",
+    primaryBg: "from-teal-100 to-teal-200 text-teal-950",
+    primaryImg: IMAGES.eric_zeng_1,
+    secondaryImg: IMAGES.eric_zeng_2,
+    bio: "Eric studies computer science and is passionate about cultural heritage, engineering, and community service. He works on developing creative outreach programs at AHC.",
+    contribution: "Role TBD."
   }
 ];
 
