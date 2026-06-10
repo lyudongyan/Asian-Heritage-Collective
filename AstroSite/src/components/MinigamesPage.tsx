@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { SplitWords } from "./ui";
 
 interface MinigamesPageProps {
   onBack?: () => void;
@@ -234,42 +235,44 @@ export default function MinigamesPage({ onBack = () => { window.location.href = 
   }
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-hub relative select-text text-left">
+    <div className="pt-36 pb-24 min-h-screen bg-hub relative select-text text-left overflow-hidden">
       <div className="absolute top-10 right-10 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl pointer-events-none" />
+      <span
+        aria-hidden="true"
+        data-parallax="0.1"
+        className="text-watermark font-headline text-[15rem] absolute top-8 right-[-1rem] leading-none pointer-events-none hidden xl:block"
+      >
+        玩
+      </span>
 
-      <div className="container mx-auto px-6 md:px-12 max-w-[1280px]">
-        <button
-          onClick={onBack}
-          className="mb-8 font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white/45 px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
-        >
-          <span className="material-symbols-outlined text-[16px]">arrow_back</span>
-          Back to Homepage
-        </button>
-
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-primary font-body text-xs font-bold uppercase tracking-widest block mb-1">
-            Artistic Playground
-          </span>
-          <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold">
-            Interactive Games Room
-          </h2>
-          <p className="font-body text-sm text-on-surface-variant mt-2 leading-relaxed">
-            Practice structural baking, word deduction, Guzheng recordings, and delicate loose tea brewing!
+      <div className="container mx-auto px-6 md:px-12 max-w-[1280px] relative">
+        {/* Header */}
+        <header className="max-w-2xl mb-14 animate-slide-up-fade">
+          <span className="eyebrow mb-6">The Playroom</span>
+          <h1 className="font-headline text-4xl md:text-6xl text-primary font-bold leading-[1.05] mb-6 mt-6">
+            <SplitWords>
+              Culture you can <em className="italic">click on</em>.
+            </SplitWords>
+          </h1>
+          <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed">
+            Four small games built by AHC — mold a mooncake, untangle lantern
+            riddles, record a pentatonic melody on the guzheng, and brew a
+            properly fussy pot of tea.
           </p>
-        </div>
+        </header>
 
         {/* Game selector */}
-        <div className="flex flex-wrap lg:flex-nowrap gap-3 justify-center mb-10 bg-white/20 p-2.5 rounded-2xl border border-white/30">
+        <div className="flex flex-wrap lg:flex-nowrap gap-3 justify-center mb-10 liquid-glass p-2.5 rounded-3xl animate-slide-up-fade delay-200">
           {[
-            { id: "mooncake", title: "Autumn Mooncake Maker", icon: "cookie" },
-            { id: "riddles", title: "Lantern Riddle Matcher", icon: "wb_iridescent" },
-            { id: "recorder", title: "Guzheng Sound Recorder", icon: "mic_none" },
-            { id: "tea", title: "Tea Ceremony Brewmaster", icon: "emoji_food_beverage" }
+            { id: "mooncake", title: "Mooncake Maker", icon: "cookie" },
+            { id: "riddles", title: "Lantern Riddles", icon: "wb_iridescent" },
+            { id: "recorder", title: "Guzheng Studio", icon: "mic_none" },
+            { id: "tea", title: "Tea Ceremony", icon: "emoji_food_beverage" }
           ].map((game) => (
             <button
               key={game.id}
               onClick={() => setActiveGame(game.id as any)}
-              className={`flex-1 min-w-[150px] py-3.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 active:scale-95 hover:scale-[1.02] ${
+              className={`flex-1 min-w-[150px] py-3.5 px-4 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 active:scale-95 hover:scale-[1.02] ${
                 activeGame === game.id
                   ? "bg-primary text-on-primary shadow-lg border border-primary/20"
                   : "bg-white/50 text-primary hover:bg-white/80 border border-white/20"
@@ -282,14 +285,14 @@ export default function MinigamesPage({ onBack = () => { window.location.href = 
         </div>
 
         {/* Game canvas */}
-        <div className="bg-white/70 backdrop-blur-md rounded-3xl p-6 md:p-10 border border-white/60 shadow-xl overflow-hidden min-h-[500px] relative flex flex-col justify-between">
+        <div className="liquid-glass-strong rounded-3xl p-6 md:p-10 shadow-xl overflow-hidden min-h-[500px] relative flex flex-col justify-between animate-slide-up-fade delay-300">
 
           {/* GAME 1: MOONCAKE BAKERY */}
           {activeGame === "mooncake" && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 animate-fade-in text-left">
               <div className="space-y-6">
                 <div>
-                  <span className="text-[10px] font-bold text-primary font-mono uppercase bg-primary/15 px-3 py-1 rounded-full">
+                  <span className="text-[10px] font-bold text-primary/60 font-mono uppercase">
                     Minigame #1: Baking Simulation
                   </span>
                   <h3 className="font-headline text-2xl text-primary font-bold mt-2">Harvest Mooncake Studio</h3>
@@ -450,7 +453,7 @@ export default function MinigamesPage({ onBack = () => { window.location.href = 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 animate-fade-in text-left">
               <div className="space-y-6">
                 <div>
-                  <span className="text-[10px] font-bold text-primary font-mono uppercase bg-primary/15 px-3 py-1 rounded-full">
+                  <span className="text-[10px] font-bold text-primary/60 font-mono uppercase">
                     Minigame #3: Word Wisdom Puzzles
                   </span>
                   <h3 className="font-headline text-2xl text-primary font-bold mt-2">Lantern riddles</h3>
@@ -543,7 +546,7 @@ export default function MinigamesPage({ onBack = () => { window.location.href = 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 animate-fade-in text-left">
               <div className="space-y-6">
                 <div>
-                  <span className="text-[10px] font-bold text-primary font-mono uppercase bg-primary/15 px-3 py-1 rounded-full">
+                  <span className="text-[10px] font-bold text-primary/60 font-mono uppercase">
                     Minigame #4: Pentatonic Studio
                   </span>
                   <h3 className="font-headline text-2xl text-primary font-bold mt-2">
@@ -622,7 +625,7 @@ export default function MinigamesPage({ onBack = () => { window.location.href = 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 animate-fade-in text-left">
               <div className="space-y-6">
                 <div>
-                  <span className="text-[10px] font-bold text-primary font-mono uppercase bg-primary/15 px-3 py-1 rounded-full">
+                  <span className="text-[10px] font-bold text-primary/60 font-mono uppercase">
                     Minigame #5: Beverage Science
                   </span>
                   <h3 className="font-headline text-2xl text-primary font-bold mt-2">

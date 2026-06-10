@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { PAST_EVENTS } from '../../data/pastEvents';
+import Footer from '../../components/Footer';
 
 export function getStaticPaths() {
   return PAST_EVENTS.map(evt => ({
@@ -141,6 +142,7 @@ const nextEvt = evtIndex < PAST_EVENTS.length - 1 ? PAST_EVENTS[evtIndex + 1] : 
       </article>
     </div>
   </div>
+  <Footer />
 </Layout>
 
 <script>

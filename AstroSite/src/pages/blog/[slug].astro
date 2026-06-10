@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { BLOG_POSTS } from '../../data/blogPosts';
+import Footer from '../../components/Footer';
 
 export function getStaticPaths() {
   return BLOG_POSTS.map(post => ({
@@ -112,6 +113,7 @@ const nextPost = postIndex < BLOG_POSTS.length - 1 ? BLOG_POSTS[postIndex + 1] :
       </article>
     </div>
   </div>
+  <Footer />
 </Layout>
 
 <script>

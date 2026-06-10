@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { IMAGES } from '../data';
+import { IMAGES, MARQUEE_FACTS } from '../data';
+import { Eyebrow, SplitWords } from './ui';
 import Hero from './Hero';
 import About from './About';
 import Story from './Story';
@@ -9,7 +10,51 @@ import Partnership from './Partnership';
 import Hub from './Hub';
 import Footer from './Footer';
 
-// ── Testimonials ──────────────────────────────────────────────────────────────
+/* ── Marquee fact ribbon (velocity-reactive) ──────────────── */
+function FactRibbon() {
+  const loop = [...MARQUEE_FACTS, ...MARQUEE_FACTS];
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  // Cruises on its own; accelerates with scroll velocity, then eases back
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let x = 0;
+    let vel = 0;
+    let lastY = window.scrollY;
+    let raf = 0;
+    const tick = () => {
+      const y = window.scrollY;
+      vel = vel * 0.9 + (y - lastY) * 0.1;
+      lastY = y;
+      x -= 0.55 + Math.min(Math.abs(vel) * 0.22, 5);
+      const half = el.scrollWidth / 2;
+      if (half > 0 && -x >= half) x += half;
+      el.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  return (
+    <div className="bg-primary border-y border-white/10 py-4 overflow-hidden relative z-10">
+      <div ref={trackRef} className="flex w-max items-center will-change-transform">
+        {loop.map((fact, i) => (
+          <span key={i} className="flex items-center shrink-0">
+            <span className="font-body text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-on-primary/90 whitespace-nowrap px-6">
+              {fact}
+            </span>
+            <span className="text-secondary-container text-base select-none" aria-hidden="true">✦</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── Testimonials ─────────────────────────────────────────── */
 const TESTIMONIALS = [
   {
     name: 'Brady Morishita',
@@ -40,45 +85,82 @@ const TESTIMONIALS = [
 function Testimonials() {
   const [active, setActive] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setActive(a => (a + 1) % TESTIMONIALS.length), 6000);
+    const t = setInterval(() => setActive(a => (a + 1) % TESTIMONIALS.length), 7000);
     return () => clearInterval(t);
   }, []);
   const t = TESTIMONIALS[active];
+
   return (
-    <section className="relative py-20 border-t border-outline-variant/20 overflow-hidden">
+    <section className="relative py-28 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img src={IMAGES.large_crowd_performance} alt="" className="w-full h-full object-cover object-center opacity-30" aria-hidden="true" />
-        <div className="absolute inset-0 bg-surface/70" />
+        <img src={IMAGES.large_crowd_performance} alt="" data-parallax="0.05" className="w-full h-full object-cover object-center opacity-25 scale-125" aria-hidden="true" />
+        <div className="absolute inset-0 bg-surface/80" />
       </div>
+
       <div className="relative z-10 container mx-auto px-6 md:px-12 max-w-[1280px]">
-        <div className="text-center mb-12 scroll-reveal">
-          <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold">Community Voices</h2>
-          <p className="font-body text-base text-on-surface-variant mt-3 max-w-xl mx-auto">
-            Hear from the people whose lives AHC has touched.
-          </p>
-        </div>
-        <div className="max-w-3xl mx-auto scroll-reveal">
-          <div key={active} className="liquid-glass-strong rounded-3xl p-8 md:p-12 text-center shadow-sm animate-fade-in">
-            <span className="material-symbols-outlined text-5xl text-primary/30 mb-4 block select-none">format_quote</span>
-            <p className="font-body text-lg md:text-xl text-on-surface-variant leading-relaxed mb-8 italic">"{t.quote}"</p>
-            <div className="flex items-center justify-center gap-4">
-              <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center font-headline text-sm font-bold border-2 border-white/50 shadow-inner`}>
-                {t.initials}
-              </div>
-              <div className="text-left">
-                <div className="font-headline font-bold text-primary text-base">{t.name}</div>
-                <div className="font-body text-xs text-on-surface-variant uppercase tracking-wider">{t.role}</div>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center gap-2 mt-6">
-            {TESTIMONIALS.map((_, i) => (
+        <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 items-center">
+          {/* Left: heading + controls */}
+          <div className="scroll-reveal-left">
+            <Eyebrow className="mb-6">Community Voices</Eyebrow>
+            <h2 className="font-headline text-4xl md:text-5xl text-primary font-bold leading-[1.1] mb-6">
+              <SplitWords>
+                What the community <em className="italic">says back</em>.
+              </SplitWords>
+            </h2>
+            <p className="font-body text-base text-on-surface-variant leading-relaxed mb-10 max-w-md">
+              From churches to classrooms to community associations — the
+              people we show up for, in their own words.
+            </p>
+            <div className="flex items-center gap-4">
               <button
-                key={i}
-                onClick={() => setActive(i)}
-                className={`rounded-full transition-all duration-300 ${i === active ? 'w-6 h-2 bg-primary' : 'w-2 h-2 bg-primary/25 hover:bg-primary/50'}`}
-              />
-            ))}
+                onClick={() => setActive(a => (a - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
+                aria-label="Previous testimonial"
+                className="liquid-glass rounded-full p-3 text-primary hover:bg-white/80 transition-all active:scale-90"
+              >
+                <span className="material-symbols-outlined text-xl block">arrow_back</span>
+              </button>
+              <button
+                onClick={() => setActive(a => (a + 1) % TESTIMONIALS.length)}
+                aria-label="Next testimonial"
+                className="bg-primary text-on-primary rounded-full p-3 hover:bg-primary-container transition-all active:scale-90 shadow-md"
+              >
+                <span className="material-symbols-outlined text-xl block">arrow_forward</span>
+              </button>
+              <div className="flex gap-2 ml-2">
+                {TESTIMONIALS.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActive(i)}
+                    aria-label={`Show testimonial ${i + 1}`}
+                    className={`rounded-full transition-all duration-300 ${i === active ? 'w-7 h-2 bg-primary' : 'w-2 h-2 bg-primary/25 hover:bg-primary/50'}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right: quote card */}
+          <div className="scroll-reveal-right">
+            <div key={active} className="liquid-glass-strong rounded-3xl p-8 md:p-12 shadow-xl animate-fade-in relative">
+              <span
+                aria-hidden="true"
+                className="font-headline text-[7rem] text-primary/10 absolute -top-4 left-6 leading-none select-none"
+              >
+                "
+              </span>
+              <p className="font-headline text-lg md:text-2xl text-on-surface leading-relaxed mb-8 relative italic">
+                {t.quote}
+              </p>
+              <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center font-headline text-sm font-bold border-2 border-white/50 shadow-inner`}>
+                  {t.initials}
+                </div>
+                <div>
+                  <div className="font-headline font-bold text-primary text-base">{t.name}</div>
+                  <div className="font-body text-xs text-on-surface-variant uppercase tracking-wider">{t.role}</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -86,59 +168,7 @@ function Testimonials() {
   );
 }
 
-// ── Instagram / Social Feed ───────────────────────────────────────────────────
-function InstagramFeed() {
-  return (
-    <section className="bg-about py-20 border-t border-outline-variant/20">
-      <div className="container mx-auto px-6 md:px-12 max-w-[1280px]">
-        <div className="text-center mb-10">
-          <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold flex items-center justify-center gap-3">
-            <span className="material-symbols-outlined text-3xl">photo_camera</span>
-            Follow Along
-          </h2>
-          <p className="font-body text-base text-on-surface-variant mt-3">Stay connected with AHC on social media</p>
-        </div>
-        <div className="flex flex-col sm:flex-row justify-center gap-6 max-w-2xl mx-auto">
-          <a href="https://www.instagram.com/asianheritagecollective" target="_blank" rel="noopener noreferrer"
-            className="liquid-glass-strong rounded-3xl p-8 flex flex-col items-center gap-4 hover:shadow-xl transition-all duration-300 group flex-1 text-center no-underline"
-          >
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-              <svg viewBox="0 0 24 24" className="w-8 h-8 fill-white" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </div>
-            <div>
-              <div className="font-headline font-bold text-primary text-base">@asianheritagecollective</div>
-              <div className="font-body text-xs text-on-surface-variant mt-1">Instagram</div>
-            </div>
-            <div className="bg-primary text-on-primary px-5 py-2 rounded-full font-body font-bold text-xs uppercase tracking-wider group-hover:bg-primary-container transition-all shadow-md">
-              View on Instagram
-            </div>
-          </a>
-
-          <a href="https://www.tiktok.com/@asianheritagecollective" target="_blank" rel="noopener noreferrer"
-            className="liquid-glass-strong rounded-3xl p-8 flex flex-col items-center gap-4 hover:shadow-xl transition-all duration-300 group flex-1 text-center no-underline"
-          >
-            <div className="w-16 h-16 rounded-2xl bg-black flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-              <svg viewBox="0 0 24 24" className="w-8 h-8 fill-white" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/>
-              </svg>
-            </div>
-            <div>
-              <div className="font-headline font-bold text-primary text-base">@asianheritagecollective</div>
-              <div className="font-body text-xs text-on-surface-variant mt-1">TikTok</div>
-            </div>
-            <div className="bg-black text-white px-5 py-2 rounded-full font-body font-bold text-xs uppercase tracking-wider group-hover:bg-neutral-800 transition-all shadow-md">
-              View on TikTok
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── Apply Form ────────────────────────────────────────────────────────────────
+/* ── Apply Form ───────────────────────────────────────────── */
 function ApplyForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -178,10 +208,10 @@ function ApplyForm() {
     );
   }
 
-  const inputClass = 'w-full border border-outline/30 rounded-xl px-4 py-3 font-body text-sm text-on-surface bg-surface-container focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-on-surface-variant/50';
+  const inputClass = 'w-full border border-outline/30 rounded-xl px-4 py-3 font-body text-sm text-on-surface bg-white/80 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-on-surface-variant/50';
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
         <div>
           <label className="font-body text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-1.5 block">Full Name *</label>
@@ -248,7 +278,64 @@ function ApplyForm() {
   );
 }
 
-// ── Newsletter Bar ────────────────────────────────────────────────────────────
+/* ── Apply section (split layout) ─────────────────────────── */
+function ApplySection() {
+  return (
+    <section className="bg-about py-28 relative overflow-hidden" id="apply">
+      <span
+        aria-hidden="true"
+        data-parallax="0.12"
+        className="text-watermark font-headline text-[14rem] absolute -top-8 -left-6 leading-none pointer-events-none hidden xl:block"
+      >
+        07
+      </span>
+      <div className="container mx-auto px-6 md:px-12 max-w-[1280px]">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
+          <div className="lg:sticky lg:top-32 scroll-reveal-left">
+            <Eyebrow className="mb-6">07 · Join Us</Eyebrow>
+            <h2 className="font-headline text-4xl md:text-5xl text-primary font-bold leading-[1.1] mb-6">
+              <SplitWords>
+                Come build something <em className="italic">with us</em>.
+              </SplitWords>
+            </h2>
+            <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed mb-8">
+              Whether you're a student looking to explore your heritage, a
+              parent wanting to get involved, or a community member eager to
+              contribute — we'd love to hear from you.
+            </p>
+            <ul className="space-y-4">
+              {[
+                { icon: 'music_note', text: 'Perform traditional music for real audiences' },
+                { icon: 'brush', text: 'Lead calligraphy, origami, and craft workshops' },
+                { icon: 'school', text: 'Tutor Chinese, from elementary level to AP' },
+                { icon: 'volunteer_activism', text: 'Earn certified volunteer & service hours' },
+              ].map((item) => (
+                <li key={item.text} className="flex items-center gap-4">
+                  <span className="bg-primary/10 rounded-full p-2.5 text-primary shrink-0">
+                    <span className="material-symbols-outlined text-lg block select-none">{item.icon}</span>
+                  </span>
+                  <span className="font-body text-sm md:text-base text-on-surface-variant">{item.text}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="font-body text-sm text-on-surface-variant/80 mt-8">
+              Questions first? Write to{' '}
+              <a href="mailto:asianheritagecollective@gmail.com" className="text-primary font-bold underline decoration-dotted">
+                asianheritagecollective@gmail.com
+              </a>
+            </p>
+          </div>
+
+          <div className="liquid-glass-strong rounded-3xl p-8 md:p-10 shadow-xl border border-primary/10 scroll-reveal-right">
+            <ApplyForm />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Newsletter Bar ───────────────────────────────────────── */
 function NewsletterBar() {
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
@@ -270,7 +357,7 @@ function NewsletterBar() {
   }
 
   return (
-    <section className="bg-primary py-12">
+    <section className="bg-primary py-12 border-t border-white/10">
       <div className="container mx-auto px-6 md:px-12 max-w-[1280px] flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <h3 className="font-headline text-2xl text-on-primary font-bold">Stay in the Loop</h3>
@@ -299,95 +386,55 @@ function NewsletterBar() {
   );
 }
 
-// ── Home Page Sidebar (section anchors) ───────────────────────────────────────
-function HomeSidebar({ activeSection }: { activeSection: string }) {
-  const [hovered, setHovered] = useState(false);
+/* ── Section dot rail (right edge) ────────────────────────── */
+const RAIL_SECTIONS = [
+  { id: 'about', label: 'Who We Are' },
+  { id: 'story', label: 'Our Story' },
+  { id: 'programs', label: 'Programs' },
+  { id: 'transparency', label: 'Accountability' },
+  { id: 'partnership', label: 'Partners' },
+  { id: 'interactive', label: 'Try It Yourself' },
+  { id: 'apply', label: 'Join Us' },
+];
 
-  const links = [
-    { hash: 'about',    label: 'About',       desc: 'Overview & Mission',      icon: 'info' },
-    { hash: 'story',    label: 'Our Story',    desc: 'Historical timelines',    icon: 'history_edu' },
-    { hash: 'programs', label: 'Programs',     desc: 'Arts, music & teaching',  icon: 'celebration' },
-    { hash: 'impact',   label: 'Impact',       desc: 'Nonprofit transparency',  icon: 'analytics' },
-    { hash: 'hub',      label: 'Get Involved', desc: 'Resource portals',        icon: 'hub' },
-    { hash: 'apply',    label: 'Join Us',      desc: 'Volunteer applications',  icon: 'volunteer_activism' },
-  ];
-
-  function scrollTo(hash: string) {
-    document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
-    setHovered(false);
-  }
-
+function SectionRail({ activeSection }: { activeSection: string }) {
   return (
-    <div
-      className="fixed left-0 top-1/5 z-[150] h-[540px] hidden md:flex items-center transition-all duration-300 pointer-events-none"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+    <nav
+      aria-label="Page sections"
+      className="fixed right-5 top-1/2 -translate-y-1/2 z-[150] hidden lg:flex flex-col gap-3.5"
     >
-      <div className={`pointer-events-auto h-full rounded-r-3xl transition-all duration-350 shadow-2xl border-r border-y border-white/40 backdrop-blur-3xl flex relative overflow-hidden ${hovered ? 'w-72 bg-[#fcf9f8]/95' : 'w-16 bg-[#fcf9f8]/80'}`}>
-        {!hovered && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none py-4">
-            <span className="material-symbols-outlined text-primary mb-3 text-2xl select-none">toc</span>
-            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary font-bold whitespace-nowrap rotate-180" style={{ writingMode: 'vertical-lr' }}>
-              ★ Landing Sections
-            </div>
-          </div>
-        )}
-
-        <div className={`w-full p-5 flex flex-col justify-between transition-all duration-350 select-none ${hovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
-          <div className="space-y-4">
-            <div className="border-b border-primary/10 pb-3">
-              <span className="text-[10px] font-bold text-primary font-mono uppercase tracking-widest block">Homepage Sections</span>
-              <span className="text-xs text-on-surface-variant font-medium font-body">Quick-jump anchors</span>
-            </div>
-            <div className="space-y-1.5">
-              {links.map(pg => (
-                <button
-                  key={pg.hash}
-                  onClick={() => scrollTo(pg.hash)}
-                  className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center gap-3 active:scale-95 cursor-pointer ${activeSection === pg.hash ? 'bg-primary text-on-primary shadow-md animate-pop-in' : 'hover:bg-primary/5 text-on-surface hover:text-primary'}`}
-                >
-                  <span className="material-symbols-outlined text-lg shrink-0 select-none">{pg.icon}</span>
-                  <div className="leading-tight">
-                    <span className="text-xs font-bold block">{pg.label}</span>
-                    <span className={`text-[9px] block font-medium ${activeSection === pg.hash ? 'text-white/70' : 'text-on-surface-variant/70'}`}>{pg.desc}</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="text-[9px] font-mono text-center text-on-surface-variant/40 mt-4">Asian Heritage Collective © 2026</div>
-        </div>
-      </div>
-    </div>
+      {RAIL_SECTIONS.map((s) => (
+        <button
+          key={s.id}
+          onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' })}
+          className="group relative flex items-center justify-end"
+          aria-label={`Jump to ${s.label}`}
+        >
+          <span className="absolute right-6 liquid-glass-strong text-primary font-body text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full whitespace-nowrap opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none shadow-md">
+            {s.label}
+          </span>
+          <span
+            className={`rounded-full transition-all duration-300 border ${
+              activeSection === s.id
+                ? 'w-3 h-3 bg-primary border-primary shadow-[0_0_8px_rgba(87,0,4,0.5)]'
+                : 'w-2.5 h-2.5 bg-primary/15 border-primary/30 group-hover:bg-primary/40'
+            }`}
+          />
+        </button>
+      ))}
+    </nav>
   );
 }
 
-// ── Main HomeApp ──────────────────────────────────────────────────────────────
+/* ── Main HomeApp ─────────────────────────────────────────── */
 export default function HomeApp() {
   const [activeSection, setActiveSection] = useState('');
   const isLockActive = useRef(false);
-  const lockTimeout = useRef<any>(null);
-
-  // Navigate helper for components that still use onNavigate prop
-  function handleNavigate(page: string) {
-    window.location.href = page === 'home' ? '/' : `/${page}`;
-  }
-
-  // Smooth scroll handler for sidebar / footer anchor links
-  function handleLinkClick(e: React.MouseEvent<HTMLAnchorElement>, hash: string) {
-    e.preventDefault();
-    const sectionName = hash.replace('#', '');
-    isLockActive.current = true;
-    setActiveSection(sectionName);
-    if (lockTimeout.current) clearTimeout(lockTimeout.current);
-    lockTimeout.current = setTimeout(() => { isLockActive.current = false; }, 900);
-    document.getElementById(sectionName)?.scrollIntoView({ behavior: 'smooth' });
-  }
 
   // Section intersection observer
   useEffect(() => {
-    const sections = ['about', 'story', 'impact', 'programs', 'hub', 'apply'];
-    const observers = sections.map(id => {
+    const ids = RAIL_SECTIONS.map(s => s.id);
+    const observers = ids.map(id => {
       const el = document.getElementById(id);
       if (!el) return null;
       const obs = new IntersectionObserver(
@@ -415,33 +462,20 @@ export default function HomeApp() {
 
   return (
     <main className="select-text relative min-h-screen">
-      <HomeSidebar activeSection={activeSection} />
+      <SectionRail activeSection={activeSection} />
 
-      <Hero onNavigate={handleNavigate} />
-      <About onNavigate={handleNavigate} />
+      <Hero />
+      <FactRibbon />
+      <About />
       <Story />
-      <WhatWeDo onNavigate={handleNavigate} />
+      <WhatWeDo />
       <Transparency />
       <Partnership />
       <Testimonials />
-      <InstagramFeed />
-      <Hub onNavigate={handleNavigate} />
-
-      {/* Apply / Contact Section */}
-      <section className="bg-surface py-24" id="apply">
-        <div className="container mx-auto px-6 md:px-12 max-w-[1280px]">
-          <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold">Join Asian Heritage Collective</h2>
-            <p className="font-body text-base text-on-surface-variant mt-4 max-w-2xl mx-auto leading-relaxed">
-              Whether you're a student looking to explore your heritage, a parent wanting to get involved, or a community member eager to contribute — we'd love to hear from you.
-            </p>
-          </div>
-          <ApplyForm />
-        </div>
-      </section>
-
+      <Hub />
+      <ApplySection />
       <NewsletterBar />
-      <Footer onLinkClick={handleLinkClick} onNavigate={handleNavigate} />
+      <Footer />
     </main>
   );
 }

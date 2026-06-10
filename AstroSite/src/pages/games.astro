@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MinigamesPage from '../components/MinigamesPage';
+import Footer from '../components/Footer';
 ---
 
 <Layout
@@ -8,4 +9,5 @@ import MinigamesPage from '../components/MinigamesPage';
   description="Play cultural minigames: Mooncake Maker, Lantern Riddles, Guzheng Recorder, and Tea Ceremony — created by AHC."
 >
   <MinigamesPage client:load />
+  <Footer />
 </Layout>

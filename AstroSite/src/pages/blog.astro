@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import BlogPage from '../components/BlogPage';
+import Footer from '../components/Footer';
 ---
 
 <Layout
@@ -8,4 +9,5 @@ import BlogPage from '../components/BlogPage';
   description="Stories, cultural essays, and reflections written by AHC members and contributors on Asian identity, heritage, and community."
 >
   <BlogPage client:load />
+  <Footer />
 </Layout>

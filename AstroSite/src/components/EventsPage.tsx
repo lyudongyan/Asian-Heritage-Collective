@@ -1,237 +1,154 @@
-import React, { useState, useEffect } from "react";
-import { IMAGES } from "../data";
+import React, { useEffect } from "react";
+import { PAST_EVENTS, type PastEvent } from "../data/pastEvents";
+import { Eyebrow, SplitWords } from "./ui";
 
-interface EventsPageProps {
-  onBack?: () => void;
+// Resolve gallery images from filenames at build time (Vite)
+const allImages = import.meta.glob<{ default: { src: string } }>(
+  "../assets/images/*",
+  { eager: true }
+);
+
+function imgSrc(filename: string): string {
+  return allImages[`../assets/images/${filename}`]?.default?.src ?? "";
 }
 
-interface EventItem {
-  id: string;
-  title: string;
-  date: string;
-  location: string;
-  desc: string;
-  img: string;
-  images: string[];
+function yearOf(evt: PastEvent): string {
+  const match = evt.date.match(/(\d{4})\s*$/);
+  return match ? match[1] : evt.date;
 }
 
-const PAST_EVENTS_LIST: EventItem[] = [
-  {
-    id: "evt-4",
-    title: "Auburn Hills Public Library — API Heritage Month",
-    date: "May 2026",
-    location: "Auburn Hills Public Library, Michigan",
-    desc: "For Asian Pacific Islander Heritage Month, AHC hosted an origami workshop with 20 participants alongside a presentation on Asian heritage history. The event reached an audience largely new to AHC's work.",
-    img: IMAGES.auburn_hills_event,
-    images: [IMAGES.auburn_hills_event, IMAGES.auburn_hills_presenters, IMAGES.ahpl_full_table_view]
-  },
-  {
-    id: "evt-6",
-    title: "Baldwin Public Library — API Heritage Month",
-    date: "February - May 2026",
-    location: "Baldwin Public Library, Michigan",
-    desc: "AHC assembled 30 craft kits and set up a cultural display at Baldwin Public Library for API Heritage Month. Visitors could take kits home, extending the reach of the activity well beyond the day itself.",
-    img: IMAGES.baldwin_pl_event,
-    images: [IMAGES.baldwin_pl_event]
-  },
-  {
-    id: "evt-3",
-    title: "Detroit Eastern Market Performance",
-    date: "April 2026",
-    location: "Detroit Eastern Market",
-    desc: "AHC performed traditional Chinese music for a crowd of 2,500. Alongside the performance, we ran a free public calligraphy activity with 60 participants and sold Chinese fans, raising $100 for the Association of Chinese Americans. One of our largest public appearances to date.",
-    img: IMAGES.eastern_market_performance,
-    images: [IMAGES.eastern_market_performance, IMAGES.eastern_market_event, IMAGES.eastern_market]
-  },
-  {
-    id: "evt-8",
-    title: "International Academy International Food Night",
-    date: "April 2026",
-    location: "International Academy, Michigan",
-    desc: "AHC members contributed three dishes and performed live music for an audience of 450. One of our highest-attendance events and a strong showcase of what AHC brings to multicultural community programming.",
-    img: IMAGES.international_food_night,
-    images: [IMAGES.international_food_night]
-  },
-  {
-    id: "evt-5",
-    title: "Grace Centers of Hope — Volunteer Meal Service",
-    date: "March 2026",
-    location: "Grace Centers of Hope, Michigan",
-    desc: "Six AHC members prepared 300 meals for homeless individuals and veterans served by Grace Centers of Hope. A straightforward service event, and one of the ones we're most proud of.",
-    img: IMAGES.community_engagement,
-    images: [IMAGES.community_engagement, IMAGES.crowd_watching]
-  },
-  {
-    id: "evt-7",
-    title: "Annual Music Banquet — San Marino Club",
-    date: "January 2026",
-    location: "San Marino Club, Michigan",
-    desc: "AHC performed for a 90-person audience at the Annual Music Banquet. The performance was well received, and our performers were formally recognized with honors for their contribution to the evening.",
-    img: IMAGES.san_marino_performance,
-    images: [IMAGES.san_marino_performance]
-  },
-  {
-    id: "evt-2",
-    title: "Michigan Chinese Women's Association Annual Banquet",
-    date: "September 2025",
-    location: "Michigan",
-    desc: "AHC ran a sticker-making activity for 10 children and performed traditional music for 400 banquet guests. Pieces performed included the Butterfly Lovers Violin Concerto and Colorful Clouds Chasing the Moon. One of AHC's first large-audience performances.",
-    img: IMAGES.mcwa_banquet,
-    images: [IMAGES.mcwa_banquet, IMAGES.michigan_women, IMAGES.cello_player, IMAGES.mcwa_banquet_crowd_view]
-  },
-  {
-    id: "evt-1",
-    title: "Oakland Chinese Church Annual Open House",
-    date: "August 2025",
-    location: "Oakland Chinese Church, Michigan",
-    desc: "AHC brought sticker-making, badminton, and a cultural intro presentation to OCC's annual open house, welcoming 35 attendees. Brady Morishita of OCC noted the event went excellently and thanked AHC for hosting. An early demonstration of what AHC's community programming could look like at its best.",
-    img: IMAGES.open_house_event,
-    images: [IMAGES.open_house_event, IMAGES.oakland_church]
-  }
-];
-
-export default function EventsPage({ onBack = () => { window.location.href = '/'; } }: EventsPageProps) {
-  const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
-  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
-
+export default function EventsPage() {
+  // Scroll-reveal observer for static page
   useEffect(() => {
-    if (selectedEventId !== null) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }, [selectedEventId]);
+    const obs = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("in-view");
+        }),
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+    );
+    document
+      .querySelectorAll(".scroll-reveal, .scroll-reveal-left, .scroll-reveal-right")
+      .forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
 
-  if (selectedEventId !== null) {
-    const eventIndex = PAST_EVENTS_LIST.findIndex((e) => e.id === selectedEventId);
-    const evt = PAST_EVENTS_LIST[eventIndex];
-
-    if (evt) {
-      return (
-        <div className="pt-32 pb-24 min-h-screen bg-about relative select-text">
-          <div className="container mx-auto px-6 md:px-12 max-w-4xl animate-fade-in">
-            <button
-              onClick={() => setSelectedEventId(null)}
-              className="mb-8 font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white/40 px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
-            >
-              <span className="material-symbols-outlined text-[16px]">arrow_back</span>
-              Back to Events
-            </button>
-
-            <article className="liquid-glass-strong rounded-3xl p-6 md:p-10 border border-primary/5 shadow-sm space-y-8 text-left">
-              <div className="space-y-4 animate-slide-up-fade">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider font-mono">{evt.date}</span>
-                  <span className="text-on-surface-variant/70 text-xs font-bold flex items-center gap-1">
-                    <span className="material-symbols-outlined text-sm">location_on</span> {evt.location}
-                  </span>
-                </div>
-                <h1 className="font-headline text-3xl md:text-5xl text-primary font-bold leading-tight">{evt.title}</h1>
-              </div>
-
-              <div className="w-full h-64 md:h-[450px] overflow-hidden rounded-2xl border border-white/50 shadow-inner animate-slide-up-fade delay-100">
-                <img alt={evt.title} className="w-full h-full object-cover" src={evt.img} />
-              </div>
-
-              <div className="space-y-4 animate-slide-up-fade delay-200">
-                <h3 className="font-headline text-xl text-primary font-bold">Event Summary</h3>
-                <p className="font-body text-base text-on-surface-variant leading-relaxed whitespace-pre-line">{evt.desc}</p>
-              </div>
-
-              {evt.images.length > 0 && (
-                <div className="space-y-4 border-t border-primary/10 pt-8 mt-8 animate-slide-up-fade delay-300">
-                  <h3 className="font-headline text-xl text-primary font-bold">Event Photos</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    {evt.images.map((img, idx) => (
-                      <div
-                        key={idx}
-                        onClick={() => setLightboxImg(img)}
-                        className="group relative h-48 rounded-xl overflow-hidden shadow-sm border border-white/50 cursor-pointer transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30"
-                      >
-                        <img alt={`${evt.title} gallery image ${idx + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={img} />
-                        <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <span className="material-symbols-outlined text-white text-3xl">zoom_in</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <div className="border-t border-primary/10 pt-8 mt-12 flex items-center justify-between gap-4 animate-slide-up-fade delay-400">
-                {eventIndex > 0 ? (
-                  <button onClick={() => setSelectedEventId(PAST_EVENTS_LIST[eventIndex - 1].id)} className="font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white/40 px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm">
-                    <span className="material-symbols-outlined text-[16px]">arrow_back</span>Previous Event
-                  </button>
-                ) : <div />}
-                {eventIndex < PAST_EVENTS_LIST.length - 1 ? (
-                  <button onClick={() => setSelectedEventId(PAST_EVENTS_LIST[eventIndex + 1].id)} className="font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white/40 px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm">
-                    Next Event<span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                  </button>
-                ) : <div />}
-              </div>
-            </article>
-          </div>
-
-          {lightboxImg && (
-            <div className="fixed bg-black/90 backdrop-blur-md flex items-center justify-center" style={{ position: "fixed", inset: 0, zIndex: 9999 }} onClick={() => setLightboxImg(null)}>
-              <div className="relative w-full max-w-4xl mx-4 animate-pop-in" onClick={(e) => e.stopPropagation()}>
-                <button onClick={() => setLightboxImg(null)} className="absolute -top-12 right-0 text-white hover:text-secondary transition-colors p-2 flex items-center gap-1.5 font-body text-xs font-bold uppercase tracking-wider z-10">
-                  <span className="material-symbols-outlined text-2xl">close</span> Close
-                </button>
-                <div className="bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden shadow-2xl">
-                  <div className="max-h-[70vh] w-full bg-black/40 flex items-center justify-center overflow-hidden">
-                    <img alt="Enlarged view" className="max-h-[70vh] max-w-full object-contain" src={lightboxImg} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      );
-    }
+  // Group events by year, preserving order
+  const groups: { year: string; events: PastEvent[] }[] = [];
+  for (const evt of PAST_EVENTS) {
+    const year = yearOf(evt);
+    const last = groups[groups.length - 1];
+    if (last && last.year === year) last.events.push(evt);
+    else groups.push({ year, events: [evt] });
   }
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-impact relative select-text">
-      <div className="container mx-auto px-6 md:px-12 max-w-[1280px] animate-fade-in">
-        <button
-          onClick={onBack}
-          className="mb-8 font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white/40 px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
-        >
-          <span className="material-symbols-outlined text-[16px]">arrow_back</span>
-          Back to Homepage
-        </button>
+    <div className="pt-36 pb-24 min-h-screen bg-impact relative select-text overflow-hidden">
+      <span
+        aria-hidden="true"
+        data-parallax="0.1"
+        className="text-watermark font-headline text-[13rem] absolute top-16 right-0 leading-none pointer-events-none hidden xl:block"
+      >
+        档案
+      </span>
 
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-primary font-body text-xs font-bold uppercase tracking-widest block mb-1">Historic Archive</span>
-          <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold">Past Events &amp; Celebrations</h2>
-          <p className="font-body text-sm md:text-base text-on-surface-variant mt-2 leading-relaxed">
-            Take a stroll through our archive of historic assemblies, performances, workshops, and communal cooking programs.
+      <div className="container mx-auto px-6 md:px-12 max-w-5xl relative">
+        {/* Header */}
+        <header className="max-w-2xl mb-20 animate-slide-up-fade">
+          <Eyebrow className="mb-6">The Archive</Eyebrow>
+          <h1 className="font-headline text-4xl md:text-6xl text-primary font-bold leading-[1.05] mb-6">
+            <SplitWords>
+              Eight events. <em className="italic">Thousands of people.</em>
+            </SplitWords>
+          </h1>
+          <p className="font-body text-base md:text-lg text-on-surface-variant leading-relaxed">
+            Performances, workshops, meal services, and library programs —
+            everything AHC has put in front of a Michigan audience since its
+            first open house.
           </p>
-        </div>
+        </header>
 
-        <div className="space-y-12 max-w-5xl mx-auto">
-          {PAST_EVENTS_LIST.map((evt) => (
-            <div
-              key={evt.id}
-              onClick={() => setSelectedEventId(evt.id)}
-              className="liquid-glass-strong rounded-3xl p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center border border-primary/5 hover:border-primary/25 cursor-pointer transform hover:-translate-y-1 hover:shadow-md transition-all duration-300"
-            >
-              <div className="w-full md:w-1/3 h-52 overflow-hidden rounded-2xl border border-white/50 shrink-0">
-                <img alt={evt.title} className="w-full h-full object-cover" src={evt.img} />
+        {/* Year-grouped timeline */}
+        <div className="relative">
+          {/* spine */}
+          <div className="absolute left-[7px] md:left-[11px] top-2 bottom-0 w-px bg-primary/20" aria-hidden="true" />
+
+          {groups.map((group) => (
+            <div key={group.year} className="relative mb-4">
+              {/* Year marker */}
+              <div className="flex items-center gap-5 mb-8 scroll-reveal">
+                <span className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-primary border-4 border-white shadow-md shrink-0 relative z-10" />
+                <span className="font-headline text-3xl md:text-4xl font-bold text-primary">
+                  {group.year}
+                </span>
               </div>
-              <div className="flex-1 space-y-3 text-left">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider font-mono">{evt.date}</span>
-                  <span className="text-on-surface-variant/70 text-xs font-bold flex items-center gap-1">
-                    <span className="material-symbols-outlined text-sm">location_on</span> {evt.location}
-                  </span>
-                </div>
-                <h3 className="font-headline text-xl md:text-2xl text-primary font-bold">{evt.title}</h3>
-                <p className="font-body text-sm text-on-surface-variant leading-relaxed">{evt.desc}</p>
-                <span className="font-body text-[10px] font-bold text-primary uppercase tracking-wider block mt-2 hover:underline">View Event Details &amp; Gallery →</span>
+
+              {/* Event cards */}
+              <div className="space-y-8 pl-8 md:pl-14 pb-8">
+                {group.events.map((evt) => (
+                  <a
+                    key={evt.id}
+                    href={`/events/${evt.id}`}
+                    className="liquid-glass-strong rounded-3xl p-5 md:p-7 flex flex-col md:flex-row gap-7 items-stretch border border-primary/5 hover:border-primary/25 cursor-pointer hover:-translate-y-1 hover:shadow-xl transition-all duration-300 no-underline group scroll-reveal block"
+                  >
+                    <div className="w-full md:w-[280px] h-48 md:h-auto overflow-hidden rounded-2xl border border-white/50 shrink-0 relative">
+                      <img
+                        alt={evt.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        loading="lazy"
+                        src={imgSrc(evt.imageFile)}
+                      />
+                      {evt.imageFiles.length > 1 && (
+                        <span className="absolute bottom-3 right-3 liquid-glass rounded-full px-3 py-1 font-mono text-[10px] font-bold text-primary flex items-center gap-1">
+                          <span className="material-symbols-outlined text-xs">photo_library</span>
+                          {evt.imageFiles.length}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex-1 flex flex-col justify-center space-y-3 text-left py-1">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                        <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider font-mono">
+                          {evt.date}
+                        </span>
+                        <span className="text-on-surface-variant/70 text-xs font-bold flex items-center gap-1">
+                          <span className="material-symbols-outlined text-sm">location_on</span>
+                          {evt.location}
+                        </span>
+                      </div>
+                      <h3 className="font-headline text-xl md:text-2xl text-primary font-bold leading-snug group-hover:text-primary-container transition-colors">
+                        {evt.title}
+                      </h3>
+                      <p className="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3">
+                        {evt.desc}
+                      </p>
+                      <span className="font-body text-[10px] font-bold text-primary uppercase tracking-widest inline-flex items-center gap-1.5 mt-1 group-hover:gap-3 transition-all">
+                        View Details &amp; Gallery
+                        <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                      </span>
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-12 liquid-glass-strong rounded-3xl p-10 text-center border border-primary/10 scroll-reveal">
+          <h3 className="font-headline text-2xl text-primary font-bold mb-3">
+            Want to be at the next one?
+          </h3>
+          <p className="font-body text-sm text-on-surface-variant mb-6 max-w-md mx-auto">
+            Every event on this page was planned and run by students. Join us
+            and help build the next chapter of the archive.
+          </p>
+          <a
+            href="/#apply"
+            className="bg-primary text-on-primary px-8 py-3.5 rounded-full font-body font-bold text-xs uppercase tracking-widest hover:bg-primary-container transition-all shadow-md active:scale-95 inline-flex items-center gap-2 no-underline"
+          >
+            Apply to Join
+            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
         </div>
       </div>
     </div>

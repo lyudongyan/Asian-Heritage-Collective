@@ -213,6 +213,81 @@ export const PARTNERS: PartnerItem[] = [
   { name: "Auburn Hills Public Library", img: s(auburnHillsEventImg) },
 ];
 
+export interface StatNumeric {
+  value: number;
+  suffix: string;
+  decimals?: number;
+  label: string;
+  detail: string;
+}
+
+export const STATS_NUMERIC: StatNumeric[] = [
+  { value: 6200, suffix: "+", label: "People Reached", detail: "Individuals directly impacted by performances, workshops, and tutoring" },
+  { value: 3600, suffix: "+", label: "Service Hours", detail: "Volunteer and community service hours logged by members" },
+  { value: 51.4, suffix: "k", decimals: 1, label: "Digital Impacts", detail: "Content impressions across AHC's digital channels" },
+];
+
+export interface Milestone {
+  date: string;
+  title: string;
+  desc: string;
+  img: string;
+  /** "contain" renders the image uncropped on a white tile (for logos/seals) */
+  fit?: "contain";
+}
+
+export const MILESTONES: Milestone[] = [
+  {
+    date: "Oct 2023",
+    title: "A small ensemble forms",
+    desc: "Lyudong Yan founds AHC as a student music group with one goal: give Asian youth in Michigan a real reason to engage with their heritage.",
+    img: s(foundingStoryLeftImg),
+  },
+  {
+    date: "2024",
+    title: "Candid Bronze Seal",
+    desc: "In its founding year as a registered nonprofit, AHC earns the Candid Bronze Seal of Transparency.",
+    img: s(candidBronzeImg),
+    fit: "contain",
+  },
+  {
+    date: "Aug 2025",
+    title: "First community open house",
+    desc: "Sticker-making, badminton, and a cultural presentation welcome 35 attendees at Oakland Chinese Church.",
+    img: s(openHouseEventImg),
+  },
+  {
+    date: "Sep 2025",
+    title: "Butterfly Lovers for 400",
+    desc: "AHC performs the Butterfly Lovers Violin Concerto for 400 guests at the Michigan Chinese Women's Association banquet — its first large-audience performance.",
+    img: s(mcwaBanquetImg),
+  },
+  {
+    date: "Apr 2026",
+    title: "Eastern Market, crowd of 2,500",
+    desc: "Traditional Chinese music in the heart of Detroit, alongside a free public calligraphy activity with 60 participants.",
+    img: s(easternMarketPerformanceImg),
+  },
+  {
+    date: "2026",
+    title: "Candid Silver Seal",
+    desc: "AHC's transparency rating is renewed and upgraded to Silver, with 3,600+ volunteer hours now logged.",
+    img: s(candidSilverImg),
+    fit: "contain",
+  },
+];
+
+export const MARQUEE_FACTS: string[] = [
+  "2,500 listeners at Detroit Eastern Market",
+  "300 meals prepared at Grace Centers of Hope",
+  "6,200+ individuals directly impacted",
+  "3,600+ volunteer & service hours",
+  "51.4k digital content impacts",
+  "Candid Silver Seal of Transparency · 2026",
+  "Every program free to participants",
+  "Michigan 501(c)(3) · Est. 2023",
+];
+
 export interface HubItem {
   title: string;
   desc: string;

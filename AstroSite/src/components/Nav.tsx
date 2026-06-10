@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { IMAGES } from '../data';
+import ScrollFX from './ScrollFX';
 
 interface NavProps {
   currentPath: string;
@@ -9,11 +11,13 @@ export default function Nav({ currentPath }: NavProps) {
   const [mouseActive, setMouseActive] = useState(false);
   const [ripples, setRipples] = useState<{ id: number; x: number; y: number }[]>([]);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     function handleScroll() {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (totalHeight > 0) setScrollProgress((window.scrollY / totalHeight) * 100);
+      setScrolled(window.scrollY > 40);
     }
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -62,6 +66,9 @@ export default function Nav({ currentPath }: NavProps) {
 
   return (
     <>
+      {/* Global scroll-motion engine */}
+      <ScrollFX />
+
       {/* Mouse spotlight overlay */}
       <div className="mouse-spotlight" />
       <div className="mouse-follower-circle" />
@@ -90,24 +97,31 @@ export default function Nav({ currentPath }: NavProps) {
       </div>
 
       {/* Top Nav */}
-      <div className="fixed top-6 left-0 right-0 z-50 px-6 flex justify-center pointer-events-none">
-        <nav className="pointer-events-auto liquid-glass-strong rounded-full px-6 py-3 flex items-center justify-between gap-8 md:gap-12 w-full max-w-4xl shadow-md border border-white/40">
+      <div className={`fixed left-0 right-0 z-50 px-4 sm:px-6 flex justify-center pointer-events-none transition-all duration-500 ${scrolled ? 'top-3' : 'top-6'}`}>
+        <nav className={`pointer-events-auto liquid-glass-strong rounded-full pl-3 pr-3 flex items-center justify-between gap-4 md:gap-8 w-full max-w-4xl shadow-md border border-white/40 transition-all duration-500 ${scrolled ? 'py-2' : 'py-2.5'}`}>
           <a
             href="/"
-            className="font-headline text-sm sm:text-base md:text-xl font-bold text-primary flex items-center gap-2 shrink-0 active:scale-95 transition-all truncate max-w-[180px] sm:max-w-none no-underline"
+            className="flex items-center gap-2.5 shrink-0 active:scale-95 transition-all no-underline group"
           >
-            Asian Heritage Collective
+            <img
+              src={IMAGES.logo}
+              alt=""
+              className={`object-contain rounded-full transition-all duration-500 group-hover:rotate-6 ${scrolled ? 'h-8 w-8' : 'h-9 w-9'}`}
+            />
+            <span className="font-headline text-sm sm:text-base font-bold text-primary leading-tight truncate max-w-[150px] sm:max-w-none">
+              Asian Heritage<span className="hidden sm:inline"> Collective</span>
+            </span>
           </a>
 
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map(({ href, label }) => (
               <a
                 key={href}
                 href={href}
-                className={`font-body text-xs uppercase tracking-widest transition-all duration-300 active:scale-95 py-0.5 no-underline ${
+                className={`font-body text-[11px] uppercase tracking-widest transition-all duration-300 active:scale-95 px-3 py-1.5 rounded-full no-underline whitespace-nowrap ${
                   isActive(href)
-                    ? 'text-primary font-bold border-b-2 border-primary'
-                    : 'text-on-surface-variant font-medium hover:text-primary'
+                    ? 'text-on-primary font-bold bg-primary shadow-sm'
+                    : 'text-on-surface-variant font-semibold hover:text-primary hover:bg-primary/5'
                 }`}
               >
                 {label}
@@ -118,7 +132,7 @@ export default function Nav({ currentPath }: NavProps) {
           <div className="hidden md:flex shrink-0">
             <a
               href="/#apply"
-              className="px-5 py-2.5 rounded-full font-body font-semibold text-xs uppercase tracking-wider transition-all shadow-sm hover:shadow-lg hover:scale-[1.03] active:scale-95 whitespace-nowrap bg-primary text-on-primary hover:bg-primary-container no-underline"
+              className="px-5 py-2.5 rounded-full font-body font-bold text-[11px] uppercase tracking-wider transition-all shadow-sm hover:shadow-lg hover:scale-[1.03] active:scale-95 whitespace-nowrap border border-primary/30 text-primary hover:bg-primary hover:text-on-primary no-underline"
             >
               Join Us
             </a>
@@ -157,11 +171,12 @@ export default function Nav({ currentPath }: NavProps) {
               { href: '/team', label: 'Meet the Team' },
               { href: '/blog', label: 'Living Heritage' },
               { href: '/games', label: 'Games Room' },
-            ].map(({ href, label }) => (
+            ].map(({ href, label }, i) => (
               <a
                 key={href}
                 href={href}
-                className={`w-full text-center py-4 px-6 rounded-2xl font-headline text-xl transition-all active:scale-95 border border-transparent no-underline block ${
+                style={{ animationDelay: `${i * 60}ms` }}
+                className={`w-full text-center py-4 px-6 rounded-2xl font-headline text-xl transition-all active:scale-95 border border-transparent no-underline block animate-slide-up-fade ${
                   isActive(href)
                     ? 'text-primary font-bold bg-primary/5 border-primary/10'
                     : 'text-on-surface-variant hover:text-primary hover:bg-primary/5'
