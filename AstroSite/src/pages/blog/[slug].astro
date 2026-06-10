@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import { BLOG_POSTS } from '../../data/blogPosts';
 
 export function getStaticPaths() {
@@ -12,9 +13,9 @@ export function getStaticPaths() {
 const { post } = Astro.props;
 
 // Dynamically resolve the image from the assets folder at build time
-const allImages = import.meta.glob<{ default: string }>('../../assets/images/*', { eager: true });
-const imgModule = allImages[`../../assets/images/${post.imageFile}`];
-const imgSrc: string = (imgModule as any)?.default ?? '';
+const allImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/images/*', { eager: true });
+const imgMeta: ImageMetadata | undefined = allImages[`../../assets/images/${post.imageFile}`]?.default;
+const imgSrc: string = (imgMeta as any)?.src ?? '';
 
 // Find adjacent posts for prev/next navigation
 const postIndex = BLOG_POSTS.findIndex(p => p.slug === post.slug);
@@ -60,13 +61,16 @@ const nextPost = postIndex < BLOG_POSTS.length - 1 ? BLOG_POSTS[postIndex + 1] :
         </div>
 
         {/* Cover Image */}
-        {imgSrc && (
+        {imgMeta && (
           <div class="w-full h-64 md:h-[450px] overflow-hidden rounded-2xl border border-neutral-100 shadow-inner animate-slide-up-fade delay-100">
-            <img
-              src={imgSrc}
+            <Image
+              src={imgMeta}
               alt={post.title}
               class="w-full h-full object-cover"
               loading="eager"
+              fetchpriority="high"
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 768px) 100vw, 768px"
             />
           </div>
         )}

@@ -148,17 +148,17 @@ export default function BlogPage({ onBack = () => { window.location.href = '/'; 
 
     if (post) {
       return (
-        <div className="pt-32 pb-24 min-h-screen bg-surface select-text relative text-left">
+        <div className="pt-32 pb-24 min-h-screen bg-[#faf8f6] select-text relative text-left">
           <div className="container mx-auto px-6 md:px-12 max-w-3xl animate-fade-in">
             <button
               onClick={() => setSelectedPostId(null)}
-              className="mb-8 font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 liquid-glass px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
+              className="mb-8 font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
             >
               <span className="material-symbols-outlined text-[16px]">arrow_back</span>
               Back to Blogs
             </button>
 
-            <article key={post.id} className="liquid-glass-strong border border-outline-variant rounded-3xl p-6 md:p-10 shadow-sm space-y-8">
+            <article key={post.id} className="bg-white border border-neutral-100 rounded-3xl p-6 md:p-10 shadow-sm space-y-8">
               <div className="space-y-4 animate-slide-up-fade">
                 <div className="flex flex-wrap gap-2 items-center text-xs text-on-surface-variant/70 font-semibold font-mono">
                   <span>{post.date}</span>
@@ -186,11 +186,11 @@ export default function BlogPage({ onBack = () => { window.location.href = '/'; 
                 {post.content}
               </div>
 
-              <div className="border-t border-outline-variant pt-8 mt-12 flex items-center justify-between gap-4 animate-slide-up-fade delay-400">
+              <div className="border-t border-neutral-100 pt-8 mt-12 flex items-center justify-between gap-4 animate-slide-up-fade delay-400">
                 {postIndex > 0 ? (
                   <button
                     onClick={() => setSelectedPostId(FIVE_BLOGS[postIndex - 1].id)}
-                    className="font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 liquid-glass px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
+                    className="font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
                   >
                     <span className="material-symbols-outlined text-[16px]">arrow_back</span>
                     Previous Post
@@ -202,7 +202,7 @@ export default function BlogPage({ onBack = () => { window.location.href = '/'; 
                 {postIndex < FIVE_BLOGS.length - 1 ? (
                   <button
                     onClick={() => setSelectedPostId(FIVE_BLOGS[postIndex + 1].id)}
-                    className="font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 liquid-glass px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
+                    className="font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
                   >
                     Next Post
                     <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
@@ -219,11 +219,11 @@ export default function BlogPage({ onBack = () => { window.location.href = '/'; 
   }
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-surface select-text relative text-left">
+    <div className="pt-32 pb-24 min-h-screen bg-[#faf8f6] select-text relative text-left">
       <div className="container mx-auto px-6 md:px-12 max-w-[1280px] animate-fade-in">
         <button
           onClick={onBack}
-          className="mb-8 font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 liquid-glass px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
+          className="mb-8 font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container flex items-center gap-2 bg-white px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
         >
           <span className="material-symbols-outlined text-[16px]">arrow_back</span>
           Back to Homepage
@@ -246,10 +246,10 @@ export default function BlogPage({ onBack = () => { window.location.href = '/'; 
             <div
               key={post.id}
               onClick={() => setSelectedPostId(post.id)}
-              className="liquid-glass-strong rounded-3xl overflow-hidden border border-outline-variant shadow-sm flex flex-col justify-between transition-all duration-300 hover:border-primary/40 hover:shadow-xl cursor-pointer transform hover:-translate-y-1.5"
+              className="bg-white rounded-3xl overflow-hidden border border-neutral-100 shadow-sm flex flex-col justify-between transition-all duration-300 hover:border-primary/25 hover:shadow-xl cursor-pointer transform hover:-translate-y-1.5"
             >
               <div>
-                <div className="h-48 w-full overflow-hidden relative border-b border-outline-variant/30">
+                <div className="h-48 w-full overflow-hidden relative border-b border-neutral-50">
                   <img alt={post.title} className="w-full h-full object-cover" src={post.img} />
                   <span className="absolute top-4 left-4 bg-primary text-on-primary text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md font-mono">
                     {post.tag}
