@@ -368,12 +368,14 @@
     display: inline-block;
     overflow: hidden;
     vertical-align: bottom;
-    padding-bottom: 0.12em;
-    margin-bottom: -0.12em;
+    /* Breathing room so italic overhangs, swashes, apostrophes and
+       descenders aren't clipped; negative margins keep layout identical. */
+    padding: 0.22em;
+    margin: -0.22em;
   }
   .split-words .w-inner {
     display: inline-block;
-    transform: translateY(112%);
+    transform: translateY(140%);
     opacity: 0;
     transition: transform 0.8s cubic-bezier(0.2, 0.65, 0.2, 1), opacity 0.5s ease;
     will-change: transform;
