@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HomeApp from '../components/HomeApp';
+---
+
+<Layout
+  title="Asian Heritage Collective"
+  description="A Michigan nonprofit fostering youth cultural development through music, art, language, and community service."
+  ogImage="/logo.webp"
+>
+  <HomeApp client:load />
+</Layout>

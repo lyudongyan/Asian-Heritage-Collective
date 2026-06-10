@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { PAST_EVENTS } from '../../data/pastEvents';
+
+export function getStaticPaths() {
+  return PAST_EVENTS.map(evt => ({
+    params: { id: evt.id },
+    props: { evt },
+  }));
+}
+
+const { evt } = Astro.props;
+
+// Resolve all event images at build time
+const allImages = import.meta.glob<{ default: string }>('../../assets/images/*', { eager: true });
+
+function resolveImg(filename: string): string {
+  const mod = allImages[`../../assets/images/${filename}`];
+  return (mod as any)?.default ?? '';
+}
+
+const coverSrc = resolveImg(evt.imageFile);
+const gallerySrcs = evt.imageFiles.map(resolveImg);
+
+// Adjacent event navigation
+const evtIndex = PAST_EVENTS.findIndex(e => e.id === evt.id);
+const prevEvt = evtIndex > 0 ? PAST_EVENTS[evtIndex - 1] : null;
+const nextEvt = evtIndex < PAST_EVENTS.length - 1 ? PAST_EVENTS[evtIndex + 1] : null;
+---
+
+<Layout
+  title={`${evt.title} | AHC Events`}
+  description={evt.desc}
+  ogImage={coverSrc}
+>
+  <div class="pt-32 pb-24 min-h-screen bg-about relative select-text">
+    <div class="container mx-auto px-6 md:px-12 max-w-4xl animate-fade-in">
+
+      {/* Back button */}
+      <a
+        href="/events"
+        class="mb-8 font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container inline-flex items-center gap-2 bg-white/40 px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm no-underline"
+      >
+        <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+        Back to Events
+      </a>
+
+      {/* Event detail card */}
+      <article class="liquid-glass-strong rounded-3xl p-6 md:p-10 border border-primary/5 shadow-sm space-y-8 text-left">
+
+        {/* Header */}
+        <div class="space-y-4 animate-slide-up-fade">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider font-mono">
+              {evt.date}
+            </span>
+            <span class="text-on-surface-variant/70 text-xs font-bold flex items-center gap-1">
+              <span class="material-symbols-outlined text-sm">location_on</span>
+              {evt.location}
+            </span>
+          </div>
+          <h1 class="font-headline text-3xl md:text-5xl text-primary font-bold leading-tight">
+            {evt.title}
+          </h1>
+        </div>
+
+        {/* Cover Image */}
+        {coverSrc && (
+          <div class="w-full h-64 md:h-[450px] overflow-hidden rounded-2xl border border-white/50 shadow-inner animate-slide-up-fade delay-100">
+            <img
+              src={coverSrc}
+              alt={evt.title}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+        )}
+
+        {/* Description */}
+        <div class="space-y-4 animate-slide-up-fade delay-200">
+          <h3 class="font-headline text-xl text-primary font-bold">Event Summary</h3>
+          <p class="font-body text-base text-on-surface-variant leading-relaxed">
+            {evt.desc}
+          </p>
+        </div>
+
+        {/* Gallery */}
+        {gallerySrcs.length > 0 && (
+          <div class="space-y-4 border-t border-primary/10 pt-8 mt-8 animate-slide-up-fade delay-300">
+            <h3 class="font-headline text-xl text-primary font-bold">Event Photos</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {gallerySrcs.map((src, idx) => (
+                src && (
+                  <div class="group relative h-48 rounded-xl overflow-hidden shadow-sm border border-white/50">
+                    <img
+                      src={src}
+                      alt={`${evt.title} photo ${idx + 1}`}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                )
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Prev / Next navigation */}
+        <div class="border-t border-primary/10 pt-8 mt-12 flex items-center justify-between gap-4 animate-slide-up-fade delay-400">
+          {prevEvt ? (
+            <a
+              href={`/events/${prevEvt.id}`}
+              class="font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container inline-flex items-center gap-2 bg-white/40 px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm no-underline"
+            >
+              <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+              Previous Event
+            </a>
+          ) : <div />}
+
+          {nextEvt ? (
+            <a
+              href={`/events/${nextEvt.id}`}
+              class="font-body text-xs font-bold uppercase tracking-widest text-primary hover:text-primary-container inline-flex items-center gap-2 bg-white/40 px-5 py-2.5 rounded-full border border-primary/10 transition-all hover:scale-[1.02] active:scale-95 shadow-sm no-underline"
+            >
+              Next Event
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          ) : <div />}
+        </div>
+      </article>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+  );
+  document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale')
+    .forEach(el => observer.observe(el));
+</script>

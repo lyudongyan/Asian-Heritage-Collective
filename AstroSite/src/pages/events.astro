@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EventsPage from '../components/EventsPage';
+---
+
+<Layout
+  title="Past Events | Asian Heritage Collective"
+  description="Browse AHC's archive of cultural performances, origami workshops, volunteer meals, and community celebrations across Michigan."
+>
+  <EventsPage client:load />
+</Layout>

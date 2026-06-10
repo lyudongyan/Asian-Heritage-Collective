@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Dark surface scale ─────────────────────────── */
+  --color-surface: #140807;
+  --color-surface-dim: #0e0504;
+  --color-surface-bright: #241412;
+  --color-surface-container-lowest: #0a0302;
+  --color-surface-container-low: #1c0f0d;
+  --color-surface-container: #221311;
+  --color-surface-container-high: #2a1815;
+  --color-surface-container-highest: #321d1a;
+  --color-on-surface: #f0e0dd;
+  --color-on-surface-variant: #c9a09d;
+  --color-inverse-surface: #f0e0dd;
+  --color-inverse-on-surface: #140807;
+  --color-outline: #7a5553;
+  --color-outline-variant: #3d2220;
+  --color-surface-tint: #ff897d;
+  --color-surface-variant: #3d2220;
+  --color-background: #140807;
+  --color-on-background: #f0e0dd;
+
+  /* ── Primary (bright coral-red readable on dark) ─── */
+  --color-primary: #ff897d;
+  --color-on-primary: #52000a;
+  --color-primary-container: #7a1212;
+  --color-on-primary-container: #ffdad6;
+  --color-inverse-primary: #880e1b;
+
+  /* ── Secondary (warm amber) ─────────────────────── */
+  --color-secondary: #ffb951;
+  --color-on-secondary: #3d2a00;
+  --color-secondary-container: #5c3900;
+  --color-on-secondary-container: #ffddb3;
+  --color-secondary-fixed: #ffddb3;
+  --color-secondary-fixed-dim: #ffb951;
+  --color-on-secondary-fixed: #291800;
+  --color-on-secondary-fixed-variant: #633f00;
+
+  /* ── Tertiary (deep rose) ───────────────────────── */
+  --color-tertiary: #ffb1c5;
+  --color-on-tertiary: #5f1033;
+  --color-tertiary-container: #7c003b;
+  --color-on-tertiary-container: #ffd9e1;
+
+  /* ── Misc ───────────────────────────────────────── */
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+  --color-primary-fixed: #ffdad6;
+  --color-primary-fixed-dim: #ffb4ab;
+  --color-on-primary-fixed: #410002;
+  --color-on-primary-fixed-variant: #881d1b;
+  --color-tertiary-fixed: #ffd9e1;
+  --color-tertiary-fixed-dim: #ffb1c5;
+  --color-on-tertiary-fixed: #3f001b;
+  --color-on-tertiary-fixed-variant: #8b0e45;
+
+  --font-headline: "Libre Caslon Text", serif;
+  --font-body: "Manrope", sans-serif;
+
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+}
+
+/* ── Section backgrounds (dark) ─────────────────────────── */
+.bg-hero {
+    background: linear-gradient(135deg, #2c0a10 0%, #0d0002 50%, #1a0c00 100%);
+}
+.bg-about {
+    background: linear-gradient(135deg, #1e0f0d 0%, #140807 100%);
+}
+.bg-story {
+    background: linear-gradient(135deg, #200b08 0%, #2a1205 100%);
+}
+.bg-impact {
+    background: linear-gradient(135deg, #1a0908 0%, #1f0c0e 100%);
+}
+.bg-hub {
+    background: linear-gradient(135deg, #1e0e0c 0%, #241609 100%);
+}
+
+/* ── Dark liquid glass effects ───────────────────────────── */
+.liquid-glass {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.liquid-glass-strong {
+    background: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.10);
+}
+
+/* ── String vibration keyframes ─────────────────────────── */
+@keyframes vibrate {
+  0% { transform: translate(0, 0) scaleY(1); }
+  15% { transform: translate(0, -3px) scaleY(1.25); }
+  30% { transform: translate(0, 2px) scaleY(0.75); }
+  45% { transform: translate(0, -1.5px) scaleY(1.1); }
+  60% { transform: translate(0, 1px) scaleY(0.9); }
+  75% { transform: translate(0, -0.5px) scaleY(1.03); }
+  90% { transform: translate(0, 0.2px) scaleY(0.97); }
+  100% { transform: translate(0, 0) scaleY(1); }
+}
+.animate-vibrate { animation: vibrate 0.8s ease-in-out; }
+
+/* ── Mouse cursor effects ───────────────────────────────── */
+.mouse-spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 137, 125, 0.12) 0%,
+    rgba(255, 137, 125, 0.04) 50%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+.mouse-active .mouse-spotlight { opacity: 1; }
+
+.mouse-follower-circle {
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  background: radial-gradient(circle, rgba(255, 137, 125, 0.25) 0%, rgba(255, 137, 125, 0.08) 70%, transparent 100%);
+  border: 1px solid rgba(255, 137, 125, 0.25);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+  left: var(--mouse-x, -200px);
+  top: var(--mouse-y, -200px);
+  box-shadow: 0 0 24px 8px rgba(255, 137, 125, 0.12);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  will-change: left, top;
+}
+.mouse-active .mouse-follower-circle { opacity: 1; }
+
+.click-ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: rgba(255, 137, 125, 0.25);
+  transform: scale(0);
+  animation: ripple-out 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  z-index: 9999;
+}
+@keyframes ripple-out {
+  to { transform: scale(4.5); opacity: 0; }
+}
+
+/* ── Page & card animations ─────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.animate-fade-in { animation: fade-in 0.4s ease both; }
+.animate-pop-in  { animation: pop-in  0.3s cubic-bezier(0.34,1.56,0.64,1) both; }
+
+/* ── Scroll-triggered reveal ─────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.75s ease-out, transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .scroll-reveal.in-view { opacity: 1; transform: translateY(0); }
+
+  .scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.75s ease-out, transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .scroll-reveal-left.in-view { opacity: 1; transform: translateX(0); }
+
+  .scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.75s ease-out, transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .scroll-reveal-right.in-view { opacity: 1; transform: translateX(0); }
+
+  .scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.75s ease-out, transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .scroll-reveal-scale.in-view { opacity: 1; transform: scale(1); }
+
+  .scroll-reveal-delay-1 { transition-delay: 0.1s; }
+  .scroll-reveal-delay-2 { transition-delay: 0.2s; }
+  .scroll-reveal-delay-3 { transition-delay: 0.3s; }
+  .scroll-reveal-delay-4 { transition-delay: 0.4s; }
+}
+
+/* ── Slide-up entrance ─────────────────────────── */
+@keyframes slide-up-fade {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up-fade {
+  opacity: 0;
+  animation: slide-up-fade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }

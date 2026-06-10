@@ -1,0 +1,13 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "target": "ES2022",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
