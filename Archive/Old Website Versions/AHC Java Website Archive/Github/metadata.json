@@ -1,0 +1,6 @@
+{
+  "name": "Asian Heritage Collective",
+  "description": "Fostering youth cultural development by empowering young people to learn about their heritage, strengthen their identity, and serve their communities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
