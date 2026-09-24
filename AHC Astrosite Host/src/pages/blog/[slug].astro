@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { BLOG_POSTS } from '../../data/blogPosts';
+import Footer from '../../components/Footer';
+
+export function getStaticPaths() {
+  return BLOG_POSTS.map(post => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const allImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/images/*', { eager: true });
+const image: ImageMetadata | undefined = allImages[`../../assets/images/${post.imageFile}`]?.default;
+const imageUrl = image?.src ?? '';
+const index = BLOG_POSTS.findIndex(item => item.slug === post.slug);
+const previous = index > 0 ? BLOG_POSTS[index - 1] : null;
+const next = index < BLOG_POSTS.length - 1 ? BLOG_POSTS[index + 1] : null;
+---
+
+<Layout title={`${post.title} | Student Blogs`} description={post.excerpt} ogImage={imageUrl} ogType="article">
+  <main class="page-shell detail-page">
+    <div class="detail-wrap">
+      <a class="back-link" href="/blog">Back to Student Blogs</a>
+      <article class="detail-card liquid-surface liquid-light" data-glass>
+        <header class="detail-header">
+          <div class="detail-meta">
+            <span>{post.date}</span>
+            <span>{post.author}</span>
+            <span>{post.tag}</span>
+          </div>
+          <h1>{post.title}</h1>
+          <p>{post.excerpt}</p>
+        </header>
+
+        {image && (
+          <Image
+            src={image}
+            alt={post.title}
+            class="detail-cover"
+            loading="eager"
+            fetchpriority="high"
+            widths={[480, 840, 1200]}
+            sizes="(max-width: 900px) 100vw, 840px"
+          />
+        )}
+
+        <div class="article-copy">
+          {post.content.split('\n\n').map(paragraph => <p>{paragraph.trim()}</p>)}
+        </div>
+
+        <nav class="detail-pagination" aria-label="More student blogs">
+          {previous ? <a href={`/blog/${previous.slug}`}>Previous</a> : <span></span>}
+          {next ? <a href={`/blog/${next.slug}`}>Next</a> : <span></span>}
+        </nav>
+      </article>
+    </div>
+  </main>
+  <Footer />
+</Layout>

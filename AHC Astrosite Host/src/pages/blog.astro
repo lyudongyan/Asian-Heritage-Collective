@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BlogPage from '../components/BlogPage';
+import Footer from '../components/Footer';
+---
+
+<Layout
+  title="Student Blogs | Asian Heritage Collective"
+  description="Student writing on language, identity, family, culture, and community."
+>
+  <BlogPage client:load />
+  <Footer />
+</Layout>

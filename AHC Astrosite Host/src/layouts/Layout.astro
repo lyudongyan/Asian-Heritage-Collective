@@ -1,0 +1,114 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav';
+import logo from '../assets/images/logo.webp';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
+}
+
+const {
+  title = "Asian Heritage Collective",
+  description = "Asian Heritage Collective makes language and cultural learning something young people choose to be part of.",
+  ogImage = logo.src,
+  ogType = "website",
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, "https://asianheritagecollective.org").href;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Social media previews -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.url).href} />
+    <meta property="og:site_name" content="Asian Heritage Collective" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.url).href} />
+
+    <!-- Favicon -->
+    <link rel="icon" href={logo.src} type="image/webp" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+  </head>
+  <body>
+    <Nav currentPath={Astro.url.pathname} client:load />
+    <slot />
+    <script is:inline>
+      (() => {
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const coarse = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+        const reveals = document.querySelectorAll('.reveal');
+        if (reduced || !('IntersectionObserver' in window)) {
+          reveals.forEach((element) => element.classList.add('in-view'));
+        } else {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.12, rootMargin: '0px 0px -50px' });
+          reveals.forEach((element) => observer.observe(element));
+        }
+
+        let scrollFrame = 0;
+        const updateProgress = () => {
+          scrollFrame = 0;
+          const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+          document.body.style.setProperty('--page-progress', String(Math.min(1, scrollY / max)));
+        };
+        addEventListener('scroll', () => {
+          if (!scrollFrame) scrollFrame = requestAnimationFrame(updateProgress);
+        }, { passive: true });
+        updateProgress();
+
+        if (!reduced && !coarse) {
+          let pointerFrame = 0;
+          let latest;
+          document.addEventListener('pointermove', (event) => {
+            latest = event;
+            if (pointerFrame) return;
+            pointerFrame = requestAnimationFrame(() => {
+              pointerFrame = 0;
+              const surface = latest.target instanceof Element ? latest.target.closest('[data-glass]') : null;
+              if (!surface) return;
+              const rect = surface.getBoundingClientRect();
+              surface.style.setProperty('--glass-x', `${((latest.clientX - rect.left) / rect.width * 100).toFixed(1)}%`);
+              surface.style.setProperty('--glass-y', `${((latest.clientY - rect.top) / rect.height * 100).toFixed(1)}%`);
+            });
+          }, { passive: true });
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -6,6 +6,10 @@ node_modules/
 **/dist/
 dist/
 
+# Astro generated metadata
+**/.astro/
+**/.sync_probe.txt
+
 # Local env files
 .env
 .env.local
