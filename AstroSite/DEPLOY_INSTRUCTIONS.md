@@ -1,13 +1,13 @@
 # AHC website deployment
 
-The current website lives in `AHC Astrosite Host`.
+The current website lives in `AstroSite`.
 
 ## Local preview
 
 From the repository root:
 
 ```powershell
-cd "AHC Astrosite Host"
+cd "AstroSite"
 npm install
 npm run dev
 ```
@@ -26,7 +26,7 @@ The generated site is written to `dist`.
 
 Use these project settings:
 
-- Root directory: `AHC Astrosite Host`
+- Root directory: `AstroSite`
 - Build command: `npm run build`
 - Build output directory: `dist`
 
