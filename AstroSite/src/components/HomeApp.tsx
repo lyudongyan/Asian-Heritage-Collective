@@ -18,7 +18,7 @@ function Hero() {
         <source src={heroVideo} type="video/mp4" />
       </video>
       <div className="image-shade" />
-      <div className="hero-layout page-width">
+      <div className="hero-layout page-width reveal in-view">
         <div className="hero-panel liquid-surface liquid-dark" data-glass>
           <h1>Make language learning worth showing up for.</h1>
           <p>
@@ -56,6 +56,7 @@ function Programs() {
           {PROGRAMS.map((program, index) => (
             <article
               className="program-card image-card reveal"
+              data-viewport-card
               key={program.title}
               style={{ backgroundImage: `url(${programImages[index]})` }}
             >
@@ -66,33 +67,6 @@ function Programs() {
               </div>
             </article>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SchoolService() {
-  return (
-    <section
-      className="school-section image-section"
-      style={{ backgroundImage: `url(${IMAGES.meet_the_team})` }}
-    >
-      <div className="image-shade" />
-      <div className="page-width school-layout">
-        <div className="school-card liquid-surface liquid-light reveal" data-glass>
-          <img
-            className="school-logo"
-            src="https://www.acsgd.org/logo.png"
-            alt="The American Chinese School of Greater Detroit"
-          />
-          <p>
-            AHC members volunteer with the school, helping make Chinese language
-            learning more active and engaging for younger students.
-          </p>
-          <a className="text-link" href="https://www.acsgd.org/" target="_blank" rel="noreferrer">
-            Visit the school website
-          </a>
         </div>
       </div>
     </section>
@@ -150,6 +124,47 @@ function Explore() {
   );
 }
 
+function Transparency() {
+  const awards = [
+    {
+      image: IMAGES.candid_bronze,
+      year: "2024",
+      title: "Candid Bronze Seal",
+      copy: "Our first public recognition for sharing clear, accessible organizational information.",
+    },
+    {
+      image: IMAGES.candid_silver,
+      year: "2026",
+      title: "Candid Silver Seal",
+      copy: "An upgraded transparency rating reflecting AHC's continued growth and reporting.",
+    },
+  ];
+
+  return (
+    <section className="section transparency-section">
+      <div className="page-width transparency-layout">
+        <header className="section-heading reveal">
+          <p className="section-label">Transparency</p>
+          <h2>Open about the work.</h2>
+          <p>Our programs are free to participants, and our transparency rating has increased each time it has been reviewed.</p>
+        </header>
+        <div className="award-grid">
+          {awards.map((award) => (
+            <article className="award-card liquid-surface liquid-light reveal" data-glass key={award.title}>
+              <img src={award.image} alt={award.title} />
+              <div>
+                <span>{award.year}</span>
+                <h3>{award.title}</h3>
+                <p>{award.copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Join() {
   return (
     <section
@@ -192,8 +207,8 @@ export default function HomeApp() {
       <Hero />
       <MissionStatement />
       <Programs />
-      <SchoolService />
       <Explore />
+      <Transparency />
       <Join />
       <Footer />
     </main>

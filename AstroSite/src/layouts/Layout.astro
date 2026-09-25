@@ -59,8 +59,22 @@ const canonicalUrl = new URL(Astro.url.pathname, "https://asianheritagecollectiv
 
   </head>
   <body>
+    <div class="site-loader" aria-hidden="true">
+      <div class="loader-brand">
+        <img src={logo.src} alt="" />
+        <div>
+          <strong>AHC</strong>
+          <span>Asian Heritage Collective</span>
+        </div>
+      </div>
+      <div class="loader-track"><span></span></div>
+    </div>
     <Nav currentPath={Astro.url.pathname} client:load />
     <slot />
+    <aside class="cookie-notice" aria-label="Site notice">
+      <strong>Cookies notice</strong>
+      <span>Essential functionality only. This banner stores no preferences.</span>
+    </aside>
     <script is:inline>
       (() => {
         const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -77,7 +91,7 @@ const canonicalUrl = new URL(Astro.url.pathname, "https://asianheritagecollectiv
                 observer.unobserve(entry.target);
               }
             });
-          }, { threshold: 0.12, rootMargin: '0px 0px -50px' });
+          }, { threshold: 0.16, rootMargin: '0px 0px -86px' });
           reveals.forEach((element) => observer.observe(element));
         }
 
@@ -86,11 +100,25 @@ const canonicalUrl = new URL(Astro.url.pathname, "https://asianheritagecollectiv
           scrollFrame = 0;
           const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
           document.body.style.setProperty('--page-progress', String(Math.min(1, scrollY / max)));
+          document.querySelectorAll('[data-viewport-card]').forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const center = rect.top + rect.height / 2;
+            const distance = Math.min(1, Math.abs(center - innerHeight / 2) / (innerHeight * .72));
+            card.style.setProperty('--edge-dim', String(.08 + distance * .34));
+          });
         };
         addEventListener('scroll', () => {
           if (!scrollFrame) scrollFrame = requestAnimationFrame(updateProgress);
         }, { passive: true });
         updateProgress();
+
+        const finishLoading = () => {
+          setTimeout(() => document.documentElement.classList.add('site-ready'), reduced ? 0 : 520);
+          setTimeout(() => document.querySelector('.cookie-notice')?.classList.add('is-visible'), reduced ? 0 : 1250);
+        };
+        if (document.readyState === 'complete') finishLoading();
+        else addEventListener('load', finishLoading, { once: true });
+        setTimeout(() => document.documentElement.classList.add('site-ready'), 2600);
 
         if (!reduced && !coarse) {
           let pointerFrame = 0;

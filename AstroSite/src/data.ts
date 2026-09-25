@@ -215,7 +215,7 @@ export const MILESTONES: Milestone[] = [
   {
     date: "2024",
     title: "Candid Bronze Seal",
-    desc: "In its founding year as a registered nonprofit, AHC earns the Candid Bronze Seal of Transparency.",
+    desc: "In its founding year, AHC earns the Candid Bronze Seal of Transparency.",
     img: s(candidBronzeImg),
     fit: "contain",
   },

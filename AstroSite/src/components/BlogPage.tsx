@@ -38,27 +38,33 @@ export default function BlogPage() {
           ))}
         </div>
 
-        <div className="content-grid">
-          {posts.map((post, index) => (
-            <a
-              className={`content-tile reveal ${index === 0 ? "featured" : ""}`}
-              href={`/blog/${post.slug}`}
-              key={post.slug}
-              style={{ backgroundImage: `url(${imageFor(post.imageFile)})` }}
-            >
-              <div className="image-shade" />
-              <div className="tile-copy liquid-surface liquid-dark" data-glass>
-                <div className="tile-meta">
-                  <span>{post.tag}</span>
-                  <span>{post.date}</span>
-                  <span>{readingTime(post.content)} min read</span>
-                </div>
-                {index === 0 ? <h2>{post.title}</h2> : <h3>{post.title}</h3>}
-                <p>{post.excerpt}</p>
+        {posts.length > 0 && (
+          <div className="blog-layout">
+            <a className="blog-featured liquid-surface liquid-light reveal" data-glass href={`/blog/${posts[0].slug}`}>
+              <img src={imageFor(posts[0].imageFile)} alt="" />
+              <div className="blog-featured-copy">
+                <div className="blog-meta"><span>{posts[0].tag}</span><span>{posts[0].date}</span></div>
+                <h2>{posts[0].title}</h2>
+                <p>{posts[0].excerpt}</p>
+                <span className="blog-byline">{posts[0].author} · {readingTime(posts[0].content)} min read</span>
               </div>
             </a>
-          ))}
-        </div>
+
+            <div className="blog-grid">
+              {posts.slice(1).map((post) => (
+                <a className="blog-card liquid-surface liquid-light reveal" data-glass href={`/blog/${post.slug}`} key={post.slug}>
+                  <img src={imageFor(post.imageFile)} alt="" />
+                  <div className="blog-card-copy">
+                    <div className="blog-meta"><span>{post.tag}</span><span>{post.date}</span></div>
+                    <h3>{post.title}</h3>
+                    <p>{post.excerpt}</p>
+                    <span className="blog-byline">{post.author} · {readingTime(post.content)} min read</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
     </main>
   );

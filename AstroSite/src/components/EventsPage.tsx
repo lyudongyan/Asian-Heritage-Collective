@@ -4,6 +4,7 @@ import { PAST_EVENTS } from "../data/pastEvents";
 const images = import.meta.glob<{ default: { src: string } }>("../assets/images/*", { eager: true });
 
 function imageFor(filename: string): string {
+  if (/^https?:\/\//.test(filename)) return filename;
   return images[`../assets/images/${filename}`]?.default?.src ?? "";
 }
 
@@ -16,23 +17,24 @@ export default function EventsPage() {
       </header>
 
       <section className="page-width">
-        <div className="content-grid">
-          {PAST_EVENTS.map((event, index) => (
+        <div className="event-grid">
+          {PAST_EVENTS.map((event) => (
             <a
-              className={`content-tile reveal ${index === 0 ? "featured" : ""}`}
+              className={`event-card ${event.cardImageFile?.startsWith("http") ? "event-card-logo" : ""}`}
               href={`/events/${event.id}`}
               key={event.id}
-              style={{ backgroundImage: `url(${imageFor(event.imageFile)})` }}
+              style={{ backgroundImage: `url(${imageFor(event.cardImageFile ?? event.imageFile)})` }}
             >
-              <div className="image-shade" />
-              <div className="tile-copy liquid-surface liquid-dark" data-glass>
-                <div className="tile-meta">
+              <div className="event-card-shade" />
+              <div className="event-card-copy">
+                <h2>{event.title}</h2>
+                <div className="event-card-details">
+                  <div className="tile-meta">
                   <span>{event.date}</span>
                   <span>{event.location}</span>
-                  {event.imageFiles.length > 1 && <span>{event.imageFiles.length} photos</span>}
+                  </div>
+                  <p>{event.desc}</p>
                 </div>
-                {index === 0 ? <h2>{event.title}</h2> : <h3>{event.title}</h3>}
-                <p>{event.desc}</p>
               </div>
             </a>
           ))}

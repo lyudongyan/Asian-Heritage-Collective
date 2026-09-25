@@ -30,7 +30,7 @@ export default function Nav({ currentPath = "/" }: { currentPath?: string }) {
         </a>
 
         <button
-          className="menu-button"
+          className={`menu-button ${open ? "is-open" : ""}`}
           type="button"
           aria-expanded={open}
           aria-controls="primary-navigation"
