@@ -12,15 +12,19 @@ const programImages = [
 ];
 
 function Hero() {
+  const headline = "Make language learning worth showing up for.".split(" ");
   return (
     <section className="home-hero image-section" id="home">
       <video autoPlay muted loop playsInline poster={IMAGES.large_crowd_performance} aria-hidden="true">
         <source src={heroVideo} type="video/mp4" />
       </video>
       <div className="image-shade" />
+      <div className="hero-light" aria-hidden="true" />
       <div className="hero-layout page-width reveal in-view">
         <div className="hero-panel liquid-surface liquid-dark" data-glass>
-          <h1>Make language learning worth showing up for.</h1>
+          <h1 aria-label="Make language learning worth showing up for.">
+            {headline.map((word, index) => <span className="hero-word" style={{ "--word-index": index } as React.CSSProperties} aria-hidden="true" key={`${word}-${index}`}>{word}</span>)}
+          </h1>
           <p>
             Asian Heritage Collective gives young people a reason to learn, create,
             perform, and serve together.
@@ -55,15 +59,18 @@ function Programs() {
         <div className="program-grid">
           {PROGRAMS.map((program, index) => (
             <article
-              className="program-card image-card reveal"
+              className="program-card interactive-image-card image-card reveal"
               data-viewport-card
+              tabIndex={0}
               key={program.title}
               style={{ backgroundImage: `url(${programImages[index]})` }}
             >
               <div className="image-shade" />
-              <div className="program-copy liquid-surface liquid-dark" data-glass>
+              <div className="interactive-card-copy program-copy">
                 <h3>{program.title}</h3>
-                <p>{program.desc}</p>
+                <div className="interactive-card-details liquid-surface liquid-dark" data-glass>
+                  <p>{program.desc}</p>
+                </div>
               </div>
             </article>
           ))}
@@ -105,16 +112,20 @@ function Explore() {
         <div className="explore-grid">
           {cards.map((card) => (
             <a
-              className="explore-card image-card reveal"
+              className="explore-card interactive-image-card image-card reveal"
               href={card.href}
               key={card.title}
               style={{ backgroundImage: `url(${card.image})` }}
             >
               <div className="image-shade" />
-              <div className="explore-copy liquid-surface liquid-dark" data-glass>
-                <h3>{card.title}</h3>
-                <p>{card.copy}</p>
-                <span>View page</span>
+              <div className="interactive-card-copy explore-copy">
+                <div className="explore-title-row">
+                  <h3>{card.title}</h3>
+                  <span className="explore-action">Open page</span>
+                </div>
+                <div className="interactive-card-details liquid-surface liquid-dark" data-glass>
+                  <p>{card.copy}</p>
+                </div>
               </div>
             </a>
           ))}

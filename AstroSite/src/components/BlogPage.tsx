@@ -39,8 +39,8 @@ export default function BlogPage() {
         </div>
 
         {posts.length > 0 && (
-          <div className="blog-layout">
-            <a className="blog-featured liquid-surface liquid-light reveal" data-glass href={`/blog/${posts[0].slug}`}>
+          <div className="blog-layout blog-filter-stage" key={activeTag} aria-live="polite">
+            <a className="blog-featured blog-filter-item liquid-surface liquid-light" data-glass href={`/blog/${posts[0].slug}`}>
               <img src={imageFor(posts[0].imageFile)} alt="" />
               <div className="blog-featured-copy">
                 <div className="blog-meta"><span>{posts[0].tag}</span><span>{posts[0].date}</span></div>
@@ -51,8 +51,14 @@ export default function BlogPage() {
             </a>
 
             <div className="blog-grid">
-              {posts.slice(1).map((post) => (
-                <a className="blog-card liquid-surface liquid-light reveal" data-glass href={`/blog/${post.slug}`} key={post.slug}>
+              {posts.slice(1).map((post, index) => (
+                <a
+                  className="blog-card blog-filter-item liquid-surface liquid-light"
+                  data-glass
+                  href={`/blog/${post.slug}`}
+                  key={post.slug}
+                  style={{ "--blog-index": index + 1 } as React.CSSProperties}
+                >
                   <img src={imageFor(post.imageFile)} alt="" />
                   <div className="blog-card-copy">
                     <div className="blog-meta"><span>{post.tag}</span><span>{post.date}</span></div>

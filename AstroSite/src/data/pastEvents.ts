@@ -16,16 +16,6 @@ export interface PastEvent {
 
 export const PAST_EVENTS: PastEvent[] = [
   {
-    id: "evt-9",
-    title: "American Chinese School of Greater Detroit",
-    date: "2025–2026",
-    location: "Greater Detroit, Michigan",
-    desc: "AHC members tutored 36 students, all of whom went on to take the AP Chinese exam in 2026.",
-    imageFile: "chinese_school_blog.jpg",
-    cardImageFile: "https://www.acsgd.org/logo.png",
-    imageFiles: ["chinese_school_blog.jpg"],
-  },
-  {
     id: "evt-4",
     title: "Auburn Hills Public Library — API Heritage Month",
     date: "May 2026",
@@ -64,6 +54,16 @@ export const PAST_EVENTS: PastEvent[] = [
     imageFile: "international_food_night.png",
     cardImageFile: "event-food-night-extended.webp",
     imageFiles: ["international_food_night.png"],
+  },
+  {
+    id: "evt-9",
+    title: "American Chinese School of Greater Detroit",
+    date: "2025–2026",
+    location: "Greater Detroit, Michigan",
+    desc: "AHC members tutored 36 students, all of whom went on to take the AP Chinese exam in 2026.",
+    imageFile: "chinese_school_blog.jpg",
+    cardImageFile: "https://www.acsgd.org/logo.png",
+    imageFiles: ["chinese_school_blog.jpg"],
   },
   {
     id: "evt-5",

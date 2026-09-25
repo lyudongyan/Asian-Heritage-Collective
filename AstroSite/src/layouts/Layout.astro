@@ -71,9 +71,15 @@ const canonicalUrl = new URL(Astro.url.pathname, "https://asianheritagecollectiv
     </div>
     <Nav currentPath={Astro.url.pathname} client:load />
     <slot />
-    <aside class="cookie-notice" aria-label="Site notice">
-      <strong>Cookies notice</strong>
-      <span>Essential functionality only. This banner stores no preferences.</span>
+    <aside class="cookie-notice" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
+      <div class="cookie-copy">
+        <strong id="cookie-title">Your privacy choices</strong>
+        <p id="cookie-description">We use necessary cookies and browser storage to keep this site working. With your permission, optional cookies may help us understand site use and improve the experience. Your choice is saved on this device.</p>
+      </div>
+      <div class="cookie-actions">
+        <button type="button" data-cookie-choice="denied">Deny optional</button>
+        <button type="button" class="cookie-accept" data-cookie-choice="accepted">Accept all</button>
+      </div>
     </aside>
     <script is:inline>
       (() => {
@@ -114,11 +120,25 @@ const canonicalUrl = new URL(Astro.url.pathname, "https://asianheritagecollectiv
 
         const finishLoading = () => {
           setTimeout(() => document.documentElement.classList.add('site-ready'), reduced ? 0 : 520);
-          setTimeout(() => document.querySelector('.cookie-notice')?.classList.add('is-visible'), reduced ? 0 : 1250);
+          const cookieNotice = document.querySelector('.cookie-notice');
+          let cookieChoice = null;
+          try { cookieChoice = localStorage.getItem('ahc-cookie-choice'); } catch (_) {}
+          if (!cookieChoice) setTimeout(() => cookieNotice?.classList.add('is-visible'), reduced ? 0 : 1250);
         };
         if (document.readyState === 'complete') finishLoading();
         else addEventListener('load', finishLoading, { once: true });
         setTimeout(() => document.documentElement.classList.add('site-ready'), 2600);
+
+        document.querySelectorAll('[data-cookie-choice]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const choice = button.getAttribute('data-cookie-choice');
+            try { localStorage.setItem('ahc-cookie-choice', choice || 'denied'); } catch (_) {}
+            const notice = button.closest('.cookie-notice');
+            notice?.setAttribute('data-choice', choice || 'denied');
+            notice?.classList.remove('is-visible');
+            notice?.classList.add('is-dismissed');
+          });
+        });
 
         if (!reduced && !coarse) {
           let pointerFrame = 0;
