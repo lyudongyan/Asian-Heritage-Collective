@@ -12,7 +12,7 @@ interface TeamMember {
 }
 
 const members: TeamMember[] = [
-  { id: 1, name: "Lyudong Yan", title: "Executive Director", image: IMAGES.lyudong_yan_1, bio: "Lyudong founded AHC in 2023 and has led the organization since its first event. His interests span art, writing, biology, and Chinese language, and he has played piano since childhood. He built AHC out of a genuine frustration with how cultural education was being delivered to young people and a belief that it could be done better.", contribution: "Strategic direction, fundraising, board advocacy, and community partnership management." },
+  { id: 1, name: "Lyudong Yan", title: "Founder, Executive Director", image: IMAGES.lyudong_yan_1, bio: "Lyudong founded AHC in 2023 and has led the organization since its first event. His interests span art, writing, biology, and Chinese language, and he has played piano since childhood. He built AHC out of a genuine frustration with how cultural education was being delivered to young people and a belief that it could be done better.", contribution: "Strategic direction, fundraising, board advocacy, and community partnership management." },
   { id: 2, name: "Zeyad Karachiwala", title: "Director of Operations", image: IMAGES.zeyad_karichiwala_1, bio: "Zeyad is of Indian and Egyptian descent and brings a detail-oriented approach to everything he handles at AHC. Outside the organization he cooks and plays trumpet.", contribution: "Daily operations, compliance, logistical planning, and volunteer coordination." },
   { id: 3, name: "Jerry Mao", title: "Music Department Head", image: IMAGES.jerry_mao_1, bio: "Jerry swims, codes, and has studied Chinese seriously alongside his other interests. He plays violin and directs AHC's music program.", contribution: "Musical score curation, student rehearsals, performance coaching, and orchestral coordination." },
   { id: 4, name: "Joanne Lien", title: "Volunteer Department Head", image: IMAGES.joanne_lien_1, bio: "Joanne is Taiwanese and has been involved in volunteer work for most of her life, including with the Red Cross. She plays flute and organizes AHC's volunteer pipeline.", contribution: "Volunteer recruitment, training, screening, and service hour certification." },
@@ -24,14 +24,15 @@ const members: TeamMember[] = [
   { id: 10, name: "Akira Kongkanand", title: "Blog Writer", image: IMAGES.akira_kongkanand_1, bio: "Akira is Japanese and brings a math and engineering mindset to clear, precise writing.", contribution: "Blog writing, cultural research, community interviews, and historical documentation." },
   { id: 11, name: "Kelvin Shu", title: "Music Arranger & Composer", image: IMAGES.kelvin_shu, bio: "Kelvin focuses on traditional Chinese classical music and competes in Science Olympiad alongside his Chinese-language studies.", contribution: "Score arrangement, microtonal transcription, composition, and rehearsal preparation." },
   { id: 12, name: "Josh", title: "Member", image: IMAGES.josh_1, bio: "Josh is Chinese, studies computer science, and plays soccer. His title and full name will be updated shortly.", contribution: "Role to be announced." },
-  { id: 13, name: "Anthony Zhang", title: "Member", image: IMAGES.anthony_zhang_1, bio: "Anthony swims, plays violin, and has a strong interest in Chinese language and culture. He comes from a background in robotics and engineering.", contribution: "Role to be announced." },
+  { id: 13, name: "Anthony Zhang", title: "Co-founder", image: IMAGES.anthony_zhang_1, bio: "Anthony swims, plays violin, and has a strong interest in Chinese language and culture. He comes from a background in robotics and engineering.", contribution: "Co-founded AHC." },
   { id: 14, name: "Eric Zeng", title: "Member", image: IMAGES.eric_zeng_1, bio: "Eric studies computer science and is passionate about cultural heritage, engineering, and community service.", contribution: "Developing creative outreach programs at AHC." },
 ];
 
 const groups = [
-  { title: "Directors and Department Heads", ids: [1, 2, 3, 4, 5, 6] },
+  { title: "Founders", ids: [1, 13] },
+  { title: "Directors and Department Heads", ids: [2, 3, 4, 5, 6] },
   { title: "Creative and Media", ids: [7, 8, 9, 10, 11] },
-  { title: "Members", ids: [12, 13, 14] },
+  { title: "Members", ids: [12, 14] },
 ];
 
 export default function TeamPage() {
